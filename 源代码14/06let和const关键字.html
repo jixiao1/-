@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li{
+            width: 100px;
+            height: 30px;
+            background:pink;
+            margin:10px;
+            list-style:none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /* 
+            变量定义的关键字
+                ==>var,是我们以前用的定义变量的关键字
+                ==>在es6里面,多了两个关键字let和const,也是用来声明变量的
+                ==>let和const与以前的var有点小区别
+                    ==>let和const不允许重复声明变量
+                        const a = 1;
+                        const a = 2;
+                        会报错:Uncaught SyntaxError: Identifier 'a' has already been declared
+                    ==>let和const不会预解析(也就是变量声明提升)
+                        console.log(a)
+                        let a = 1;
+                        会报错:Uncaught ReferenceError: Cannot access 'a' before initialization
+                    ==>let和const有块级作用域,他们声明的变量会被所有的代码块限制作用域
+                        {
+                            const a = 1;
+                        }
+                        console.log(a)
+                        Uncaught ReferenceError: a is not defined
+                    ==>let和const是有区别的
+                        ==>let声明的变量的值可以改变,const声明的变量的值不可以改变
+                        ==>let声明的时候可以不赋值
+                            let a;a = 1;//let可以在声明以后再赋值
+                            const b;b = 1;//会报错,const只能在声明的时候初始化赋值,后面不能再赋值
+
+   
+        */
+
+        //题目:点击ul里面的li,告诉我是第几个li,索引从0开始
+        var liS = document.querySelectorAll('li');
+        for(let i=0;i<liS.length;i++){
+            liS[i].onclick = function(){
+                console.log('你点击的是第'+i+'个li')
+            }
+        }
+
+        
+
+    </script>
+</body>
+</html>

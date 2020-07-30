@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        if...else if...else 语句:
+            +和之前的if...else if基本一致,只不过在所有的条件都不满足的是偶,执行最后的else后面的{}
+        */
+
+         //if条件为false,不执行,判断else if里面的条件,还是false,不执行,所有的条件都不满足,执行else里面的代码
+         if(false){
+             console.log('代码段1')
+         }else if(false){
+             console.log('代码段2')
+         }else{
+             console.log('代码的段3')
+         }
+
+
+         //练习:分数转换，把百分制转换成ABCDE, <60 E, 60-70 D, 70-80 C ,80-90 B ,90 - 100 A
+         var score = 87;
+         if(score<60){
+             console.log('E')
+         }
+         //能够走到这里,说明<60不满足,也就是>=60
+         else if(score<70){
+            console.log('D')
+         }
+        //能够走到这里,说明<70不满足,也就是>=70 
+        else if(score<80){
+            console.log('C')
+        }
+        //能够走到这里,说明<80不满足,也就是>=80 
+        else if(score<90){
+            console.log('B')
+        }
+        //能够走到这里,说明<90不满足,也就是90-100
+        else{
+            console.log('A')
+        }
+
+
+    </script>
+</body>
+</html>

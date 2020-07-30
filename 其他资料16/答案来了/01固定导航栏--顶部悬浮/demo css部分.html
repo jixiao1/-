@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+        #Q-nav {
+            overflow: hidden;
+        }
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style> 
+    <script type="text/javascript" src="../public.js"></script>    
+    <script type="text/javascript">
+        window.onload = function(){
+            /*
+            需求分析:
+                当页面滚动的时候,被卷曲的高度大于top的高度,则nav在固定位置,当页面被卷曲的距离小于top的高度时,则nav恢复原来的位置
+            */
+            window.onscroll = function(){
+                //获取相关元素
+                var top1 = $id('top');//顶部top,div
+                var nav = $id('Q-nav');//要固定的导航栏
+                var main = $id('main');//主体内容
+                //获取被卷曲的高度
+                var scrollHeight = getScroll().top;
+
+                //如果被卷曲的高度大于top的高度
+                if(scrollHeight>top1.offsetHeight){
+                    nav.className = "fixed";
+                    //因为fixed不占位置
+                    main.style.marginTop = nav.offsetHeight+"px";
+                }else{
+                    //页面被卷曲的距离小于top的高度
+                    nav.className = "";
+                    main.style.marginTop = 0;
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div class="top" id="top">
+    <img src="images/top.png" alt=""/>
+</div>
+<div id="Q-nav">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="main">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>
+

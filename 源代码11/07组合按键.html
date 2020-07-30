@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            组合按键
+                ==>组合按键主要是三个:shift,ctrl,alt
+                ==>如果按键同时按下了shift,ctrl,alt中的一个或多个,就是组合按键,没有就不是组合按键
+                ==>事件对象中有三个属性记录有没有按下
+                    ==>e.有没有按下shift   ===  e.shiftKey,如果只为true,表示按下了,如果值为false,表示没有按下
+                    ==>e.有没有按下ctrl    ===  e.ctrlKey,如果只为true,表示按下了,如果值为false,表示没有按下
+                    ==>e.有没有按下alt     ===  e.altKey,如果只为true,表示按下了,如果值为false,表示没有按下
+        */
+        
+        //判断组合按键
+        document.onkeyup = function(e){
+            //获取事件对象
+            e = window.event||e;
+            //获取键盘按键
+            var code = e.keyCode||e.which;
+            //判断是否按下了alt+a,如果按下了,就弹出消息
+            if(code==65&&e.altKey){
+                alert('你按下了alt+a')
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0}
+        img{
+            vertical-align: top;
+        }
+        .main{
+            margin:0 auto;
+            width:1000px;
+            margin-top:10px;
+
+        }
+        #Q-nav {
+            overflow: hidden;
+        }
+        .fixed{
+            position:fixed;
+            top:0;
+            left:0;
+        }
+    </style> 
+    <script src="../public.js"></script>
+    <script>
+        window.onload = function(){
+            //当页面加载完成,再开始获取dom
+            //需求分析:当页面滚动的时候,如果滚动的距离超过top的高度,就把Q-nav固定到顶部,如果滚动的距离小于top的高度,Q-nav就不固定了
+
+            //获取相关元素
+            var divTop = document.getElementById('top');
+            var height = divTop.offsetHeight;//获取top的高度
+            var divNav = document.getElementById('Q-nav');
+            var divMain = document.getElementById('main');
+
+            //监听页面滚动事件
+            window.onscroll = function(){
+                //获取滚动的高度,由于兼容性问题,封装了一个getScroll方法,用于获取滚动的距离
+                var scrollTop = getScroll().top;
+                // 如果滚动的距离超过top的高度,就把Q-nav固定到顶部
+                if(scrollTop>height){
+                    // divNav.style.position = "fixed";
+                    // divNav.style.top = "0";
+                    // divNav.style.left = "0";
+                    divNav.className = 'fixed';
+                    //由于divNav定位变成fixed,不占位置,下面的会顶上来
+                    divMain.style.marginTop = divNav.offsetHeight+"px";
+                }else{
+                    divNav.className = '';
+                    divMain.style.marginTop = 0;
+                }
+            }  
+
+        }
+    </script>
+</head>
+<body>
+<div class="top" id="top">
+    <img src="images/top.png" alt=""/>
+</div>
+<div id="Q-nav">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="main">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>
+

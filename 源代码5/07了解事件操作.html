@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <!-- <textarea cols="30" rows="10" id="txt"></textarea> -->
+    <input type="text" id="txt">
+    <script>
+       /*  
+        +html负责页面结构,css负责样式
+        +javascript行为,可以操作html和css
+        +还可以让用户和页面互动 
+            ==>互动可以通过鼠标或者键盘
+            ==>要互动成功
+                ==>互动的触发点:div,span,input.....(标签)
+                ==>干啥了:点击,双击,鼠标滑过,选择某个选项......(事件类型)
+                ==>啥的了:标签内容改变了,样式改变了.....
+        +要做事件操作三要素
+            ==>事件源:
+                ==>通过方法:document.getElementById("要获取的标签的id")
+                ==>可以获取事件源标签
+            ==>事件类型:你做了什么互动操作
+                ==>鼠标事件:
+                    ==>单击:onclick
+                    ==>双击:ondblclick
+                ==>键盘事件:
+                    ==>文本框里面的内容发生了改变:onchange
+            ==>事件驱动程序:当你在事件源上做了某些事情的时候,页面的反应
+                ==>改变样式
+                    ==>标签.style.样式名 = 属性值;
+                ==>改变html标签里面的内容
+                    ==>标签.innerHTML = "标签里面的内容"  innerHTML认识html标签
+                    ==>标签.innerText = "标签里面的内容"  innerText不认识html标签
+                ==>改变表单元素的内容
+                    ==>标签.value = "表单元素里面的内容"
+        */
+
+
+        //鼠标事件操作:点击div,缩小div
+        //1 获取事件源
+        var div = document.getElementById('box');
+        //2 绑定事件
+        div.onclick = function(){
+            //3 事件驱动程序:
+            //缩小div
+            div.style.width = "250px";
+            div.style.height = "50px";
+            //你刚刚单击了div
+            // div.innerHTML = "<h1>你刚刚单击了div</h1>";
+            div.innerText = "<h1>你刚刚单击了div</h1>";
+            //并且在文本域里面显示:你刚刚单击了div
+            var txt = document.getElementById('txt');
+            txt.value = "你刚刚单击了div";
+
+        }
+
+
+
+        //键盘事件操作:在文本域里面输入内容,如果内容改变了,就弹出内容改变了
+        // 1 获取事件源
+        // var text = document.getElementById('txt');
+        // 2 绑定事件
+        // text.onchange = function(){
+            // 3 书写事件驱动程序
+            // alert('你输入的内容改变了')
+        // }
+    </script>
+</body>
+</html>

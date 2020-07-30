@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>&gt;</h2>
+    <script>
+        /* 
+            元字符
+                ==>. :匹配非换行的任意字符
+                ==>\ :转译字符,把有意义的符号转换成没有意义的字符,把没有意义的字符转成有意义的字符
+                ==>\s:匹配空白字符(空格/制表符/....)
+                ==>\S:匹配非空白字符
+                ==>\d:匹配数字
+                ==>\D:匹配非数字
+                ==>\w:匹配字母数字下划线
+                ==>\W:匹配非字母数字下划线
+            有了元字符就可以做一些规则了
+                
+        */
+
+        // 有了元字符就可以做一些规则了
+        //第一题
+        // var reg = /\s/;
+        // var str = "a b";
+        // var str2 = "ab";
+        // console.log(reg1.test(str));//true
+        // console.log(reg1.test(str2));//false
+
+
+        //第二题
+        // var reg = /\d/;
+        // var str = "abc2";
+        // var str2 = "abc345";
+        // var str3 = "abc";
+        // console.log(reg.test(str));//true
+        // console.log(reg.test(str2));//true
+        // console.log(reg.test(str3));//false
+
+
+        //第三题
+        // var reg = /\w/;
+        // var str = "abc";
+        // var str2 = "#$%";
+        // console.log(reg.test(str));//true
+        // console.log(reg.test(str2));//false
+    </script>
+</body>
+</html>

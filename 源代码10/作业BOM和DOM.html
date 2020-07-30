@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 10000px;
+        }
+        button{
+            position: fixed;
+            right:20px;
+            bottom:20px;
+        }
+        .topBar{
+            width:100%;
+            height:80px;
+            background:orange;
+            top:0;
+            left:0;
+        }
+        .fixed{
+            position:fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="topBar"></div>
+    <h1 id='time'></h1>
+    <button>点击回到顶部</button>
+    <p>
+        
+    </p>
+    <script>
+        console.log('===在页面上出现倒计时===');
+        getDiff();
+        //getDiff函数用于显示当前时间距离国庆节的时间
+        function getDiff(){
+            // 计算时间差:计算现在到国庆节的时间差
+            var date1 = new Date();
+            var date2 = new Date(2020,9,1);
+            // 1 先获取两个时间距离格林威治时间的毫秒数
+            date2 = date2.getTime();
+            date1 = date1.getTime();
+            // 2 两个时间差相减,就可以得到两个时间之间相差的毫秒数
+            var diff = date2 - date1;
+            // 3 把毫秒换算成:天,小时,分钟,秒
+            
+            // 天数
+            // 一天的毫秒数是:1000*60*60*24
+            var day = diff/(1000*60*60*24)
+            // 向下取整,不足一天的小数部分变成小时
+            day = Math.floor(day)
+
+
+            //小时
+            // 把天数剩下毫秒数来计算
+            diff = diff - day*1000*60*60*24;
+            // 一小时的毫秒数:1000*60*60
+            var hour = diff/(1000*60*60);
+            // 向下取整,不足一小时的部分变成分钟
+            hour = parseInt(hour)
+
+
+            //分钟
+            // 把小时剩下的毫秒数来计算
+            diff = diff - 1000*60*60*hour
+            // 一分钟的毫秒数:60*1000
+            var minute = diff/(60*1000)
+            // 向下取整,不足一分钟的部分变成秒
+            minute = Math.floor(minute)
+
+            //秒
+            // 把分钟剩下的毫秒来计算
+            diff = diff - 60*1000*minute;
+            // 一秒的毫秒数:1000
+            var second = Math.floor(diff/1000);
+
+            //把倒计时显示在h2标签里面
+            var time = document.getElementById('time')
+
+            time.innerHTML = "今天距离国庆节还有"+day+"天"+hour+"小时"+minute+"分钟"+second+"秒"
+        }
+        var timeid = setInterval(getDiff,1000)
+        
+        
+        console.log('===回到顶部功能===')
+        //1 获取button这个事件源
+        var btn = document.querySelector('button');
+        //2 绑定事件
+        btn.onclick = function(){
+            //3 设置卷曲的距离是0
+            document.documentElement.scrollTop = 0;
+        }
+        console.log('===浏览器滚动一定高度的时候出现顶部通栏:div===')
+
+        // 1 获取事件源并绑定事件
+        var div = document.querySelector('div')
+        window.onscroll = function(){
+            var scrollTop = document.documentElement.scrollTop;
+            if(scrollTop>300){
+                div.className = "topBar fixed"
+            }else{
+                div.className = "topBar";
+            }
+        }
+
+        //根据数据动态创建表格
+        var arr = [
+            {
+                name: 'Jack',
+                age: 18,
+                gender: '男'
+            },{
+                name: 'Rose',
+                age: 20,
+                gender: '女'
+            },{
+                name: 'Top',
+                age: 22,
+                gender: '男'
+            }
+        ];
+
+        var tableStr = "<table>";
+
+        //生成表头
+        tableStr+="<tr>"
+        var p1 = arr[0];//这是一个对象,对象的遍历采用for in
+        for(var key in p1){
+            //key就是成员名
+            tableStr+="<th>"+key+"</th>"
+        }
+        tableStr+="</tr>";        
+        //生成表里面数据
+        for(var i=0;i<arr.length;i++){
+            //外层循环是行,每次循环到的是一个对象,一个对象就是一行
+            tableStr+="<tr>"
+                //内存循环,遍历对象
+                for(var key in arr[i]){
+                    tableStr+="<td>"+arr[i][key]+"</td>"
+                }
+                //如果.成员名,成员名是字符串,我先在可以是变量,要放在[]里面
+
+            tableStr+="</tr>";  
+        }
+
+
+
+        tableStr+="</table>";
+        //这个p标签是用于存放table的容器
+        var p = document.querySelector('p')
+        p.innerHTML= tableStr;
+        
+    </script>
+</body>
+</html>

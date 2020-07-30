@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+    <!-- slider:轮播图的总容器 -->
+    <div class="slider" id="slider">
+        <!-- slider-img是图片容器 -->
+        <div class="slider-img">
+            <!-- 目前容器里的元素都是叠在一起的,最初要看的是1,其他的都放一边 -->
+            <ul>
+                <li><a href="#"><img src="images/1.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/2.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/4.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/5.jpg" alt=""/></a></li>
+                <li><a href="#"><img src="images/6.jpg" alt=""/></a></li>
+            </ul>
+        </div>
+        <!-- slider-ctrl是小圆点和兼容等控制按钮的容器 -->
+        <div class="slider-ctrl">
+             <!-- 下面的是小圆点,小圆点的类名是slider-ctrl-con,如果是高亮类名是:slider-ctrl-con current -->
+            <!-- <span class="slider-ctrl-con current"></span>
+            <span class="slider-ctrl-con"></span>
+            <span class="slider-ctrl-con"></span>
+            <span class="slider-ctrl-con"></span>
+            <span class="slider-ctrl-con"></span>
+            <span class="slider-ctrl-con"></span> -->
+            <span class="prev" id="prev"></span>
+            <span class="next" id="next"></span>
+        </div>
+    </div>
+    <script src="../public.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

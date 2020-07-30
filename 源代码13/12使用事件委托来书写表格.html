@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border:1px solid #ccc;
+        }
+        td{
+            border:1px solid #ccc;
+            padding:5px;
+        }
+        .del{
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+        行：<input type="text" id='row' />
+		列：<input type="text" id='col' />
+		<input type="button" value="创建" id="btn"/>
+		<div id="box"></div>
+    <script>
+        /* 
+            项目需求:
+                1 点击创建按钮
+                2 创建一个表格,表格的行在row里面获取,表格的列在col里面获取
+                    ==>表格的标签的table
+                    ==>row里面是几就有几个tr
+                    ==>col里面是几,tr里面就有几个td
+                3 表格放在box里面
+                4 没每个tr的最后增加了一个td标签,里面内容是删除
+                5 点击删除,删除当前行
+        */
+        
+        //获取相关元素
+        var btn = document.querySelector('#btn');//创建按钮
+        var rowInput = document.querySelector('#row');//行的输入框
+        var colInput = document.querySelector('#col');//列的输入框
+        var box = document.querySelector('#box');//表格的容器
+
+        //1 点击创建按钮
+        btn.onclick = function(){
+            var table = document.createElement('table');
+            var row = rowInput.value;//几行,就是几个tr
+            var col = colInput.value;//几列,就是一个tr里面有几个td
+            for(var i=0;i<row;i++){
+                //几行,就是创建几个tr
+                var tr = document.createElement('tr');
+                for(var j=0;j<col;j++){
+                    //几列,就是一个tr里面创建几个td
+                    var td = document.createElement('td');
+                    //td没有内容,给每个td里面随机添加一个0-99的数字作为内容
+                    td.innerHTML = parseInt(Math.random()*100)
+                    //每个td都有一个背景色
+                    td.style.background = getColor();
+                    tr.appendChild(td);
+                }
+                //4 没每个tr的最后增加了一个td标签,里面内容是删除
+                var delTd = document.createElement('td');
+                delTd.innerHTML = "删除";
+                delTd.className = "del"
+                tr.appendChild(delTd);
+
+                table.appendChild(tr);
+            }
+            // 3 表格放在box里面
+            box.appendChild(table)
+        }
+
+        //5 点击删除,删除当前行,但是由于删除是动态添加的,最开始页面上没有删除按钮,无法获取删除标签,只能把他的事件委托给父元素box
+        box.onclick = function(e){
+            e = window.event||e;
+            //box里面很多元素,只有点击删除元素才删除
+            var target = e.target||e.srcElement;
+            if(target.className == "del"){
+                //tr才是要删除的内容
+                var tr = target.parentNode;
+                tr.parentNode.removeChild(tr)
+            }
+        }
+
+
+
+        //我希望我的表格颜色丰富一些,每个td都要一个随机颜色
+        function getColor(){
+            //生成一个16进制的颜色并且返回
+            var str = "#";
+            for(var i=0;i<6;i++){
+                var num = Math.floor(Math.random()*16);//0-15
+                str += num.toString(16)
+            }
+            return str;
+        }
+    </script>
+</body>
+</html>

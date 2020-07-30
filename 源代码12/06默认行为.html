@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 6000px;
+        }
+    </style>
+</head>
+<body>
+    <a href="http://www.baidu.com">baidu</a>
+    <script>
+        /* 
+        默认行为
+            ==>就是不用我们注册事件,他自己就存在的事件
+            ==>比如:我们点击a标签的时候,我们不需要注册点击事件,他自己就会跳转页面
+            ==>这些不需要我们注册就能实现的事情,我们叫做默认事件
+        阻止默认行为
+            ==>有的时候,我们不希望浏览器执行默认行为
+            ==>比如,给a标签绑定了一个点击事件,我点击的时候希望你干什么你就干什么
+            ==>而不是直接跳转
+            ==>那我们就要把a标签原来的默认行为阻止,不让执行默认事件
+            ==>我们有两个方法来阻止默认事件
+                ==>e.preventDefault()   非IE使用
+                ==>e.returnValue = false IE使用
+                ==>兼容写法: e.preventDefault?e.preventDefault:e.returnValue = false ;
+        */
+        //点击a标签,弹出弹框
+        var a = document.querySelector('a');
+        a.onclick = function(e){
+            e = window.event||e;
+            //不要执行默认的跳转动作
+            e.preventDefault?e.preventDefault():e.returnValue=false;
+            console.log(1)
+        }
+    </script>
+</body>
+</html>

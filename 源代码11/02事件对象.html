@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0
+        }
+        div{
+            width: 100px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        /* 
+        什么是事件对象?
+            ==>就是当你触发了一个事件以后,对这个事件的一些描述信息
+            ==>如:你触发一个点击事件的时候,你点在哪个位置,坐标是多少(x坐标,y坐标) 
+            ==>如:你触发一个键盘事件的时候,你按的是哪个键......
+            ==>每个事件都会有一个对象用来描述和记录这些信息,我们把这个对象叫做事件对象
+            ==>浏览器给了我们一个黑盒子,叫做window.event,就是对事件信息的所描述
+            ==>所以,我们以后在每一个事件里面,要获取事件描述信息的话就window.event.要获取的内容
+                ==>如:window.event.x坐标
+                ==>如:window.event.y坐标
+                ==>如:window.event.你的按键
+            ==>但是好的方法有兼容性,window.event在ie低版本里面好用,但是在高版本ie和chrome里面就不好用了
+            ==>我们就得用另一种方法获取事件对象
+            ==>考虑到兼容性问题,以后我们获取事件对象使用的方法使:e = window.event||e;
+
+        */
+
+        //window.event
+       var div = document.querySelector('div');
+    //    div.onclick = function(){
+    //        //每个事件都有一个事件对象,用于给本次事件的描述和记录
+    //        console.log(window.event.x坐标)
+    //        console.log(window.event.y坐标)
+    //        console.log(window.event.你的按键)
+    //    }
+       
+       //事件的第一个形参
+    //    div.onclick = function(e){
+    //        //每个事件都有一个事件对象,用于给本次事件的描述和记录
+    //        console.log(e.x坐标)
+    //        console.log(e.y坐标)
+    //        console.log(e.你的按键)
+          
+    //    }
+
+        //兼容写法
+        div.onclick = function(e){
+            e = window.event||e;//要记住
+            console.log(e)
+        }
+    </script>
+</body>
+</html>

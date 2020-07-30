@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        限定符
+            ==> * : 前一个内容重复至少0次,也就是可以出现0-正无穷次
+            ==> + : 前一个内容重复至少1次,也就是可以出现1-正无穷次
+            ==> ? : 前一个内容重复0次或1次,也就是可以出现0-1次
+            ==> {n}:前一个内容重复n次,也就是必须出现n次
+            ==> {n,}:前一个内容至少重复n次,也就是必须出现n-正无穷次
+            ==> {n,m}:前一个内容至少重复n次,至多出现m次,也就是必须出现n-m次
+            ==>限定词一般配合元字符使用
+        */
+
+        //第一题
+        // var reg = /\d*/;
+        // var str = "abc";
+        // var str1 = "abc1";
+        // var str2 = "abc123";
+        // console.log(reg.test(str));//true
+        // console.log(reg.test(str1))//true
+        // console.log(reg.test(str2))//true
+
+
+        //第二题
+        // var reg = /\d{2}/;
+        // var str = "abc";
+        // var str1 = "abc1";
+        // var str2 = "abc123";
+        // console.log(reg.test(str));//false
+        // console.log(reg.test(str1));//false
+        // console.log(reg.test(str2));//true
+
+
+        //第三题
+        // var reg = /\d?/;
+        // var str = "abc";
+        // var str1 = "abc1";
+        // var str2 = "abc123";
+        // console.log(reg.test(str));//true
+        // console.log(reg.test(str1));//true
+        // console.log(reg.test(str2));//true
+
+
+        // 第四题
+        // var reg = /\d{3,5}/;
+        // var str = "abc";
+        // var str1 = "abc1";
+        // var str2 = "abc123";
+        // var str3 = "abc12a3";
+        // console.log(reg.test(str));//false
+        // console.log(reg.test(str1));//false
+        // console.log(reg.test(str2));//true
+        // console.log(reg.test(str3));//false
+
+        // 第五题
+        var reg = /^\d{3,}/;
+        var str2 = "123";
+        console.log(reg.test(str2));
+
+    </script>
+</body>
+</html>

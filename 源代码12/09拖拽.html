@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            background-color: hotpink;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top:0;
+            left:0;
+            cursor:move;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <script>
+        /* 
+            项目需求:div可以拖拽
+                1 鼠标在div上按下,开始拖拽
+                2 鼠标在页面移动,div跟着鼠标移动
+                3 鼠标在页面松开,div停在当前位置
+            技术点分析:
+                1 鼠标在div上按下(mousedown),开始拖拽
+                2 鼠标在页面移动(mousemove),div跟着鼠标移动
+                3 鼠标在页面松开(mouseup),div停在当前位置
+        */
+        var div = document.getElementsByTagName('div')[0];//获取的是一个集合,要获取集合中的第0个
+
+        //1 鼠标在div上按下(mousedown),开始拖拽
+        div.onmousedown = function(e){
+            e = window.event||e;
+            //获取鼠标在点击的元素上的坐标
+            var startX = e.offsetX;
+            var startY = e.offsetY;
+            // 2 鼠标在页面移动(mousemove),div跟着鼠标移动
+            document.onmousemove = function(e){
+                e = window.event||e;
+                //获取鼠标在页面上的坐标
+                var left = e.pageX;
+                var top = e.pageY;
+
+                //确定div在页面上的位置:top和left值
+                left = left - startX;
+                top = top - startY;
+
+                //边界检测
+                //div这个盒子的left在0到(浏览器宽度-盒子宽度)范围
+                //div这个盒子的top在0到(浏览器高度-盒子高度)范围
+                if(left<0){
+                    left = 0;
+                }
+                if(left>window.innerWidth-div.offsetWidth){
+                    left=window.innerWidth-div.offsetWidth
+                }
+                if(top<0){
+                    top=0
+                }
+                if(top>window.innerHeight-div.offsetHeight){
+                    top = window.innerHeight-div.offsetHeight
+                }
+                //定位div
+                div.style.left = left+"px";
+                div.style.top = top+"px";
+            }
+            // 3 鼠标在页面松开(mouseup),div停在当前位置
+            document.onmouseup = function(){
+                //当鼠标松开后,div不要在跟着了
+                document.onmousemove = null;
+            }
+
+        }
+    </script>
+</body>
+</html>

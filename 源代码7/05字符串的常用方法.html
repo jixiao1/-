@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        字符串的常用方法
+            ==>length:计算字符串里面有多少个字符
+            ==>charAt(索引):找到字符串中指定索引位置的字符,如果没有找到,返回空字符串
+            ==>charCodeAt(索引):找到字符串中指定索引位置的字符的Unicode编码
+            ==>indexOf(字符):找到字符在整个字符串中的索引,如果找不到,返回-1
+            ==>lastIndexOf(字符):找到字符在整个字符串中的索引,从末尾开始查找,如果找不到,返回-1
+            ==>substring():用来截取字符串使用的
+                ==>语法:substring(从哪个索引开始,到那个索引截止),包含开始索引,不包含结束索引
+                ==>如果如果不写结束索引,表示截取到最后
+                ==>都不写,表示全部截取
+            ==>substr():用来截取字符串使用的
+                ==>语法:substring(从哪个索引开始,截取几个)
+                ==>如果不写截取几个,就是截取到最后
+                ==>都不写,表示全部截取
+            ==>slice():用来截取字符串使用的
+                ==>语法:slice(从哪个索引开始,到那个索引截止),包含开始索引,不包含结束索引
+                ==>如果如果不写结束索引,表示截取到最后
+                ==>都不写,表示全部截取
+            ==>toLowerCase和toUpperCase
+                ==>toLowerCase:转小写
+                ==>toUpperCase:转大写
+
+        扩展方法:        
+            ==>String.fromCharCode(字符编码):通过unicode编码,查找他表示的字符
+            ==>arr.slice(从哪个索引开始,到那个索引截止)
+        
+        */
+
+        var str = "haellozhangsan";
+        //charAt(索引)
+        console.log(str.charAt(0));//h
+        //str.length:计算字符串里面有多少个字符
+        console.log(str.charAt(str.length-1));//字符串的最后一个
+        //我要找第100个字符
+        console.log(str.charAt(100));//如果没有找到,返回空字符串
+        // charCodeAt(索引)
+        console.log(str.charCodeAt(1));//97,在unicode对照表里面存储的是97,所以返回97
+        // String.fromCharCode(字符编码)
+        console.log(String.fromCharCode(65));//A,通过unicode编码,查找他表示的字符
+        // indexOf(字符)
+        console.log(str.indexOf('a'));//1
+        console.log(str.indexOf('y'));//找不到,返回-1
+        // lastIndexOf(字符)
+        console.log(str.lastIndexOf('a'));//12
+        console.log(str.lastIndexOf('y'));//找不到,返回-1
+
+        // substring():用来截取字符串使用的
+        // 语法:substring(从哪个索引开始,到那个索引截止),包含开始索引,不包含结束索引
+        console.log(str.substring(1,5));//"aell"
+        console.log(str.substring(1));//如果不写结束索引,表示到最后
+        console.log(str.substring());//都不写,表示全部截取
+
+
+        // substr()::用来截取字符串使用的
+        // 语法:substring(从哪个索引开始,截取几个)
+        console.log(str.substr(4,4));//"lozh"
+        console.log(str.substr(4));//如果不写截取几个,就是截取到最后
+        console.log(str.substr());//都不写,表示全部截取
+
+
+        //slice():用来截取字符串使用的
+        //语法:slice(从哪个索引开始,到那个索引截止),包含开始索引,不包含结束索引
+        console.log(str.slice(1,3));//"ae"
+        console.log(str.slice(1));// 如果如果不写结束索引,表示截取到最后
+        console.log(str.slice());// 都不写,表示全部截取
+
+        //toLowerCase:转小写
+        var test = "SHDLFHDSF"
+        console.log(test.toLowerCase())
+        //toUpperCase:转大写
+        console.log(str.toUpperCase())
+
+
+
+        //扩展方法
+        var arr = [1,2,3,4,5,6];
+        //希望复制arr数组
+        // var newArr = arr;//不行,这样写,newArr和arr指向同一个地址,我要新建一个副本,内容一样,但是地址不一样
+        var newArr = arr.slice();
+        console.log(newArr);//内容是一样的
+        console.log(arr==newArr);//如果答案是false表示地址不一样,因为复杂数据类型比的是地址
+    </script>
+</body>
+</html>

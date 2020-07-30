@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            /* 为了兼容性,不管浏览器支不支持opacity,你都要写上,为了能够获取到 */
+            opacity:0.1;
+            filter:alpha(opacity=10);
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        //项目需求:div渐显
+        //难点:给div的opacity赋值
+        var div = document.getElementsByTagName('div')[0];
+        var timer = null;
+        timer = setInterval(function(){
+            //1 起始点
+            var start = parseInt(getStyle(div,'opacity')*100);//原来是0.1,就会变成10
+            //2 计算速度
+            var speed = (100 - start)/10;//由于起始点乘了100,所以目标透明度也要乘以100
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            //3 计算下一个位置
+            var next = start + speed;
+            //4 定位元素
+            div.style.opacity = next/100;//由于next的乘以100算出来的,所以赋值的时候要除以100
+            div.style.filter = "alpha(opacity="+next+")";
+        },1000/60)
+
+
+
+        //为了考虑兼容性问题,单独封装一个方法,用于获取元素的某个属性值,并返回        
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                //因为attr是变量,所以要加[]
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                return dom.currentStyle[attr];//IE7,8
+            }
+        }
+    </script>
+</body>
+</html>

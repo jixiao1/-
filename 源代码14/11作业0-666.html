@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var reg = /^((\d)|([1-9]\d)|([1-5]\d{2})|(6[0-5]\d)|(6{2}[0-6]))$/
+        //(\d) 1位数
+        //([1-9]\d) 2位数
+        //([1-5]\d{2}) 三位数,小于600
+        //(6[0-5]\d) 三位数,大于等于600,小于660
+        //(6{2}[0-6]) 660-666
+        console.log(reg.test(6))
+        console.log(reg.test(66))
+        console.log(reg.test(666))
+        console.log(reg.test(596))
+        
+    </script>
+</body>
+</html>

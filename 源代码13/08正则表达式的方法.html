@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            正则提供了一些方法:
+                ==>test :是用来检测字符串是否符合我们的正则的标准
+                    ==>语法  :正则.test(字符串)
+                    ==>返回值:boolean
+                ==>exec :是把字符串中符合条件的内容捕获出来
+                    ==>语法 :正则.exec(字符串)
+                    ==>返回值: 把字符串中符合正则要求的第一项以及一些其他信息,以数组的形式返回
+        */
+
+        //test :是用来检测字符串是否符合我们的正则的标准
+        console.log(/\d+/.test('123'));//true
+        console.log(/\d+/.test('abc'));//false
+
+
+        //exec :是把字符串中符合条件的内容捕获出来
+        var reg = /\d{3}/
+        var str = "hello123wrold456你好?789";
+        var result = reg.exec(str);
+        console.log(result);
+        /* 
+            ["123", index: 5, input: "hello123wrold456你好?789", groups: undefined]
+            数组第0项就是匹配到的字符串内容
+            index属性表示从字符串的第几个索引开始匹配到的字符串
+        */
+
+
+    </script>
+</body>
+</html>

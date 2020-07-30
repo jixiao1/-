@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        if else语句
+            +通过if条件来决定,执行哪一个{}里面的代码
+            +语法:
+                ==>if(条件){条件为true的时候执行的代码}else{条件为false的时候执行}
+                ==>两个{}里面必然有一个执行
+         */
+
+        //  条件为true的时候,执行if后面的{}里面的代码
+        //  if(true){
+        //      console.log('我是代码段1')
+        //  }else{
+        //      console.log('我是代码段2')
+        //  }
+
+
+
+         //条件为false的时候,执行else后面的{}里面的代码
+         if(false){
+             console.log('我是代码段1')
+         }else{
+             console.log('我是代码段2')
+         }
+
+
+         //判断一个人是否是成人
+         var age = 21;
+         if(age<18){
+             console.log("你是未成年人")
+         }else{
+             console.log('你是成年人')
+         }
+
+
+        //判断一个数字是否是奇数,
+        //什么是奇数:就是不能被2整数的数,也就是被2除余1的数
+        var num = 103;
+        //  if(num%2==1){
+        //     console.log(num+'是奇数')
+        //  }else{
+        //      console.log(num+"是偶数")
+        //  }
+         //因为余数只有两种可能:0和1,所以可以简化成:
+         if(num%2){
+            console.log(num+'是奇数')
+         }else{
+             console.log(num+"是偶数")
+         }
+    </script>
+</body>
+</html>

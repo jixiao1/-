@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            预解析(重点)
+                ==>预解析:就是聊聊js代码的编译和执行的过程
+                ==>js是一个解释型的语言,就是在代码执行之前,先对代码进行通读和解释,然后再执行代码
+                ==>也就是说,我们的js代码在运行的时候,会经历两个环节:解释代码和执行代码
+                ==>解释代码
+                    ==>因为是在所有代码执行之前进行解释,所以叫做预解析(预解释)
+                    ==>需要解释的内容有两个:
+                        ==>声明式函数
+                            ==>在内存中先声明一个变量名是函数名,并且这个名字代表的内容是一个函数
+                        ==>var关键字
+                            ==>在内存中声明有一个变量名,不赋值
+        */
+        
+        // 讲解的一段代码
+        // fn();//'我是fn函数'
+        // console.log(num);//undefined
+
+        // function fn(){
+        //     console.log('我是fn函数')
+        // }
+        // var num = 100;
+
+        //讲解的一段代码分析过程,两个阶段
+            //第一个阶段是预解析
+            // function fn(){
+            //     console.log('我是fn函数')
+            // }
+            // var num
+
+            //第二个阶段是代码执行
+            // fn();//'我是fn函数'
+            // console.log(num);//undefined
+            // num = 100;
+
+
+
+
+        // 练习1:
+        // console.log( func );//函数func
+        // var func = 123;
+        // console.log( func );//123
+        // function func() {
+        //     console.log( 'Hello js' );
+        // }
+        //练习1代码分析过程,两个阶段
+            //第一个阶段是预解析,如果同名,函数是一等公民
+            // var func;
+            // function func() {
+            //     console.log( 'Hello js' );
+            // }
+
+            //第二个阶段是代码执行
+            // console.log( func );
+            // func = 123;
+            // console.log( func );
+
+        
+        //练习2:
+        // console.log( func );
+        // function func() {
+        //     console.log( 'Hello js' );
+        // }
+        // console.log( func );
+        // var func = 123;
+        // console.log( func );
+        //练习2代码分析过程,两个阶段
+            //第一个阶段是预解析,如果同名,函数是一等公民
+            // function func() {
+            //     console.log( 'Hello js' );
+            // }
+            // var func
+            //第二个阶段是代码执行
+            // console.log( func );
+            // console.log( func );
+            // func = 123;
+            // console.log( func );
+        
+        
+        // 练习3:
+        // alert(a);//报错:a is not defined
+        // a = 0; 
+        // a没有var关键字,预解析过程不知道a这个变量
+
+        // 练习4:
+        // alert(a); 
+        // var a = 0;
+        // alert(a);
+        //练习4代码分析过程,两个阶段
+            //第一个阶段预解析
+            // var a
+            //第二个阶段代码执行
+            // alert(a);
+            // a = 0;
+            // alert(a)
+
+        
+        // 练习5:
+        // alert(a); 
+        // var a = '我是变量';
+
+        // function a() {
+        //     alert('我是函数')
+        // }
+        // alert(a); 
+        //练习5代码分析过程,两个阶段
+            //第一个阶段预解析
+            // var a
+            // function a() {
+            //     alert('我是函数')
+            // }
+            //第二个阶段代码执行
+            // alert(a);
+            // a = '我是变量';
+            // alert(a)
+
+
+
+        // 练习6:
+        // alert(a);
+        // var a = 1; 
+        // alert(a); 
+
+        // function a() {
+        //     alert(2);
+        // } 
+        // alert(a); 
+        // var a = 3; 
+        // alert(a); 
+
+        // function a() {
+        //     alert(4); 
+        // }
+        // alert(a); 
+        //练习6代码分析过程,两个阶段
+            //第一个阶段预解析
+            // var a;
+            // function a() {
+            //     alert(2);
+            // } 
+            // var a
+            // function a() {
+            //     alert(4); 
+            // }
+            //第二个阶段代码执行
+            // alert(a);//那个alert(4)的函数
+            // a = 1; 
+            // alert(a); //1
+            // alert(a);//1
+            // a = 3; 
+            // alert(a);//3
+            // alert(a);//3
+      
+
+        // 练习7:
+        myFun(10, 20);//myFun is not a function
+        var myFun = function(a, b) {
+            return a + b;
+        }
+        //预解析:
+        // var myFun;
+        //代码性
+        // myFun(10, 20);//报错
+
+
+    </script>
+</body>
+</html>

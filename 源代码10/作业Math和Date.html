@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('=====编写一个函数，能够获得一个随机的 0 ～ 255 之间的数字======')
+        function rand(){
+            var num = Math.random()*256 ;//[0,1)*256 = [0,256)
+            num = Math.floor(num);
+            return num;
+        }
+        console.log(rand())
+
+        console.log('===编写一个函数，获得一个十六进制的随机颜色的字符串(例如：#20CD4F)===')
+        //写一个字符串,用于拼接颜色
+        var str = "#";
+        //要拼接6个十六进制的随机数字
+        for(var i=1;i<=6;i++){//i只是起到一个记录循环次数的作用
+            //生成一个十六进制的随机数,如果是1位,是0-15之间,所以先生成一个0-15之间的随机数,然后转16进制
+            var num = Math.floor(Math.random()*16);//[0,1)*16=[0,16)
+            num = num.toString(16)
+            str += num;
+        }
+        console.log(str.toUpperCase())
+
+        console.log('===给定一个时间,显示成汉字===');
+        var year = "2020";
+        var month = "7";
+        var day = "17";
+        //准备一个数组,记录每个数字对应的汉字
+        var arr = ['零','一','二','三','四','五','六','七','八','九'];
+        //换算年
+        var yearArr = year.split('');//[2,0,2,0];
+        for(var i=0;i<yearArr.length;i++){
+            //当i=0的时候,yearArr[0] = 2,我想要的是yearArr[0] = '二' = arr[yearArr[0]]
+            //先获取当前遍历的数字是arr里面的第几个
+            var index = yearArr[i];
+            yearArr[i] = arr[index]
+        }
+        //拼接起来
+        year = yearArr.join('')+'年';
+        console.log(year);
+    </script>
+</body>
+</html>

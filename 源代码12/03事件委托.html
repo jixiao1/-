@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span.message{
+            float: left;
+        }
+        span.del{
+            float: right;
+        }
+        .box{
+            width: 400px;
+            margin:50px auto;
+            border:1px solid #ccc;
+            padding:20px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="t" />
+        <input type="button" value="请留言" id="btn"/>
+        <ul id="con">
+            <!-- <li>
+                <span class="message">content</span>
+                <span class='del'>删除</span>
+            </li> -->
+        </ul>
+    </div>
+    <script>
+        /* 
+            事件委托
+                ==>就是把要做的事情委托给别人
+                ==>因为我们有事件冒泡机制,点击子元素的时候,也会同步触发父元素的相同事件
+                ==>所以我们就可以把子元素的事件委托给父元素
+            事件触发
+                ==>点击子元素的时候,不管子元素有没有点击事件,只要父元素有点击事件,那么就可以触发父元素的点击事件
+            事件委托案例项目需求:
+                ==>1 在id是t的输入框输入留言
+                ==>2 点击btn按钮
+                ==>3 生成一个li标签,里面有留言内容和删除按钮,放到ul中
+                ==>4 点击删除按钮,删除当前的li
+                ==>技术点:事件委托 事件目标
+                    ==>事件目标:在事件对象上,有一个属性叫做target记录事件的目标,这个属性有兼容性,在ie使用srcElement
+        */
+
+        //获取相关元素
+        var text = document.querySelector('#t');//留言输入框
+        var btn = document.querySelector('#btn');//留言按钮
+        var ul = document.querySelector('#con');//留言所在的ul
+        
+        //1 在id是t的输入框输入留言,2 点击btn按钮
+        btn.onclick = function(){
+            //获取留言内容
+            var message = text.value;
+            //生成一个li
+            var li = document.createElement('li');
+            //3 生成一个li标签,里面有留言内容和删除按钮,放到ul中
+            li.innerHTML = '<span class="message">'+message+'</span><span class="del">删除</span>';
+            //把li添加到ul里面去
+            ul.appendChild(li)
+            //清空text里面的内容
+            text.value = "";            
+        }
+        
+        //此处还没有li也没有删除按钮,
+        //但是有ul,以后只要你添加到ul里面的li发生的点击事件,都会冒泡到ul上,不管li上面有没有注册点击事件
+        ul.onclick = function(e){
+            //获取事件对象
+            e = window.event||e;
+            //事件目标:在事件对象上,有一个属性叫做target记录事件的目标
+            //这个属性有兼容性,在ie使用srcElement
+            var target = e.target||e.srcElement;
+            //如果点击的是删除按钮,就删除当前的li
+            if(target.className=='del'){
+                var currentLi = target.parentNode;
+                // 删除currentLi
+                // 父节点.removeChild(子节点)
+                ul.removeChild(currentLi)
+            }
+        }
+        
+    </script>
+</body>
+</html>

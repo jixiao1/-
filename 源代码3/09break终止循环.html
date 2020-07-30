@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /* 
+    break 终值循环
+        ==>在循环没有进行完毕的时候,因为我设置的条件满足,提前终止循环
+        ==>比如:我预计吃6个包子,吃到第三个的时候,不能再吃了,我就停止了吃包子这件事了
+        ==>要终止循环就可以使用break这个关键字了
+    */
+
+    for(var i=1;i<7;i++){
+        console.log('吃了一个包子');
+        //每次循环吃一个包子,到第三个的时候,就终止吃包子这件事了
+        if(i==3){
+            break;
+        }
+    }
+
+    //案例1:找到100–200之间一个能被3或者7整除的数
+    for(var i=100;i<201;i++){
+        // 被3或者7整除的数
+        if(i%3==0||i%7==0){
+            //找到一个就可以了,不用继续找了
+            console.log(i);
+            //通过break终止循环
+            break;
+        }
+    }
+</script>
+</body>
+</html>

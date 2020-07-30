@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            特殊符号:
+                ==>():限定一组元素
+                ==>[]:字符集合,表示写在[]里面的任意一个都行
+                    ==>[abc]:就是可以是abc中的任何一个
+                ==>[^]:反字符集合,表示写在[^]里面之外的任意一个都行
+                    ==>[^abc]:就是可以是abc以外的任何一个
+                ==> -:范围,比如a-z,表示字母从a-z都可以
+                ==> |:或,正则里面的a|b,表示a或者b都可以
+            看下面的正则:
+                var reg = /^[^_$].{6,}@(163|126|qq|sina)\.(com|cn|net)$/;
+            分析:
+                1 ^$在一起,说明只能是中间的内容
+                2 [^_$]表示第一个字符不能是_或者$
+                3 .{6,}表示出现6个或6个以上任意除换行以外的字符
+                4 @
+                5 (163|126|qq|sina)表示出现163或者126或者qq或者sina
+                7 \.表示出现一个., 这里的\表示转义
+                8 (com|cn|net)表示com或者cn或者net出现1次
+                    
+        */
+        var reg = /^[^_$].{6,}@(163|126|qq|sina)\.(com|cn|net)$/;
+        var str = "d5584568@sina.net";
+        console.log(reg.test(str))
+
+
+    </script>
+</body>
+</html>

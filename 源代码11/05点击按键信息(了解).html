@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <script>
+        /* 
+            +   我们鼠标一般两个按键,一个左键,一个右键
+                我们的事件对象也有这方面的信息描述
+                确定点击的是左键还是右键
+                事件对象: e = window.event||e
+                按键:  e.你的按键
+                按键:  e.button 
+                值为0:表示左键
+                值为2:表示右键
+            +   常见的事件(了解:背下来)
+                分类
+                    ==>浏览器事件
+                        ==>load:页面全部资源加载完成
+                        ==>scroll:浏览器滚动的时候触发
+                    ==>鼠标事件
+                        ==>click:点击事件
+                        ==>dblclick:双击事件
+                        ==>contextmenu:右键单击事件(弹出快捷菜单)
+                        ==>mousedown:鼠标左键按下事件
+                        ==>mouseup:鼠标左键弹起事件
+                        ==>mousemove:鼠标移动
+                        ==>mouseover:鼠标移入事件
+                        ==>mouseout:鼠标移出事件
+                        ==>mouseenter:鼠标移入事件
+                        ==>mouseleave:鼠标移出事件
+                    ==>键盘事件
+                        ==>keyup:键盘抬起事件
+                        ==>keydown:键盘按下事件
+                        ==>keypress:键盘按下再抬起
+                    ==>表单事件
+                        ==>change:表单内容改变
+                        ==>input:表单内容输入事件,哪怕是删除或增加一个字符都会触发
+                        ==>submit:表单提交事件
+                    ==>触摸事件
+                        ==>touchstart:触摸开始事件
+                        ==>touchmove:触摸移动事件
+                        ==>touchend:触摸结束事件
+                
+        */
+        //onmousedown
+        // document.onmousedown = function(e){
+        //     e = window.event||e;
+        //     // 值为0:表示左键
+        //     // 值为2:表示右键
+        //     console.log(e.button)
+        // }
+
+        //oninput
+        var inp =document.querySelector('input');
+        inp.oninput = function(){
+            //事件函数中的this是事件源
+            console.log('你本次输入的内容是'+this.value);//表单元素里面的内容,使用value属性来获取和赋值
+        }
+    </script>
+</body>
+</html>

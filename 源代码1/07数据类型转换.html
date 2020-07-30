@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        数据类型转换:
+            +举例: "12"字符串===>12数字
+                  true布尔值===>字符串"true" 
+            +其他类型转数值:结果一定是数值
+                1 Number(变量)
+                    ==>可以把一个变量强制转换成数值类型
+                    ==>可以转换小数,会保留小数
+                    ==>可以转换布尔值
+                    ==>遇到不可操作的时候返回NaN
+                2 parseInt(变量)
+                    ==>可以把一个变量强制转换成数值类型
+                    ==>从第一位开始检查,是数字就转换,直到一个不是数字的东西
+                    ==>开头就不是数字,直接返回NaN
+                3 parseFloat(变量)          
+                    ==>可以把一个变量强制转换成数值类型
+                    ==>从第一位开始检查,是数字就转换,直到一个不是数字的东西
+                    ==>开头就不是数字,直接返回NaN
+                    ==>认识一次小数点     
+                4 除加法以外的数学运算
+                    ==>运算符两边都是可运算数字才能
+                    ==>如果运算数字任何一边不是数字,返回NaN
+                    ==>加法不可以   
+            +其他类型转字符串:结果一定是字符串
+                1 变量.toString()
+                    ==>有一些数据不能使用,比如undefined和null
+                2 String(变量)
+                    ==>所有数据类型都可以
+                3 使用加法运算:
+                    ==>在js里面,加法有两个含义
+                    ==>字符串拼接:只要+任何一边是字符串,就会是字符串拼接
+                    ==>加法运算:只要+两边都是数字的时候,才能进行加法运算
+            +其他类型转布尔:结果一定是布尔值
+                1 Boolean(变量);
+                    ==>在js中,只有"",0,null,undefined,NaN这些在转布尔的时候会转成false,其他都会转成true
+        */
+
+        //一 其他类型转数值
+
+        //1 Number(变量)
+        var a = "34.45";
+        var b = "hello";
+        var c = true;
+        var d = false;
+        var e = null;
+        var f = undefined;
+        console.log(Number(a));//34.45,蓝色
+        console.log(Number(b));//NaN,蓝色
+        console.log(Number(c));//1 
+        console.log(Number(d));//0
+        console.log(Number(e));//0
+        console.log(Number(f));//NaN
+
+        console.log("==================================")
+        //2 parseInt(变量)
+        var g = "23hello.45";
+        console.log(parseInt(a));//34
+        console.log(parseInt(b));//NaN
+        console.log(parseInt(c));//NaN
+        console.log(parseInt(d));//NaN
+        console.log(parseInt(e));//NaN
+        console.log(parseInt(f));//NaN
+        console.log(parseInt(g));//23
+
+        console.log("==================================")
+        //3 parseFloat(变量) 
+        var h = "34.45.56";
+        console.log(parseFloat(a));//34.45
+        console.log(parseFloat(b));//NaN
+        console.log(parseFloat(c));//NaN
+        console.log(parseFloat(d));//NaN
+        console.log(parseFloat(e));//NaN
+        console.log(parseFloat(f));//NaN
+        console.log(parseFloat(g));//23
+        console.log(parseFloat(h));//34.45
+
+        console.log("==================================")
+        // 4 除加法以外的数学运算
+        console.log(4*"hello");//NaN
+        console.log(4/true);//true转成1,结果是4
+        console.log(4-false);//false转成0,结果是4
+        console.log(4-null);//null转成0,结果是4
+        console.log(4-undefined);//undefined转成NaN,结果是NaN
+
+        console.log("==================================")
+        //二 其他类型转字符串
+        var aa = true;
+        var bb = null;
+        var cc = "34.45";
+        var ee = 34;
+
+        //1 变量.toString()
+        //bb.toString();//典型错误:Uncaught TypeError: Cannot read property 'toString' of null
+
+        //2 String(变量)
+        console.log(String(bb))
+
+        //3 加法
+        console.log(aa+bb);//1
+        console.log(cc+ee);//34.4534,黑色
+        console.log(ee+"");//34,黑色
+
+        console.log("==================================")
+        //三 其他类型转布尔:结果一定是布尔值
+        console.log(Boolean(null))//false
+        console.log(Boolean(0))//false
+        console.log(Boolean("0"));//true
+        console.log(Boolean("     "));//true
+
+    </script>
+</body>
+</html>

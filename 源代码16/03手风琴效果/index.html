@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>手风琴效果</title>
+    <style>
+        ul{list-style: none}
+        *{margin:0; padding:0;}
+        div{
+            width: 1200px;
+            height: 400px;
+            margin:50px auto;
+            border:1px solid red;
+            overflow: hidden;
+        }
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;            
+        }
+        div ul {
+            width: 2000px;
+        }
+        img{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+	<div>
+	    <ul id="box">
+	        <li>
+                <img src="./images/1.jpg" alt="">
+            </li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	        <li></li>
+	    </ul>
+    </div>
+    <script src="../public.js"></script>
+    <script>
+        /* 
+            需求分析:
+                1 给每个li里面添加一个img标签
+                2 鼠标移入某个li,该li宽度变800,其他li的宽度变100
+                3 鼠标移出ul,所有li的宽度变240
+        */
+        var ul = document.getElementById('box')
+        var liS = ul.children;
+        
+        for(var i=0;i<liS.length;i++){
+            // 1 给每个li里面添加一个img标签
+            liS[i].innerHTML = '<img src="./images/'+(i+1)+'.jpg" alt="">';
+            // 2 鼠标移入某个li,该li宽度变800,其他li的宽度变200
+            liS[i].onmouseenter = function(){
+                //其他li的宽度缓动100
+                for(var j=0;j<liS.length;j++){
+                    animation(liS[j],{width:100})
+                }
+                //该li宽度变800,在事件函数里,this是事件源
+                animation(this,{width:800})
+                
+            }
+        }
+        // 3 鼠标移出ul,所有li的宽度变240
+        ul.onmouseleave = function(){
+            for(var j=0;j<liS.length;j++){
+                animation(liS[j],{width:240})
+            }
+        }
+    </script>
+</body>
+</html>
+
+

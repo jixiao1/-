@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //编写一个函数,计算两个数的和差积商
+
+        //函数可以使用声明式定义和赋值式定义,我们这里使用声明式
+
+        //开始考虑10和34的和差积商,但是我们的两个数字不是固定的,
+        //是可以改变的,所以用形参来定义变量,调用的实参再给这是形参赋值
+        function calc(num1,num2,sign){
+            //定义两个变量
+            // var num1 = 10;
+            // var num2 = 34;
+            //定义一个符号表示你要做什么运算
+            // var sign = "*";//"+","-","/","*";
+            switch(sign){
+                case "+":
+                    console.log(num1+"+"+num2+"="+(num1+num2));
+                    break;
+                case "-":
+                    console.log(num1+"-"+num2+"="+(num1-num2));
+                    break;
+                case "*":
+                    console.log(num1+"*"+num2+"="+(num1*num2));
+                    break;
+                case "/":
+                    console.log(num1+"/"+num2+"="+(num1/num2));
+                    break;    
+            }
+        }
+        //调用函数
+        calc(10,24,"-")
+        //调用函数
+        calc(100,25,"/")
+    </script>
+</body>
+</html>

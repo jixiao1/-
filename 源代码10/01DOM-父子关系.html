@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        1
+        <h1 id="title" class="abc">hello,DOM</h1>
+        2
+    </div>
+    <script>
+       /* 
+         DOM
+            ==>DOM就是我们html结构里面的一个一个节点构成的
+            ==>DOM节点我们一般分成常用的三大类:
+                ==>元素节点:获取方法,昨天讲了五种:id,className,tagName,css选择器
+                ==>文本节点
+                ==>属性节点:要通过attributes获取的就是元素的属性节点
+
+            ==>获取节点
+                ==>clildNodes:获取某一个节点的所有的子一级节点,可以是任意节点类型,结果是一个伪数组
+                ==>children:获取某一个节点下面的所有的子一级元素节点,结果是一个伪数组
+                ==>firstChild:获取某一个节点的第一个子节点,结果是一个节点,可以是任意节点类型
+                ==>firstElementChild:获取某一个节点的第一个子元素节点,结果是一个元素节点,没有获取到返回null
+                ==>lastChild:获取某一个节点的最后一个子节点,结果是一个节点,可以是任意节点类型
+                ==>lastElementChild:获取某一个节点的最后一个子元素节点,结果是一个元素节点,没有获取到返回null
+                ==>parentNode:获取某一个节点的父一级节点
+       */
+
+       var div = document.querySelector('div');
+
+       //clildNodes:获取某一个节点的所有的子一级节点,可以是任意节点类型
+       console.log(div.childNodes) ;
+        /*
+        打印结果是:
+        NodeList(3) [text, h1#title.abc, text]
+            0: text
+            1: h1#title.abc
+            2: text
+            length: 3
+            __proto__: NodeList
+
+        我们发现这是一个伪数组,里面有三个节点
+        一个是text:    1       
+        一个是是h1:元素节点
+        一个是text:    2    
+        这个可以看出节点是有不同种类的
+        */
+       //获取第0个文本节点
+       console.log(div.childNodes[0])
+
+       //children:获取某一个节点下面的所有的子一级元素节点
+        console.log(div.children);//HTMLCollection [h1#title.abc]
+
+
+        //firstChild:获取某一个节点的第一个子节点
+        console.log(div.firstChild);//'    1     '
+
+        //firstElementChild:获取某一个节点的第一个子元素节点,结果是一个元素节点
+        console.log(div.firstElementChild);//h1标签
+
+        //lastChild:获取某一个节点的最后一个子节点,结果是一个节点,可以是任意节点类型
+        console.log(div.lastChild);//"     2       "
+        
+        //lastElementChild:获取某一个节点的最后一个子元素节点,结果是一个元素节点,没有获取到返回null
+        console.log(div.lastElementChild);//h1标签
+
+
+        var h1 = document.querySelector('h1')
+        //parentNode:获取某一个节点的父一级节点
+        console.log(h1.parentNode);//<div></div>
+    </script>
+</body>
+</html>

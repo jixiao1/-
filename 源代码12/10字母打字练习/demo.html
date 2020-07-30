@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>打字游戏</title>
+        <!--引入animate.css动画库-->
+        <link rel="stylesheet" href="animate.css">
+        <style>
+            body{
+                margin: 0;
+                /*开启弹性布局，并让弹性布局中的子元素
+                水平居中对齐，垂直居中对齐*/
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /*文字居中*/
+                text-align: center;
+                /*设置背景颜色的经像渐变*/
+                background: radial-gradient(circle,#444,#111,#000);
+            }
+            #char{
+                font-size: 400px;
+                color: lightgreen;
+                /*设置文字阴影*/
+                /*text-shadow: 水平位置 垂直位置 模糊距离 阴影颜色*/
+                /*位置可以为负值*/
+                text-shadow: 0 0 50px #666;
+            }
+            #result{
+                font-size: 20px;
+                color: #888;
+            }
+            /*找到id为char及类名为error的div元素*/
+            #char.error{
+                color: red;
+
+            }
+        </style>
+    </head>
+    <body>
+        <mian>
+            <div id="char">A</div>
+            <div id="result">请在按键上按下屏幕上显示的字母</div>
+        </mian>
+    </body>
+</html>
+<script>
+    /* 
+        项目需求:
+            1 在char这个div里面随机显示一个字母
+            2 可以在键盘上输入字母
+            3 如果输入的字母和char里面显示的字母是同一个
+            4 就是正确,显示正确的类名效果:"animated zoomIn"
+            5 如果输入的字母和char里面显示的字母不是同一个
+            5 就是错误,显示错误的类名效果:"animated shake error"
+            6 在一次输入完成以后,如果错误不更换字母,你继续输入
+            7 在一次输入完成以后,如果正确,在char里面随机再显示一个字母
+            8 每次输入完成,就会导致你正确率发生改变,在result这个div上显示你的正确率
+    */
+
+    //获取相关元素
+    var charDiv = document.getElementById('char');//显示一要输入字母的div
+    var resultDiv = document.getElementById('result');//显示结果的div
+    //需要一个变量记录当前页面上显示的字母的编码
+    var code;
+    //需要一个变量记录正确了多少次,需要一个变量记录错误了多少次
+    var rightNum = 0;
+    var wrongNum = 0;
+    //showChar这个函数的功能是:在char这个div里面随机显示一个字母
+    function showChar(){
+        //我要显示的字母是大写的A-Z,他们的编码是65-90
+        //随机产生一个65-90之间的随机数字
+        code = 65+Math.floor(Math.random()*26);//Math.random()*26=Math.floor([0,26))=[0,25]
+        //然后转换成字符
+        var char = String.fromCharCode(code);
+        //显示在div里面
+        charDiv.innerHTML = char;
+    }
+
+    // 1 在char这个div里面随机显示一个字母
+    showChar();
+    // 2 可以在键盘上输入字母
+    document.onkeydown = function(e){
+        e = window.event||e;
+        var num = e.keyCode||e.which;
+        if(num==code){
+            // 3 如果输入的字母和char里面显示的字母是同一个
+            // 4 就是正确,显示正确的类名效果:"animated zoomIn"
+            charDiv.className = "animated zoomIn";
+            rightNum++
+            // 7 在一次输入完成以后,如果正确,在char里面随机再显示一个字母
+            showChar();
+            
+        }else{
+            // 5 如果输入的字母和char里面显示的字母不是同一个
+            // 5 就是错误,显示错误的类名效果:"animated shake error"
+            charDiv.className = "animated shake error";
+            wrongNum++;
+        }
+        //计算正确率,然后显示
+        var precent = rightNum/(rightNum+wrongNum);//0.578956
+        precent = (precent*100).toFixed(2);//57.89
+
+        //不管是正确还是错误,都要更新正确率
+        resultDiv.innerHTML = "正确率是:"+precent+"%"
+        //为了下次还有效果,本次效果显示500毫秒以后小时
+        setTimeout(function(){
+            charDiv.className = "";
+        },500)
+    }
+</script>

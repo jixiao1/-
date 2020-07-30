@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            原型链:
+                ==>以实例对象为起点,以__proto__为锁链,连接成的链条,叫原型链
+                ==>第一个原型链:
+                    h1--->Human.prototype--->Object.prototype--->null
+                ==>第二个原型链:
+                    arr--->Array.prototype--->Object.prototype-->null
+                ==>第三个原型链:
+                    fn--->Function.prototype--->Object.prototype-->null
+
+        */
+
+        //第一个原型链
+        function Human(){
+            this.age = 12
+        }
+        Human.prototype.hh = "我是human的原型"
+        var h1 = new Human;//h1的__proto__指向其构造函数的原型
+        console.dir(h1)
+
+
+        //第二个原型链
+        var arr = new Array(13,34,3,4,34,43);
+        console.log(arr);
+
+
+
+        //第三个原型链
+        var fn = new Function();
+        console.dir(fn)
+    </script>
+</body>
+</html>

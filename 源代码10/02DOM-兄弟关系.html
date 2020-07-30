@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id='one' class="first" aa="hello">1</li>
+  2的前面<li>2</li>2的后面
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        /* 
+            DOM节点
+                ==> nextSibling:获取某个节点的下一个兄弟节点
+                ==> nextElementSibling:获取某个节点的下一个兄弟元素节点
+                ==> previousSibling:获取某个节点的上一个兄弟节点
+                ==> previousElementSibling:获取某个节点的上一个兄弟元素节点
+        */
+       //获取内容是2的那个li
+       var ul = document.querySelector('ul');//ul元素节点
+       var liS = ul.children;//ul的所有子元素节点的集合
+       var two = liS[1];//内容是2的那个li
+
+       //获取内容是2的那个li节点的下一个兄弟节点
+       console.log(two.nextSibling);//'2的后面'
+
+       //获取内容是2的那个li节点的下一个兄弟元素节点
+       console.log(two.nextElementSibling);//<li>3</li>
+
+       //获取内容是2的那个li节点的上一个兄弟节点
+       console.log(two.previousSibling);//'2的前面'
+
+       //获取内容是2的那个li节点的上一个兄弟元素节点
+       console.log(two.previousElementSibling);//<li id='one' class="first" aa="hello">1</li>
+
+    </script>
+</body>
+</html>

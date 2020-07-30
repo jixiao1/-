@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            this关键字
+                ==>每一个函数内部都有一个this
+                ==>可以直接使用
+                ==>重点:函数内部this只和函数调用的方式有关,和函数定义方式没有关系
+                ==>函数内部的this指向取决于函数的调用方式
+        */
+
+        //全局调用的函数
+        function fn(){
+            console.log(this)
+        }
+        
+        fn();//this-->window
+
+        //对象内部的方法调用,this-->调用者
+        var obj = {
+            fn:function(){console.log(this)},
+            name:"zhangsan"
+        }
+        obj.fn()
+
+        //定时器的处理函数,this-->window
+        setTimeout(function(){
+            console.log(this)
+        },1000)
+
+
+        //事件处理函数,this-->事件源
+        document.onclick = function(){
+            console.log(this)
+        }
+
+        //自调用函数,this-->window
+        (function(){
+            console.log(this)
+        })()
+        
+    </script>
+</body>
+</html>

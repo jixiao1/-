@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background:url('./images/0.jpg') no-repeat;
+            background-size:200px 200px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击切换背景">
+    <div>
+
+    </div>
+    <script>
+        /* 
+            项目需求:
+                点击按钮,div里面的背景换一个
+        */
+
+        //获取相关元素
+        var inp = document.querySelector('input');
+        var div = document.querySelector('div');
+        var index = 0;//记录当前显示的图片的索引
+        var rand ;//记录当前随机到的一个马上要显示的图片的索引
+        //绑定事件
+        inp.onclick = function(){
+            //如果随机到的和原来一样,就要再随机一次
+            do{
+                rand = Math.floor(Math.random()*4);//[0,1);
+            }while(rand==index)
+            //更新当前的图片索引
+            index = rand;
+
+            div.style.backgroundImage = "url('./images/"+index+".jpg')";
+        }
+    </script>
+</body>
+</html>

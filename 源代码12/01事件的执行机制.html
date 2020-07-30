@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.big{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            position: relative;
+        }
+        div.small{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top:100px;
+            left:100px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="small"></div>
+    </div>
+    <script>
+        /* 
+        事件的执行机制
+            + 什么是事件的执行机制
+                ==>一个问题:
+                ==>现在有一个大盒子嵌套一个小盒子,并且两个盒子都有点击事件
+                ==>你点击小盒子的时候,外面的大盒子上的点击事件要不要执行
+            + 事件的传播
+                ==>像大盒子套小盒子一样,我们点击小盒子身上的时候,也是点击在了大盒子上
+                ==>这是既定事实,那个两个盒子的点击事件都会触发
+                ==>这个就叫做事件的传播
+                    ==>当元素触发一个事件的时候,其父元素也会触发相同的事件,父元素的父元素也会触发相同的事件
+                    ==>就像上面的例子一样
+                    ==>点击small盒子的时候,会触发small盒子上的点击事件
+                    ==>也是点击在了big上,也会触发big上的点击事件
+                    ==>也是点击在了body上,也会触发body上的点击事件
+                    ==>也是点击在了html上,也会触发html上的点击事件
+                    ==>也是点击了document上,也会触发document上的点击事件
+                    ==>也是点击了window上,也会触发window上的点击事件
+                    ==>也就是说,页面上的任何一个元素触发事件,都会一层一层,最终导致window的相同事件触发,前提是:
+                    ==>各层级元素都有注册相同的事件,不然不会触发
+                ==>在事件传播的过程中,要注意:
+                    ==>只会传播同类事件
+                    ==>只会从点击元素开始,按照html的结构逐层向上元素的事件都会触发
+                    ==>内部元素不管有没有该事件,只要上层元素有该事件,那么上层元素的事件就会被触发
+                ==>到现在:
+                    ==>事件确实会从自己开始,到window的所有相同事件都会触发
+                    ==>因为我们点在自己身上,也确实逐层点在了到window的每一个元素身上
+                    ==>但是到底是先点在自己身上,还是点在window身上呢?
+                    ==>先点在自己身上,就是先执行自己身上的事件,再逐层向上最后执行window上的事件处理函数
+                    ==>反之,那么先执行window的事件处理函数,逐层向下最后执行自己身上的事件处理函数
+        */
+        var big = document.querySelector('.big');
+        var small = document.querySelector('.small');
+        big.onclick = function(){
+            console.log('big的click发生了')
+        }
+        small.onclick = function(){
+            console.log('small的click发生了')
+        }
+        document.body.onclick = function(){
+            console.log('body的click发生了')
+        }
+    </script>
+</body>
+</html>

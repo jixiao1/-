@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height:100%;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin:50px;
+            padding:20px;
+        }
+        ul li{
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+            list-style:none;
+            background-color: pink;
+        }
+        li:hover{
+            background:red;
+            color:white;
+            font-weight: 900;
+        }
+        ul{
+            display: none;
+            position: absolute;
+            top:0px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        右键单击本div弹出自定义快捷菜单
+    </div>
+    <!-- ul就是等会要弹出的右键自定义快捷菜单 -->
+    <ul id='menu'>
+        <li>保存</li>
+        <li>新建</li>
+        <li>分享</li>
+        <li>复制</li>
+    </ul>
+    <script>
+        /* 
+            项目需求:
+                1 布局:
+                    ==>div是可以点击出现快捷菜单的
+                    ==>ul是右键弹出的自定义快捷菜单,默认是隐藏的
+                2 效果
+                    ==>1 右键点击div
+                        ==>div.oncontextmenu = function(){}
+                    ==>2 弹出快捷菜单menu(ul)
+                        ==>menu.style.display = "block"
+                        ==>浏览器默认快捷菜单不要显示:e.preventDefault?e.preventDefault():e.returnValue = false;
+                    ==>3 menu的左上角坐标就是鼠标在页面上的光标坐标,menu在布局上要是绝对定位
+                        ==>menu.style.top = e.pageY
+                        ==>menu.style.left = e.pageX
+                    ==>4 点击menu上的li,在控制台输出li里面的内容
+                        ==>把li的事件委托给ul
+                        ==>menu.onclick = function(){
+                            ==>是li才显示li里面的内容
+                            ==>target = 被点击的目标=e.target
+                            ==>target.nodeName =="LI"
+                            ==>target.innerHTML;
+                            //点击ul上的li,ul不会消失,ul的点击事件不要冒泡,就不会被body监听到
+                            e.stopPropagation? e.stopPropagation():e.cancelBubble = true
+                        }
+                    ==>5 点击menu以外的地方,menu消失
+                        ==>document.body.onclick = function(){
+                            menu.style.display= "none"
+                        }
+
+        */
+
+
+    </script>
+</body>
+</html>

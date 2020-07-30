@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"><input type="button" value="发表留言">
+    <div>
+        
+    </div>
+    <script>
+        //1 创建一个正则表达式
+        //字面量
+        var reg = /\d{3}/;
+        console.log(reg)
+        console.log(reg.test('123456'));
+
+        //构造函数
+        var reg1 = new RegExp('\\d{3}');//字符串里面有一些有特殊意义的字符需要转译
+        console.log(reg1)
+        console.log(reg1.test('123456'));
+
+        //2 去除字符串前后的空格
+        var str = "     hello world       ";
+        console.log("11111"+str+"11111");//为了看出有空格
+        //字符串.trim()可以去除字符串前后的空格
+        // str = str.trim()
+        //使用我们自己封装的trim方法去除前后空格
+        str = trim(str);
+        console.log("11111"+str+"11111");//为了看出有空格
+
+        //书写一个类似trim的方法,能够去掉字符串前后的空格
+        function trim(str){
+            return str.replace(/(^\s+)|(\s+$)/g,"");
+        }
+
+        //3 XSS攻击:跨站脚本攻击
+        //把input文本里面用户输入的信息,放到div里面
+        var textInp = document.querySelector('[type="text"]');
+        var button = document.querySelector('[type="button"]');
+        var div = document.querySelector('div');
+        button.onclick = function(){
+            //让页面不认识你输入的html标签和js代码,直接显示成字符串
+            // div.innerText = textInp.value;
+            
+            //如果要我们在自己的防御XSS攻击,我们怎么办:过滤和转义
+            var text = textInp.value;
+            text = text.replace(/</g,'&lt;')
+            .replace(/>/g,'&gt;')
+            .replace(/"/g,'&#34;')
+            .replace(/'/g,'&#39;')
+            .replace(/\s/g,'&nbsp;')
+            // console.log(text)
+            div.innerHTML = text;
+        }
+    </script>
+</body>
+</html>

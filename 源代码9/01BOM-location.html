@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            height:100%;
+            /* overflow:hidden; */
+        }
+        body{
+            height:6000px;
+            width:6000px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">刷新</button>
+    <script>
+        /* 
+            BOM:Browser Object Model 浏览器对象模型
+                ==>其实就是操作浏览器的一些能力
+                ==>可以操作:
+                    ==>可以获取浏览器的相关信息(窗口的大小)
+                        ==>获取浏览器窗口的大小:
+                            ==>innerWidth和innerHeight
+                            ==>这两个属性分别是用来获取浏览器窗口的宽度和高度(包括滚动条的)
+                    ==>可以操作浏览器页面跳转
+                    ==>获取浏览器地址栏的信息
+                        ==>在window中一个对象叫做location :  window.location
+                        ==>就是专门用来存储浏览器内的地址信息的
+                            ==>location.href:记录浏览器地址栏的url信息
+                            ==>可以给location.href属性赋值,相当于实现页面的跳转
+                            ==>location.reload:这个方法可以重新加载一遍页面,相当于页面刷新
+                                ==>注意:不能写在全局,不然浏览器会一直处在刷新状态
+                    ==>操作浏览器的滚动条
+                    ==>可以获取浏览器的版本
+                    ==>让浏览器出现弹框
+                        ==>alert:在浏览器弹出一个提示框,只有一个确定按钮,点确定,提示框就消失
+                        ==>confirm:这个弹出层有一个询问信息,和两个按钮
+                            ==>点确定,就会得到true
+                            ==>点取消,就会得到false
+                        ==>prompt:在浏览器弹出一个输入框
+                            ==>这个弹出层有一个输入和两个按钮
+                            ==>如果点击取消,返回null
+                            ==>如果点击确定,返回输入的内容,是字符串格式
+                ==>BOM的核心是window对象
+                ==>window是浏览器的一个内置对象,里面包括操作浏览器的方法
+        
+        */
+
+        //获取浏览器窗口的大小:innerWidth和innerHeight(包含滚动条)
+        console.log("浏览器的宽度是:"+window.innerWidth)
+        console.log("浏览器的高度是:"+window.innerHeight)
+
+        //浏览器出现弹框
+        // alert("我是alert提示框")
+        // var result = confirm('8000元,你确定要去吗?');
+        // console.log(result)
+        // var result1 = prompt("请输入内容","提示信息:请输入一个加数");
+        // var result2 = prompt("请输入内容","提示信息:请输入一个加数");
+        // console.log(result1+result2);//字符串拼接,无法实现加法
+        // 扩展方法:eval() :参数如果是字符串,他会把字符串的"",去掉,变成js代码运行
+        
+        //获取浏览器地址栏的信息
+        console.log(location);
+        console.log("我的url是:"+location.href);//会把中文变成url编码的格式
+        // location.href = "http://www.baidu.com";//跳转
+        // 点击刷新按钮,页面刷新
+        // 获取按钮事件源
+        var btn = document.getElementById('btn');
+        // 绑定点击事件
+        btn.onclick = function(){
+            //书写事件驱动程序:刷新页面
+            location.reload();//assign()也可以刷新
+        }
+
+
+    </script>
+</body>
+</html>

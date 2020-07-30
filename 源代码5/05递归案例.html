@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            计算20! 
+                ==>我要写一个函数,这个函数叫ji(n)
+                ==>这个函数的功能是计算n!,并把结果返回
+                ==>ji(1),就是求1的阶乘,返回1 ,如果这个函数只计算1的阶乘,功能可以实现
+                ==>ji(2),就是求2的阶乘,返回2*1, 就是2*ji(1),功能可以实现
+                ==>ji(3),就是求3的阶乘,返回3*2*1,就是3*ji(2),功能可以实现
+                ==>ji(n),就是求n的阶乘,返回n*ji(n-1),功能可以实现
+
+            本题无视频
+        */
+        function ji(n){
+            if(n==1){
+                return 1;
+            }else{
+                return n*ji(n-1)
+            }
+        }
+        console.log(ji(5))
+    </script>
+</body>
+</html>

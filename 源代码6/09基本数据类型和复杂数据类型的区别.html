@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            函数参数传递基本数据类型和复杂数据类型的区别
+                ==>之前我们知道,基本数据类型和复杂数据类型在存储上有区别
+                ==>那么他们在赋值的时候也是有区别的
+                ==>基本数据类型的赋值
+                    var num = 10;
+                    var num2 = num;
+                    ==>上面代码的意思:
+                    ==>相当于把num的值复制了一份一模一样的给了num2变量
+                    ==>赋值完以后两个就没有关系了
+                ==>复杂数据类型的赋值:见4.png   
+                    ==>因为复杂数据类型,变成存储的是地址,真实内容在堆内存里面存储
+                    ==>所以赋值的时候就相当于把obj里面的地址赋值给obj2
+                    ==>现在obj和obj2指向同一个内存空间
+                    ==>所以使用obj2改变内存空间的内容会影响到obj
+                    ==>使用obj改变内存空间的内容也会影响到obj2    
+                ==>函数的参数
+                    ==>函数的参数也是赋值,在函数调用的时候,实参给形参赋值
+                    ==>和之前变量赋值的规则是一样的 
+                    ==>简单数据类型做参数,就是把实参的值复制一个一模一样的给形参,然后两者没有关系了
+                    ==>复杂类型做参数,就是把实参的内容的地址赋值给形参,形参和实参指向同一个地址,任意一个操作都会影响另外一个
+        */
+
+        //基本数据类型的赋值
+        var num = 10;
+        var num2 = num;
+        //相当于把num的值复制了一份一模一样的给了num2变量,赋值完以后两个就没有关系了
+        num2 = 20;
+        console.log(num)
+        console.log(num2)
+
+
+        //复杂数据类型的赋值
+        var obj = {
+            name:"lucy"
+        }
+        var obj2 = obj;
+        obj2.name = "lili";
+        console.log(obj)
+
+
+        //函数传递简单数据类型
+        function fn(n){
+            n = 200;
+            console.log(n)
+        }
+        var num = 10;
+        fn(num);//把num的值复制一份,传递给n,然后num和n就没关系了
+        console.log("num的值是"+num);//10
+
+
+        //函数传递复杂数据类型
+        function fn2(obj){
+            obj.name = "lucy";
+            console.log(obj)
+        }
+        var people = {
+            name:"lili"
+        }
+        fn2(people);//把people里面存的数据的地址赋值给obj
+        console.log(people);//{name:"lucy"}
+    </script>
+</body>
+</html>

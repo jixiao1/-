@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            /* 
+            continue 结束本次循环
+                ==>比如:我预计吃6个包子,吃到第三个的时候,掉地上了,这个包子不吃了,其他的包子继续吃
+                ==>在循环中,把循环的本次跳过去,继续执行后续的循环
+                ==>跳过本次循环,就可以使用continue这个关键字了
+            */
+
+            for(var i=1;i<7;i++){
+                // 当 i 的值为 3 的时候，执行 {} 里面的代码
+                // {} 里面有 continue，那么本次循环后面的代码就都不执行了
+                // 自动算作 i 为 3 的这一次结束了，去继续执行 i = 4 的那次循环了
+                if(i==3){
+                    continue;
+                }
+                console.log('这是我吃的第'+i+"个包子");
+            }
+
+            //案例:100–200之间所有能被3或者7整除的数
+            for(var i=100;i<=200;i++){
+                //如果不能被3或7整除,不能输出,就需要结束本次循环,就当做本次循环在这里就完成,继续下一次
+                if(!(i%3==0||i%7==0)){
+                    continue;
+                }
+                //不管是几都输出
+                console.log(i)
+            }
+    </script>
+</body>
+</html>

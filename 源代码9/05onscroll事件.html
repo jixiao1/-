@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onscroll事件</title>
+    <style>
+        body{
+            height: 6000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        /* 
+            小知识:特殊标签的获取
+                ==>body标签的获取:document.body
+                ==>head标签的获取:document.head
+                ==>title标签内容的获取和赋值:document.title
+                ==>html标签的获取:document.documentElement
+                ==>文档类型标签:document.doctype
+            浏览器的onscroll事件
+                ==>是当前的浏览器的滚动条滚动的时候触发
+                ==>或者是鼠标滚轮滚动的时候触发
+                ==>注意:前提是页面的高度要超过浏览器的可视窗口才可以
+            浏览器滚动的距离
+                ==>浏览器内的内容既然可以滚动,那么就可以获取滚动的距离
+                ==>浏览器真的滚动了吗?
+                    ==>其实浏览器没有滚动,滚动的是页面
+                    ==>所以,只不过是页面滚动上去了
+                ==>所以,这个不能单纯的说是浏览器的内容了,而是我们页面的内容
+                ==>所以不是在用window对象,而是使用document对象
+                ==>scrollTop
+                    ==>页面向上滚动的距离
+                    ==>一共有两种获取方式
+                        ==>docuemnt.body.scrollTop
+                        ==>document.documentElement.scrollTop
+                        ==>兼容问题
+                            ==>IE浏览器
+                                ==>没有DOCTYPE声明的时候,两个都可以
+                                ==>有DOCTYPE声明的时候,只能用document.documentElement.scrollTop
+                            ==>Chrome和FireFox
+                                ==>没有DOCTYPE声明的时候,用document.body.scrollTop
+                                ==>有DOCTYPE声明的时候,用document.documentElement.scrollTop
+                            ==>Safari
+                                ==>两个都不用,使用一个单独的方法
+                                ==>window.pageYOffset
+                ==>scrollLeft
+                    ==>页面向左滚动的距离
+                    ==>一共有两种获取方式
+                        ==>docuemnt.body.scrollLeft
+                        ==>document.documentElement.scrollLeft
+                    ==>两种方法的区别和scrollTop是一样的
+        */
+        window.onscroll = function(){
+            // console.log('window的scroll事件发生了');
+            console.log('页面向上滚动的距离是用body计算:'+document.body.scrollTop)
+            console.log('页面向上滚动的距离是用html计算:'+document.documentElement.scrollTop)
+            console.log('页面向上滚动的距离用window计算'+window.pageYOffset)
+        }
+        //小知识:特殊标签的获取
+        console.log(document.body)//body标签
+        console.log(document.head)//head标签
+        //title标签内容的获取和赋值
+        console.log(document.title);
+        document.title = "hello 2005";
+        //html标签
+        console.log(document.documentElement);
+        //文档类型标签:document.doctype
+        console.log(document.doctype);
+
+
+    </script>
+</body>
+</html>

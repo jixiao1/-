@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 注释节点 -->
+    <ul>
+        2<li id='one' class="first" aa="hello">1</li>
+    </ul>
+    <script>
+        /* 
+            节点的属性
+                ==>三种常用节点:元素节点,属性节点,文本节点
+                ==>nodeType
+        */
+       var li = document.querySelector('li');//一个元素节点
+       var text = li.previousSibling;//一个文本节点
+       var attr = li.attributes[0];//一个属性节点
+        console.log('================nodeType=====================')
+       //nodeType
+       console.log(li.nodeType);//1,  nodeType==1,表示这是一个元素节点
+       console.log(attr.nodeType);//2,nodeType==2,表示这是一个属性节点
+       console.log(text.nodeType);//3,nodeType==3,表示这是一个文本节点
+
+       console.log('================nodeName=====================')
+       //nodeName
+       console.log(li.nodeName);//元素节点的nodeName是大写的标签名
+       console.log(attr.nodeName);//属性节点的nodeName是属性名
+       console.log(text.nodeName);//文本节点的nodeName是#text
+
+       console.log('================nodeValue=====================')
+       //nodeValue
+       console.log(li.nodeValue);//元素节点的nodeValue是null
+       console.log(attr.nodeValue);//属性节点的nodeValue是属性值
+       console.log(text.nodeValue);//文本节点的nodeValue是文本的内容
+    </script>
+</body>
+</html>

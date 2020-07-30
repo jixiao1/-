@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.big{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            position: relative;
+        }
+        div.small{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top:100px;
+            left:100px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="small"></div>
+    </div>
+    <script>
+        /* 
+            事件会从自己身上逐层向上传播,那么这个执行顺序有一些说法
+                ==>目标
+                    ==>你点击的是哪个元素,那么这个事件的目标就是什么
+                ==>冒泡
+                    ==>就是从事件目标的事件处理函数开始,依次向外,直到window的事件处理函数触发
+                    ==>就是从下向上的执行事件处理函数
+                ==>捕获
+                    ==>就是从window的事件处理函数开始,依次向内,直到事件目标是事件处理函数触发
+                    ==>也就是从上向下的执行事件处理函数
+                ==>冒泡和捕获的区别
+                    ==>就是在事件的传播中,多个同类事件处理函数的执行顺序不同
+        */
+        var big = document.querySelector('.big');
+        var small = document.querySelector('.small');
+        //通过事件监听注册事件
+        small.addEventListener('click',function(){
+            console.log('small click')
+        },true)
+        big.addEventListener('click',function(){
+            console.log('big click')
+        },true)
+        document.body.addEventListener('click',function(){
+            console.log('body click')
+        },true)
+        
+    </script>
+</body>
+</html>

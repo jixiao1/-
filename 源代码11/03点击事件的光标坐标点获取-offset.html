@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            padding:10px;
+            background-color: pink;
+            margin:100px 0 0 100px;
+            border:30px solid orangered;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <script>    
+    /*
+        我们的每一个点击事件的坐标点都不是一对,因为要有一个相对的坐标系
+            ==>如:相对事件源   e.相对事件源的x坐标     e.相对事件源的y坐标
+            ==>如:相对浏览器窗口  e.相对浏览器窗口的x坐标     e.相对浏览器窗口的y坐标
+            ==>如:相对页面   e.相对页面的x坐标     e.相对页面的y坐标
+            ==>因为相对坐标不一样,所以我们获取的事件对象里面的属性也不一样
+        + 相对于你点击的元素来说
+            ==>e.相对于你点击的元素的x坐标  e.相对于你点击的元素的y坐标
+            ==>e.offsetX  e.offsetY
+            ==>是相对于你点击的元素的边框内次开始计算
+    */
+     //获取事件源
+     var div = document.querySelector('div');
+     //绑定事件
+     div.onclick = function(e){
+        e = window.event||e;//事件对象
+        // console.log(e.offsetY)
+        // console.log(e.offsetX)
+        console.log(this);//this在事件处理函数中,指的是事件源,就是绑定事件的那个元素
+        this.innerHTML = "光标在点击的元素上的x坐标是"+e.offsetX+"<br/>光标在点击的元素上的y坐标是"+e.offsetY
+     }
+
+    </script>
+</body>
+</html>

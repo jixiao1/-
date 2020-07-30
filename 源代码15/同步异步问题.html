@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+         
+        //同步代码:至上而下顺序执行
+        // for(var i=0;i<10;i++){
+        //      console.log(i)
+        // }
+        var a = 1;
+        //异步代码:需要时间,不会立即执行
+        setTimeout(function(){
+            a = 10
+        },0);
+        document.onclick = function(){
+            a = 20;
+        }
+        console.log(a);
+
+        //代码在至上而下的执行过程中,碰到同步代码直接执行,
+        //碰到异步代码,放到一边去排队,等所有的同步代码执行完成以后,再根据条件执行异步代码
+        //目前学过的异步代码只有:定时函数,事件处理函数
+    </script>
+</body>
+</html>

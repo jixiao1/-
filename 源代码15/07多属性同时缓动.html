@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top:50px;
+            left:0px;
+            opacity:1;
+            z-index: 100;
+            /* z-index不需要运动,直接到位 */
+        }
+    </style>
+</head>
+<body>
+    <button>点击运动到800</button>
+    <div></div>
+    <script>
+        var box = document.getElementsByTagName('div')[0];
+        var btn = document.getElementsByTagName('button')[0];
+        var target = {
+            left:800,
+            top:600,
+            opacity:10,
+            zIndex:9000000
+        }
+        btn.onclick = function(){
+            //要用定时器,先清定时器
+            clearInterval(box.timer)
+            box.timer = setInterval(function(){
+                var flag = true;//这个flag记录上次大家都到了
+
+                //每隔一段时间,left运动一段距离
+                //1 起始点
+                var start = parseInt(getStyle(box,"left"));
+                //2 计算速度 
+                var speed = (target.left - start)/10
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                //3 下一个位置
+                var next = start + speed;
+                //4 定位元素
+                box.style.left = next+"px";
+                //不能把停止定时器的条件单独写,因为你这个属性到了,不能证明其他的属性也到了
+                //问left,你这次到了吗?如果到了,什么都不做,如果没到,flag = false;
+                if(next!=target.left){
+                    flag = false;                   
+                }
+
+                //每隔一段时间,top运动一段距离
+                //1 起始点
+                var start = parseInt(getStyle(box,"top"));
+                //2 计算速度 
+                var speed = (target.top - start)/10
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                //3 下一个位置
+                var next = start + speed;
+                //4 定位元素
+                box.style.top = next+"px";
+                //不能把停止定时器的条件单独写,因为你这个属性到了,不能证明其他的属性也到了
+                //问top,你这次到了吗?如果到了,什么都不做,如果没到,flag = false;
+                if(next!=target.top){
+                    flag = false;
+                }
+
+                //每隔一段时间,opacity运动一段距离
+                //1 起始点
+                var start = parseInt(getStyle(box,"opacity")*100);
+                //2 计算速度 
+                var speed = (target.opacity - start)/10
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                //3 下一个位置
+                var next = start + speed;
+                //4 定位元素
+                box.style.opacity = next/100;
+                box.style.filter = "alpha(opacity="+next+")";                
+                //不能把停止定时器的条件单独写,因为你这个属性到了,不能证明其他的属性也到了
+                //问opacity,你这次到了吗?如果到了,什么都不做,如果没到,flag = false;
+                if(next!=target.opacity){
+                    flag = false;
+                }
+
+                //zIndex一步到位
+                box.style.zIndex = target.zIndex;
+
+                //本次的left和top运动完以后,如果flag为true,说明到达目标,如果flag为false,说明至少有一个没有到达目标
+                if(flag==true){
+                    clearInterval(box.timer);
+                    // console.log(1)
+                }
+
+            },100)
+        }
+        //为了考虑兼容性问题,单独封装一个方法,用于获取元素的某个属性值,并返回        
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                //因为attr是变量,所以要加[]
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                return dom.currentStyle[attr];//IE7,8
+            }
+        }
+    </script>
+</body>
+</html>

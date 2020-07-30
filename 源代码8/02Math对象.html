@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">点名</button>
+    <span id="content"></span>
+   <script>
+       /* 
+            构造函数:String,Array,Date
+            Math
+                ==>他是一个系统的内置对象,不是构造函数
+                ==>没有什么多于的东西,就是一些方法来操作数字
+                ==>random
+                    ==>Math.random()
+                    ==>生成一个0到1之间的随机数,包括0,不包括1
+                    ==>每次执行生成的数字都不一样
+                
+       */
+
+    //Math.random()
+    // console.log(Math.random())
+
+    //需求:点击btn按钮,随机产生一个人名,输出在span里面
+    //1 获取事件源
+    var btn = document.getElementById('btn');
+    //2 绑定事件
+    btn.onclick = function(){
+        //3 书写事件驱动程序
+        //随机点名
+        var arr = ['张飞','关羽','刘备'];
+        //如果能随机出一个0-2之间的索引,就能找到这个人
+        var index = Math.random()*3;//现在结果是[0,3)之间的数,可能是小数,取不到3
+        //我要的是一个整数
+        index = parseInt(index);
+        //获取span标签
+        var span = document.getElementById('content');
+        //把内容显示在span标签里面
+        span.innerHTML = arr[index]
+    }
+
+
+    
+   </script> 
+</body>
+</html>

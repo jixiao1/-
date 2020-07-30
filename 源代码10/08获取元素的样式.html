@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sp{
+            position: absolute;
+            width: 500px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- 行内样式 -->
+    <div style="width:100px;height:100px;background:yellow;"></div>
+    <!-- 内联样式/外链样式 -->
+    <span class="sp">内联样式/外链样式</span>
+    <script>
+        /* 
+        获取元素的非行内样式
+            ==>我们在操作DOM的时候,很重要的一件事就是操作元素的css样式
+            ==>操作css样式的时候,我们避免不了就是获取样式
+            ==>我们以前用的 元素.style.xxxx来获取
+            ==>但是这个方法只能获取行内样式
+            ==>不管是外链式样式,还是内嵌式,都获取不到样式
+            ==>这里我们就要使用新方法了:getComputedStyle和currentStyle
+            ==>这两个方法作用是一样的,但是一个是非IE浏览器,一个是IE浏览器
+                ==>getComputedStyle 非IE使用
+                    ==>语法:window.getComputedStyle(元素,null).要获取的属性
+                ==>currentStyle IE使用
+                    ==>语法:元素.currentStyle.要获取的属性
+        */
+        //1 获取div节点
+        var div = document.querySelector('div')
+        //2 获取div元素的行内样式
+        console.log(div.style.width)
+
+        //需求:要获取span的内联样式/外链样式
+        //1 获取span节点
+        var span = document.querySelector('span');
+        //2 获取span元素的样式
+        console.log(span.style.width);//这个原来的方法无法实现
+        //使用非IE方法:window.getComputedStyle(元素,null).要获取的属性
+        // console.log(window.getComputedStyle(span,null).width)
+        //使用IE方法:currentStyle
+        // console.log(span.currentStyle.width)
+    </script>
+</body>
+</html>

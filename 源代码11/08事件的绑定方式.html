@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        /* 
+        事件的绑定方式
+            +   onxxxx的方式
+                ==>我们现在只学过一个注册事件的方式:onxxxx的方式
+                ==>但是这个方式只能给一个元素注册一个事件
+            +   事件监听的方式注册事件
+                ==>就是使用addEventListener的方式添加,非IE78使用
+                ==>这个方法不兼容,在IE78使用attachEvent
+                ==>语法:
+                    元素.addEventListener('事件类型,不要on',事件处理函数,冒泡还是捕获)
+                ==>冒泡还是捕获先欠着,后面再讲
+            +   addEventListener和attachEvent的区别
+                ==>注册事件的时候事件类型参数的书写
+                    + addEventListener:不用写on
+                    + attachEvent:要写on
+                ==>参数个数:
+                    + addEventListener:一般是三个参数
+                    + attachEvent:两个参数
+                ==>执行顺序
+                    + addEventListener:顺序注册,顺序执行
+                    + attachEvent:顺序注册,倒序执行
+                ==>适用浏览器
+                    + addEventListener:非IE78适用
+                    + attachEvent:IE78适用
+            +   移除addEventListener添加的事件监听器
+                    ==>语法:
+                        元素.removeEventListener('事件类型,不要on',事件处理函数)
+        
+        */
+        var div = document.querySelector('div');
+
+        //onxxx方式:只能给一个元素注册一个事件,后面的会覆盖前面的
+        // div.onclick = function(){
+        //     console.log('这是onclick的第一次注册事件')
+        // }
+        // div.onclick = function(){
+        //     console.log('这是onclick的第二次注册事件')
+        // }
+
+
+        //事件监听方式注册事件:addEventListener
+        var fn1 = function(){
+            console.log('这是click的第一次注册事件')
+        };
+        var fn2 = function(){
+            console.log('这是click的第二次注册事件')
+        }
+        div.addEventListener('click',fn1,false)
+        div.addEventListener('click',fn2,false)
+        //当点击div时候,两个函数都会执行,按照你注册的顺序顺序执行
+        //先打印'这是click的第一次注册事件',再打印'这是click的第二次注册事件'
+
+        //移除事件监听器
+        div.removeEventListener('click',fn2)
+        // 事件监听方式注册事件:attachEvent
+        // div.attachEvent('onclick',function(){
+        //     console.log('这是click的第一次注册事件')
+        // })
+        // div.attachEvent('onclick',function(){
+        //     console.log('这是click的第二次注册事件')
+        // })
+        //当点击div时候,两个函数都会执行,按照你注册的顺序倒序执行
+        //先打印'这是click的第二次注册事件',再打印'这是click的第一次注册事件'
+    </script>
+</body>
+</html>

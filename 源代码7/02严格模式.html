@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*  
+            +严格模式(了解)
+                ==>js不是很严谨的语言
+                ==>在开发的时候,调错不是很方便
+                ==>而严格模式就是对开发的时候写的一些内容作了一些要求
+            +开启严格模式: "use strict"
+            +严格模式的规则
+                ==>变量声明必须有var关键字
+                ==>函数的形参不可以重复
+                ==>声明式函数内部是没有this的
+                    ==>什么是this:this是系统自带的一个变量,他的具体的值是变化的,会根据上下文随时变化
+                    ==>就像生活的一个词:这里
+                    ==>如果我在教室,这里具体就是教室2005
+                    ==>如果我在家里,这里具体江西吉安
+                    ==>在非严格模式下,声明式函数里面的this具体指的是window
+                    ==>在严格模式下,声明式函数里面的this是undefined
+        */
+        "use strict";
+
+        //变量声明必须有var关键字
+        var num = 1;
+        // age = 12;//age is not defined;
+
+        //函数的形参不可以重复
+        // function fn(a,a){
+        //     console.log(a)
+        // }
+
+        // fn(1,2)
+
+        //声明式函数内部是没有this的
+        function fn(){
+            console.log(this)//undefined
+        }
+        
+        fn()
+
+    </script>
+</body>
+</html>

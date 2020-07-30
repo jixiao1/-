@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            将日期字符串格式转换指定内容:
+                原始:Fri Nov 01 2019 08:08:08 GMT+0800 (中国标准时间)
+                目标:2019-11-01 08:08:08
+                ==> js为我们提供了一些列的方法来得到里面的指定内容:年,月,日,时,分,秒
+                ==> getFullYear:获取原始格式中的年份 
+                ==> getMonth:获取原始格式中的月份,月份从0开始计算
+                ==> getDate:获取原始格式中的日期
+                ==> getDay:获取原始格式中的星期几,星期1-6是取值1-6,星期日是0
+                ==> getHours:获取原始格式中的小时
+                ==> getMinutes:获取原始格式中的分钟
+                ==> getSeconds:获取原始格式中的秒数
+                ==> getMilliseconds:获取前面一秒的几毫秒
+        */
+
+        var d = new Date();
+        // getFullYear:获取原始格式中的年份  
+        var year = d.getFullYear();
+        // getMonth:获取原始格式中的月份,月份从0开始计算
+        var month = d.getMonth()
+        // getDate:获取原始格式中的日期
+        var day = d.getDate();
+        // getDay:获取原始格式中的星期几
+        var week = d.getDay();//星期1-6是取值1-6,星期日是0
+        // getHours:获取原始格式中的小时
+        var hour = d.getHours()
+        // getMinutes:获取原始格式中的分钟
+        var minute = d.getMinutes()
+        // getSeconds:获取原始格式中的秒数
+        var second = d.getSeconds()
+        // getMilliseconds:获取前面一秒的几毫秒
+        var milliseconds = d.getMilliseconds()
+        
+        console.log("现在是"+year+"年"+month+"月"+day+"日")
+    </script>
+</body>
+</html>

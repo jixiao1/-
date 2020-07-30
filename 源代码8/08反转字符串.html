@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        反转字符串:
+            ==>var str = 'abcdefg'
+            ==>要求结果:gfedcba
+            ==>方法一:先把字符串变成数组,然后利用数组的反转方法,再转成字符串
+            ==>方法二:从后往前遍历str,每遍历到一个,就获取到这个字符串,放到新的字符串里面去
+
+        */
+
+
+        // 方法一:先把字符串变成数组,然后利用数组的反转方法,再转成字符串
+        var str = "abcdefg";
+        //变成数组
+        var arr = str.split("");
+        //翻转数组
+        arr.reverse()
+        //合成字符串
+        str = arr.join("");
+        
+
+        // 方法二:从后往前遍历str,每遍历到一个,就获取到这个字符串,放到新的字符串里面去
+        var str = "abcdefg";
+        var result = "";//存放倒序结果的字符串
+        //遍历str
+        for(var i=str.length-1;i>=0;i--){
+            //获取到遍历的那个字符
+            var char = str.charAt(i);
+            //把获取到的字符拼接到result上面
+            result+=char;
+        }
+        console.log(result)
+    </script>
+</body>
+</html>

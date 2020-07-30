@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <button>点击运动到400</button>
+    <div>
+
+    </div>
+    <script>
+        var box = document.getElementsByTagName('div')[0]
+        var timer = null;
+        timer = setInterval(function(){
+            //1 起始点
+            var start = parseInt(getStyle(box,'width'));//有单位,要去除单位
+            //2 计算速度
+            var speed = (400-start)/10;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            //3 下一个位置
+            var next = start + speed;
+            //4 定位元素
+            box.style.width = next+"px";
+            //到达目标以后停止定时器
+            if(next==400){
+                //如果定时器停止了,说明运动动画完成了,我可以知道吗?
+                console.log('动画完成了');//这里可以写希望在动画完成以后执行的代码
+                clearInterval(timer);
+            }
+        },1000/6);
+
+        
+
+        //为了考虑兼容性问题,单独封装一个方法,用于获取元素的某个属性值,并返回
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                //因为attr是变量,所以要加[]
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                return dom.currentStyle[attr];//IE7,8
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top:50px;
+            left:0px;
+        }
+    </style>
+    <script src="./public.js"></script>
+</head>
+<body>
+    <button>点击运动到800</button>
+    <div></div>
+    <script>
+        var box = document.getElementsByTagName('div')[0];
+        var btn = document.getElementsByTagName('button')[0];
+        btn.onclick = function(){
+            move(box,'left',800,function(){
+                move(box,'top',600)
+            });
+            
+        }
+
+        //每次用户点击,都执行move函数,每执行一次move函数,就会产生一个新的定时器
+        //假设是匀速运动:spee的 = 10
+        //假设每10秒运动一次
+        //第一次点击:
+        //  0    10      20      30       (30秒走3次)
+        //第二次点击:
+        //  2    12      22      32 
+        //第三次点击
+        //  4    14      24      34      
+
+        //保证一个元素上只有一个定时,不能控制用户点击,那么只能每次用户点击的时候,都先清除上次的定时器,再加定时器
+    </script>
+</body>
+</html>

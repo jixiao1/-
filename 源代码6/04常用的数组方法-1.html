@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            常用的数组方法:
+                ==>数组是一个复杂数据类型,操作的时候就不同于简单数据类型
+                ==>比如我们想改变一个数组:
+                    var arr = [1,2,3];
+                    arr = [1,2]
+                ==>这种肯定是不合理,因为这样不是在改变之前的数组
+                ==>相当于重新弄了一个数组到arr这个变量了
+                ==>相当于把arr里面存储的地址都换了,也就是把存储空间换了,而不是在之前的空间里面修改
+                ==>所以我们需要借助一些方法,在不改变存储空间的情况下,把存储空间里面的数据改变  
+            + 数组常用方法:push
+                ==>push是用来在数组的末尾追加一个元素
+                ==>返回值是:添加完元素以后数组的长度
+            + 数组常用方法:pop
+                ==>pop是用来在数组末尾删除一个元素
+                ==>返回值是:被删除的元素
+            + 数组常用方法:unshift
+                ==>unshift是用来在数组的最前面添加一个元素
+                ==>返回值是:添加完元素以后数组的长度
+            + 数组常用方法:shift
+                ==>shift是用来删除数组的最前面一个元素
+                ==>返回值是:被删除的元素
+            + 数组常用方法:splice
+                ==>splice是截取数组中的某些内容,按照数组的索引来截取
+                ==>语法: arr.splice(从哪一个索引位置开始,截取多少个,替换的新元素)
+                ==>第三个参数可以不写
+                ==>返回值是:被删除的元素集合
+        */
+
+        var arr = [1,2,3];
+
+        // 使用push方法追加一个元素在末尾
+        var pushReturn = arr.push(5);
+        console.log(pushReturn);//返回添加完元素以后数组的长度
+
+        // 使用pop在数组末尾删除一个元素
+        var popReturn = arr.pop();
+        console.log(popReturn);//返回值是被删除的元素
+
+        // unshift是用来在数组的最前面添加一个元素
+        var unshiftReturn = arr.unshift(0);
+        console.log(unshiftReturn);//返回添加完元素以后数组的长度
+
+        // shift是用来删除数组的最前面一个元素
+        var shiftReturn = arr.shift();  
+        console.log(shiftReturn);//返回值是被删除的元素
+
+        console.log(arr)
+
+
+        var newArr = [1,2,3,4,5];
+        //arr.splice(从哪一个索引位置开始,截取多少个)
+        var spliceReturn2 = newArr.splice(1,2);//表示从索引为1开始,删除2个元素
+        console.log(newArr);//[1,4,5]
+        console.log(spliceReturn2);//返回值是被删除的元素集合
+
+        // arr.splice(从哪一个索引位置开始,截取多少个,替换的新元素)
+        var spliceReturn3 = newArr.splice(1,0,2,3);//表示从索引为1开始,删除0个元素,替换成2和3
+        console.log(newArr)
+        console.log(spliceReturn3);//返回值是被删除的元素集合
+        
+        
+            
+
+    </script>
+</body>
+</html>

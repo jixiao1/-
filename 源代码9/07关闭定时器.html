@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+            关闭定时器
+                ==>我们刚才提到定时器的返回值是一个timeId,表示这个定时器是页面中的第几个定时器
+                ==>这个数字就是用来关闭定时器的
+                ==>我们两个方法关闭定时器
+                    ==>clearTimeout  用来关闭使用setTimeout定义的定时器
+                    ==>clearInterval 用来关闭使用setInterval定义的定时器
+                ==>关闭以后,定时器就不工作了
+                ==>原则上是setTimeout定义的定时器用clearTimeout关闭,setInterval定义的定时器用clearInterval关闭
+                ==>但是其实是可以通用的,尽量用官方的方法
+        */
+
+        var timeId1 = setTimeout(function(){
+            console.log('我是倒计时定时器')
+        },2000);
+        clearTimeout(timeId1);//关闭以后,定时器就不工作了
+
+        var timeId2 = setInterval(function(){
+            console.log('我是间隔定时器')
+        },1000);
+        clearInterval(timeId2);//关闭以后,定时器就不工作了
+       
+
+    </script>
+</body>
+</html>

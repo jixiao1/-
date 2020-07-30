@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            prototype(原型)
+                ==>每个函数天生有一个prototype(原型),是一个对象,可以往里面添加成员
+                ==>重点: prototype(原型)不是给函数用的,是给实例对象使用的
+
+            __proto__:
+                ==>每个对象天生有一个__proto__,是一个对象
+                ==>__proto__是给实例对象使用的
+                ==>当访问一个对象的成员的时候,如果在对象上找不到,就会去对象的__proto__的对象空间上查找,找到了了就可以使用
+                ==>如果没找到,继续往__proto__的对象空间的__proto__的对象上查找,直到null位置
+                ==>对象的__proto__指向其构造函数的prototype(原型)
+
+            实例对象成员的赋值:
+                ==>给实例对象的成员赋值
+                ==>如果实例对象上有这个成员,就是修改
+                ==>如果没有,就是在实例对象上添加这个成员
+                ==>跟__proto__没有关系
+        */
+
+
+        function Person(){
+            this.name = "张三";
+            this.age = 12;
+        }
+        //每个函数天生有一个prototype(原型),是一个对象,可以往里面添加成员
+        Person.prototype.sayHi = function(){
+            console.log('Hello')
+        }
+
+        var p1 = new Person();
+        
+        //实例对象(p1)的__proto__指向其构造函数(Person)的prototype(原型)
+        console.log(p1.__proto__==Person.prototype);
+        p1.sayHi();//不报错,因为p1的成员是没有sayHi,就去__proto__上找,找到了,可以使用
+
+        //实例对象成员的赋值
+        p1.sayHi = "吃肉";//给p1,添加一个成员,sayHi = "吃肉"
+
+        p1.sayHi();//在p1上找sayH这个成员,找到了,但是不是函数,不能加(),会报错
+        
+        console.log(p1)
+    </script>
+</body>
+</html>

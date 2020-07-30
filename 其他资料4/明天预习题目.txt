@@ -1,0 +1,14 @@
+// 练习7:
+        f1();
+        console.log(c); 
+        console.log(b); 
+        console.log(a); 
+        function f1() {
+            //函数内部定义的变量只能在函数内部使用
+            var a = 9;
+            var b = 9
+            var c = 9; 
+            console.log(a); //9
+            console.log(b); //9
+            console.log(c); //9
+        }

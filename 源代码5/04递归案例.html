@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>    
+        /* 
+        递归函数
+            ==>什么是递归函数:
+            ==>在编程的世界里面,递归就是一个自己调用自己的手段
+            ==>递归函数:一个函数内部,调用了自己,循环往复
+            ==>其实递归函数和循环很类型
+            ==>要实现递归要书写两个内容:
+                ==>一个是满足结束条件的时候结束函数
+                ==>一个是不满足结束条件的时候要执行的代码
+
+        */
+
+        /* 
+        计算1到100的累加和   
+            分析思路1:
+                ==>我要书写一个函数叫做sum    
+                ==>这个函数有形参n,调用的时候:sum(n)      
+                ==>我这个sum函数的功能是计算任意一个数1到n的累加和
+                ==>在思路1里面,写sum(5) = 5+4+3+2+1
+                ==>也就是说如果你写sum(5),就是1到5,如果你写sum(8),就是1到8
+                ==>假设这个函数已经写完了
+                ==>如果要计算1-100,我可以这么写:100+sum(99)
+                ==>如果要计算1-99,我可以写成:99+sum(98)
+                ==>结论,如果要计算1-100:100+99+98+.....+2+sum(1);
+                ==>结束条件就是n=1,sum(1) = 1
+                
+
+            分析思路2:
+                ==>我要书写一个函数叫做sum    
+                ==>这个函数有形参n,调用的时候:sum(n)  
+                ==>我这sum函数的功能是计算任意一个数到100的累加和    
+                ==>如果我写sum(90),我计算的是90+91+92+93+94+95+...100
+                ==>如果我写sum(91),我计算的是+91+92+93+94+95+...100
+                ==>我有以下结论:sum(90) = sum(91)+90
+                ==>我有以下结论:sum(91) = 91+sum(92)
+                ==>我有以下结论:sum(1) = 1 + sum(2)
+                ==>我有以下结论:sum(100) = 100;
+        */
+
+        // 思路1的代码实现
+        // function sum(n){
+        //     if(n==1){
+        //         return 1;
+        //     }else{
+        //         return n+sum(n-1)
+        //     }
+        // }
+        // var result = sum(100);
+        // console.log(result)
+
+        
+        // 思路2的代码实现:
+        // function sum(n){
+        //     if(n==100){
+        //         return 100;
+        //     }else{
+        //         return n+sum(n+1)
+        //     }
+        // }
+        // var result = sum(1);
+        // console.log(result)
+
+        
+        /* 
+        计算Fibonacci sequence的第N项:
+            斐波那契数列（Fibonacci sequence），又称黄金分割数列、
+            因数学家列昂纳多·斐波那契（Leonardoda Fibonacci）以兔子繁殖为例子而引入，故又称为“兔子数列”，
+            指的是这样一个数列：1、1、2、3、5、8、13、21、34、……在数学上，
+            斐波那契数列以如下被以递推的方法定义：F(1)=1，F(2)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 3） 
+        */
+
+        function fibonacci(n){
+            if(n==1){
+                return 1;
+            }
+            if(n==2){
+                return 1;
+            }
+            //n = 3 :return fibonacci(2)+fibonacci(1)
+            //n = 4 :return fibonacci(3)+fibonacci(2)
+            return fibonacci(n-1)+fibonacci(n-2);
+        }
+        console.log(fibonacci(6))
+        
+    
+    </script>
+</body>
+</html>

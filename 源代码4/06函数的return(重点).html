@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        函数的return(重点)
+            ==>return 返回的意思,这个关键字就是给函数一个返回值和终断函数
+            ==>终断函数
+                ==>当我开始执行函数以后,函数内部的代码会至上而下执行
+                ==>必须要等到函数内部的代码执行完毕
+                ==>而return关键字就是可以在函数中间的位置停掉,让后面的代码不再继续执行
+                ==>一个函数里面只有一个return起作用.
+            ==>返回值
+                ==>函数调用本身也是一个表达式,表达式就应该有一个值出现
+                ==>什么是表达式:操作数和运算符组合成的
+                    ==>1+2
+                    ==>1||2
+                    ==>!"hello"
+                ==>现在的函数执行完毕以后,是不会有结果出现的
+                ==>return关键字就是可以给函数执行完毕以后一个结果
+                ==>我们可以在函数内部使用return关键字把任何内容当做这个函数的运行后的结果        
+        */
+
+
+        //终断函数
+        function fn(){
+            console.log('乾隆出生了')
+            console.log('乾隆1岁了');
+            //return在此处终止代码,后面不会再执行了;
+            return;
+            console.log('乾隆2岁了')
+            console.log('乾隆15岁大婚了');
+            console.log('乾隆68岁驾崩了')
+        }
+        fn();
+
+        //返回值
+        function sum(a,b){
+            console.log(a+b);
+            return 10;
+        }
+        //通过sum(2,3)调用sum函数,也就是把里面代码执行一遍,然后,把函数执行完以后的结果,赋值给aa;
+        var aa = sum(2,3)
+        
+    </script>
+</body>
+</html>

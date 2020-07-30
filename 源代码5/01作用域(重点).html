@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            +作用域(重点)
+                ==>什么是作用域,就是一个变量可以生效的范围
+                ==>变量不是在所有地方都可以使用的,而这个变量的使用范围就是作用域
+            +全局作用域
+                ==>全局作用域是最大的作用域
+                ==>在全局作用域中定义的变量可以在任何地方使用
+                ==>页面打开的时候,浏览器就会自动给我们生成一个全局作用域window
+                ==>这个作用域会一直存在,直到关闭页面就销毁了
+                ==>在函数内部不使用var定义的变量是全局作用域
+                ==>如果一个变量的作用域是全局作用域,这个变量我们叫全局变量
+            +局部作用域
+                ==>局部作用域就是在全局的作用域下面又开辟出来的一个相对小一些的作用域
+                ==>在局部作用域中定义的变量只能作用在这个局部作用内部使用
+                ==>在js中只有函数能生成一个局部作用域,别的都不行
+                ==>每一个函数,都是一个局部作用域
+                ==>如果一个变量的作用域是局部作用域,这个变量我们叫做局部变量
+        
+        */
+
+        //下面两个变量就是存在在全局作用域下面的,都是可以在任何地方使用的   
+        var num = 100;
+        var age = 12;
+
+        //这个name是一个全局作用域,在任何地方都可以使用
+        var name = "张三"
+
+        function fn(){
+            //下面这个变量就是一个fn局部作用域内部的变量,只能在fn函数内部使用
+            var num2 = 200;
+            //在函数内部不使用var定义的变量是,全局作用域
+            num1 = 340;
+        }
+        fn();//调用函数fn,fn里面的代码就运行了
+        // console.log(num2);//报错:num2 is not defined
+        console.log(num1);
+
+
+
+        //练习1:
+        // f1();
+        // console.log(c); //9
+        // console.log(b); //9
+        // console.log(a); //a is not defined
+        // function f1() {
+        //     var a = b = c = 9;
+        //     console.log(a); //9
+        //     console.log(b); //9
+        //     console.log(c); //9
+        // }
+
+        //练习1分析:
+            //第一个阶段是预解析:
+            // function f1() {
+            //     var a = b = c = 9;
+            //     console.log(a); 
+            //     console.log(b); 
+            //     console.log(c); 
+            // }
+
+            // //第二个阶段是代码执行:
+            // f1();
+            //     //通过f1()执行函数,此处函数里面的代码才开始执行
+            //     //这句代码可以写成:var a = b = c = 9;
+            //     //c = 9;b=c;var a = b;
+            //     //c没有使用var定义,所以他是一个全局变量,b也没有使用var定义,所以他也是一个全局变量,
+            //     //a使用了var定义,并且在函数里面,所以他是一个局部作用域
+            // //此时到了函数的外面,那么函数里面定义的局部变量就无法使用了
+            // console.log(c); 
+            // console.log(b); 
+            // console.log(a); 
+
+
+        //练习2:
+        f1();
+        console.log(c); 
+        console.log(b); 
+        console.log(a); 
+        function f1() {
+            var a=9,b=9,c = 9;//逗号表示共享var这个关键字
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+        //练习2分析:
+            //第一个阶段是预解析:
+            // function f1() {
+            //     var a=9,b=9,c = 9;
+            //     console.log(a);//9
+            //     console.log(b);//9
+            //     console.log(c);//9
+            // }
+            // //第二个阶段执行代码:
+            // f1();
+            //     //执行f1里面的代码
+            //     //逗号表示共享var这个关键字
+            //     //var a=9,b=9,c = 9; 就等价于 var a=9;var b=9;var c=9;那么a,b,c都是函数f1里面的局部变量
+            // //函数f1,执行完成以后,由于a,b,c是局部变量,在函数外面无法使用
+            // console.log(c); 
+            // console.log(b); 
+            // console.log(a); 
+    </script>
+</body>
+</html>

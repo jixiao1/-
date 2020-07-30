@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            统计字符串中每个字符的个数？var str = 'abcdacbabcbababcbabcabd';
+            知识点:
+                1 对象.成员名,这个成员名是字符串,不是变量名
+                2 对象[成员名],这个成员名不加引号表示变量名,加引号表示字符串
+                3 如果一个对象里面没有定义的成员,取值是undefined
+            案例:
+                var obj = {
+                    "name":"zhangsan",
+                    "age":12
+                };
+                var key = "name";                
+                console.log(obj.name);//.后面的成员名是字符串,答案是"zhangsan"
+                console.log(obj[ss]);//[]里面的成员名是变量名,但是没有定义过这个变量,报错
+                console.log(obj.key);//.后面的成员名是字符串,obj里面没有key这个成员,所以只是undefined
+                console.log(obj[key]);//[]里面的成员名是变量名,取出变量值name,所以找的是obj的name 成员,只是"zhangsan"
+                console.log(obj.age);//.后面的成员名是字符串,答案是12
+                console.log(obj[age]);//[]里面的成员名是变量名,但是没有定义过这个变量,报错
+        */
+        var str = 'abcdacbabcbababcbabcabd';
+        var obj = {};//记录成这个格式{a:"a出现的次数",b:"b出现的次数"}
+        for(var i=0;i<str.length;i++){
+            // console.log('本次遍历到的字符是'+str.charAt(i))
+            var key = str.charAt(i);
+            //当前遍历到的字符,在obj中是否有值
+            if(obj[key]){//除了""字符,其他字符转boolean都是true
+                //有值
+                obj[key] = obj[key]+1;
+            }else{
+                //没有值
+                obj[key] = 1;
+            }
+        }
+        var result = "";//用于拼接没有重复的字符
+        //遍历obj
+        for(var attr in obj){
+            //把键拼接,就是没有重复的字符串
+            console.log('本次的成员名是'+attr+",出现的次数是"+obj[attr])
+            result+=attr;
+        }
+        console.log('去重以后的字符串是:'+result)
+    </script>
+</body>
+</html>

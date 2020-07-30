@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top:50px;
+            left:0px;
+            background:pink;
+        }
+    </style>
+</head>
+<body>
+    <button id='btn'>点击运动开始400</button>
+    <div id="box">
+
+    </div>
+    <script>
+        /* 
+            运动效果:
+                ==>匀速运动:每次运动的距离都一样
+                ==>缓动运动:速度由快到慢运动到目标
+            如何让div动起来:
+                ==>每隔一段时间,让div运动一段距离
+                ==>起始点:
+                    一个运动的起始点就是元素的位置,我们通过api获取当前元素的位置,让这个位置作为元素的起始点
+                ==>目标:
+                ==>速度:
+                    如果是匀速运动,速度每次都是固定的,我现在要缓动,速度由大到小
+                    速度 = 剩余路程/10
+        */
+        var box = document.getElementById('box');
+        var timer = null;
+        timer = setInterval(function(){
+            //1 确定起始点
+            var start = parseInt(getStyle(box,'left'));//这个是带单位的,不方便做加法运算,所以要进行取整
+            //2 计算速度
+            // var speed = 10; //匀速运动
+            var speed = (400 - start)/10
+            //3 目标位置
+            var target = start+speed;
+            //4 定位元素
+            box.style.left = target+'px';
+        },1000/60);
+
+
+        //为了考虑兼容性问题,单独封装一个方法,用于获取元素的某个属性值,并返回
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                //因为attr是变量,所以要加[]
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                return dom.currentStyle[attr];//IE7,8
+            }
+        }
+    </script>
+</body>
+</html>

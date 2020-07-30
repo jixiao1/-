@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+       
+    </ul>
+    <script>
+        var json = [
+            {name:'张三',age:12},
+            {name:'lisi',age:13},
+            {name:'王五',age:11}
+        ]
+        //需求:根据json里面的内容,在ul中插入li
+
+        var ul = document.querySelector('ul')
+        //方法一:json里面有一个数据,就产生一个li,然后把这个li放到ul里面
+        // json.forEach(function(val){
+        //     var li = document.createElement('li');
+        //     li.innerHTML = `我是${val.name},我今年${val.age}岁`;
+        //     ul.appendChild(li)
+        // })
+        //这个方法从性能角度来说不可取,每次插入li会导致页面的回流和重绘;
+
+        //方法二:先拼接字符串,在放到ul里面
+        // var html = "";
+        // json.forEach(function(val){
+        //     html+=`<li>我是${val.name},我今年${val.age}岁</li>`
+        // })
+        // ul.innerHTML = html;
+
+        //方法三:js提供了一种dom容器(文档碎片节点),可以让你先把dom插入到这个容器里面,最后把这个容器一次性插入目标中
+        var container = document.createDocumentFragment();//文档碎片节点
+        json.forEach(function(val){
+            var li = document.createElement('li');
+            li.innerHTML = `我是${val.name},我今年${val.age}岁`;
+            container.appendChild(li)
+        }) 
+        // console.log(container)
+        ul.appendChild(container)
+    </script>
+</body>
+</html>

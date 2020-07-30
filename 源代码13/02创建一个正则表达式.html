@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            创建一个正则表达式
+                ==>想制定"规则",必须按照要求的方式来制定
+                ==>把一些字符和符号写在//中间,叫做正则表达式,比如/abcdefg/
+                ==>创建正则表达式有两个方法:字面量和构造函数创建
+            字面量创建
+                ==>/里面是一些字符或符号/
+                ==>//里面的内容一定是字符串,不是变量名
+            构造函数创建
+                ==>new RegExp(可以是"字符串",可以是变量名)
+
+
+        */
+
+        // 字面量创建
+        var reg1 = /abcdefg/;
+        console.log(reg1);
+
+        // 构造函数创建
+        var reg2 = new RegExp("abcdefg")
+        console.log(reg2)
+    </script>
+</body>
+</html>

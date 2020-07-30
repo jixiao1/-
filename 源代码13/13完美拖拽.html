@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>完美拖拽</title>
+	<style type="text/css">
+		html,body{overflow:hidden;}
+		body,div,h2,p{margin:0;padding:0;}
+		body{color:#fff;background:#000;font:12px/2 Arial;}
+		p{padding:0 10px;margin-top:10px;}
+		span{color:#ff0;padding-left:5px;}
+		#box{position:absolute;width:300px;height:150px;background:#333;border:2px solid #ccc;top:50%;left:50%;margin:-75px 0 0 -150px;}
+		#box h2{height:25px;cursor:move;background:#222;border-bottom:2px solid #ccc;text-align:right;padding:0 10px;}
+		#box h2 a{color:#fff;font:12px/25px Arial;text-decoration:none;outline:none;}
+	</style>
+</head>
+<body>
+	<div id="box" style="margin-left: 0px; margin-top: 0px; left: 533px; top: 231px;">
+	    <h2 id="tz"><a href="javascript:;" id="a1">点击回放拖动轨迹</a></h2>
+	    <p><strong>Drag:</strong><span>false</span></p>
+	    <p><strong>offsetTop:</strong><span>231</span></p>
+	    <p><strong>offsetLeft:</strong><span>533</span></p>
+	</div>
+</body>
+<script>
+    /* 
+        项目需求
+            1 实现box能拖拽,在h2上按下鼠标可以开始拖拽
+            2 记录box的历史位置
+            3 点击a标签,box沿着历史位置移动
+    */
+    //获取相关元素
+    var box = document.querySelector('#box');//要被拖拽移动的盒子
+    var tz = document.querySelector('#tz');//点击开始拖拽的位置
+    var a1 = document.querySelector('#a1');//点击回放的位置
+    //用一个数组记录位置
+    var positionArr = [];//[{left:100,top:200},{left:30,top:45},.....]
+    //1 实现box能拖拽,在h2上按下鼠标可以开始拖拽(不做边界检测)
+    tz.onmousedown = function(e){
+        e = window.event||e;
+        //记录鼠标在box里面的位置
+        var startX = e.offsetX;
+        var startY = e.offsetY;
+        document.onmousemove = function(e){
+            e = window.event||e;
+            //记录鼠标距离页面的位置
+            var left = e.pageX;
+            var top = e.pageY;
+            //计算出div定位的top和left
+            left = left - startX;
+            top = top - startY;
+            //定位box
+            box.style.left = left+"px"
+            box.style.top = top+"px";
+            //2 记录box的历史位置
+            //我打算用一个数组记录坐标[]
+            //每个坐标是一个对象{left:当前的box的left,top:当时的box的top}
+            //有几个坐标,数组里面就有几个对象
+            positionArr.push({
+                left:left,
+                top:top
+            })
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            // console.log(positionArr)
+        }
+
+    }
+    //3 点击a标签,box沿着历史位置移动
+    var timer;    
+    a1.onclick = function(){
+        var i = 0;//当前运动到的坐标点
+        //每隔一段时间运动一个坐标点
+        timer = setInterval(function(){
+            //每60分之1秒运动一个坐标点
+            //定位box
+            box.style.left = positionArr[i].left+"px"
+            box.style.top = positionArr[i].top+"px";
+            i++;
+            if(i>=positionArr.length){
+                //清除定时器
+                clearInterval(timer);                
+            }
+        },1000/60)
+    }
+</script>
+</html>

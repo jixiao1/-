@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            数组排序方法:sort()
+                ==>使用方法:https://www.w3school.com.cn/jsref/jsref_sort.asp
+                ==>参数是一个函数,描述的是排序规则
+                ==>参数是一个比较函数，该函数要比较两个值,有两个形参
+                ==>函数里面的返回值书写方式如下
+                ==>如果希望从小到大排列,写成
+                    function(a,b){return a-b}
+                ==>如果希望从大到小排列,写成
+                    function(a,b){return b-a}
+        */
+
+        var arr = [323,3,52,3,3,11,43,4,34];
+        arr.sort(function(a,b){
+            //这个函数要有一个返回值,说a和b的顺序
+            // if(a<b){
+            //     return -1;//若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
+            // }
+            // if(a==b){
+            //     return 0;//若 a 等于 b，则返回 0。
+            // }
+            // if(a>b){
+            //     return 1;//若 a 大于 b，则返回一个大于 0 的值。
+            // }
+
+            //从小到大可以简化里面的内容:
+            //a<b 返回负数
+            //a==b 返回0
+            //a>b  返回正数
+            // return a-b;
+            //从大到小
+            return b-a;
+        })
+        console.log(arr)
+    </script>
+</body>
+</html>

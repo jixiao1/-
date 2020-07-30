@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>兄弟多个1</li>
+        <li>兄弟多个2</li>
+        <li>兄弟多个3</li>
+        <li>兄弟多个4</li>
+        <li>兄弟多个5</li>
+        <li>兄弟多个6</li>
+        <li>兄弟多个7</li>
+        <li>兄弟多个8</li>
+    </ul>
+    <script>
+        /* 
+            项目需求:
+                1 单数行粉红色,双数行蓝色
+                2 鼠标移出的li,背景变红色
+                3 鼠标出li,当前li变化原来的颜色
+        */
+        // 获取所有的li标签
+        var liS = document.querySelectorAll('li');
+        // 用一个变量记录当前被移入的行的背景色,当移出的时候,把这个背景色赋值回去
+        var color;
+
+        //1 单数行粉红色,双数行蓝色
+        for(var i=0;i<liS.length;i++){
+            if(i%2==0){
+                //偶数行
+                liS[i].style.backgroundColor = "blue"
+            }else{
+                //奇数行
+                liS[i].style.backgroundColor = 'pink';//样式里面带-,去掉-,驼峰命名:background-color写成backgroundColor
+            }
+            
+            liS[i].onmouseover = function(){
+                //2 鼠标移出的li,背景变红色:简单的办法
+                color = this.style.backgroundColor;
+                this.style.backgroundColor = "red";
+            }
+            liS[i].onmouseout = function(){
+                // 3 鼠标出li,当前li变化原来的颜色
+                this.style.backgroundColor = color;
+
+            }
+        }
+
+        
+        
+        
+        
+        
+        
+        //2 鼠标移出的li,背景变红色(使用笨办法实现)
+        // var color;
+        //用一个变量记录当前被移入的行的背景色,当移出的时候,把这个背景色赋值回去
+        // liS[0].onmouseover = function(){
+        //     color = this.style.backgroundColor;
+        //     this.style.backgroundColor = "red";
+        // }
+        // liS[0].onmouseout = function(){
+        //     this.style.backgroundColor = color;
+
+        // }
+        // liS[1].onmouseover = function(){
+        //     color = this.style.backgroundColor;
+        //     this.style.backgroundColor = "red";
+        // }
+        // liS[1].onmouseout = function(){
+        //     this.style.backgroundColor = color;
+
+        // }
+        // liS[2].onmouseover = function(){
+        //     color = this.style.backgroundColor;
+        //     this.style.backgroundColor = "red";
+        // }
+        // liS[2].onmouseout = function(){
+        //     this.style.backgroundColor = color;
+
+        // }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        正则表达式,也叫规则表达式
+            ==>由我们自己书写的"规则",专门用来检测"字符串"是否符合规则使用
+            ==>我们使用一些特殊的字符或者符号来定义一个"规则公式",用定义好的公式取检测字符串是否合格
+        */
+        var reg = /\d/;  //reg就是正则表达式
+        var str = "abc"; //要被检测的字符串
+        var str2 = "abc123";//要被检测的字符串
+        console.log(reg.test(str))//要被检测的字符串不合格就返回false
+        console.log(reg.test(str2))//要被检测的字符串不合格就返回true
+    </script>
+</body>
+</html>

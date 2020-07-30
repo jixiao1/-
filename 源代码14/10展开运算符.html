@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            展开运算符
+                ===>es6里面新增一个运算符... ,叫做展开运算符
+                    ==>作用就是把数组展开
+                    ==>合并数组的时候可以使用
+                    ==>作用就是把对象展开,合并到新的对象里面
+                    ==>在函数传递参数的时候也可以使用
+        */
+
+        //作用就是把数组展开
+        // let arr = [1,2,3,4,5]
+        // console.log(...arr)
+        // //等价于:
+        // console.log(arr[0],arr[1],arr[2],arr[3],arr[4])
+
+        //合并数组的时候可以使用
+        // let arr1 = [66,77,88,...arr];
+        // // 等价于
+        // // let arr1 = [66,77,88,arr[0],arr[1],arr[2],arr[3],arr[4]];
+        // console.log(arr1)
+
+        // //作用就是把对象展开
+        // var obj = {
+        //     a:1,
+        //     b:2
+        // }
+        // var obj1 = {
+        //     ...obj,
+        //     a:45,
+        //     d:34            
+        // }
+        // console.log(obj1);//对象的每个键都是唯一的,不允许重复,如果有重复,后面的覆盖前面的
+
+        //在函数传递参数的时候也可以使用
+        let arr = [11,22,33];
+        function fn(a,b,c){
+            console.log(a)
+            console.log(b)
+            console.log(c)
+        }
+        fn(...arr);
+        //等价于
+        // fn(arr[0],arr[1],arr[2]);
+
+    </script>
+</body>
+</html>

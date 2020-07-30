@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            数组的常用方法:
+                + 数组的常用方法之 reverse
+                    ==>reverse是用来反转数组的
+                + 数组常用方法之 sort
+                    ==>sort是用来给数组排序的
+                    ==>排序的方法需要你来定义,如果不定义采用默认的字符编码顺序排序
+                    ==>排序方法后面讲解
+                    ==>这只是一个基本的简单方法
+                + 数组常用方法之 concat
+                    ==>把多个数组进行拼接
+                    ==>这个方法和之前的方法有不一样地方,就是concat不会改变原始数组,而是返回一个新的数组
+                    ==>返回值:返回拼接好的新数组
+                + 数组常用方法之 join
+                    ==>join是把数组里面的每一项内容链接起来,变成一个字符串
+                    ==>可以自己定义每一个之间的连接符  join("要以什么内容链接")
+                    ==>不会改变原始数组,而是把连接好的字符返回
+        */
+
+
+        //数组的常用方法之 reverse
+        // var arr = [1,2,3,4,5];
+        // arr.reverse();
+        // console.log(arr)
+
+        //数组常用方法之 sort
+        // var arr = [6,1,2,4,2,4,2];
+        // arr.sort();
+        // console.log(arr);
+
+
+        //数组常用方法之 concat
+        // var arr1 = [1,2,3,4];
+        // var arr2 = [67,78,90];
+
+        // // var newArr = arr1.concat(arr2);
+        // var newArr = arr1.concat([67,78,90]);
+
+        // console.log(newArr)
+
+        //数组常用方法之 join
+        var arr = [1,2,3,4]
+        // var str = arr.join();//可以不指定链接符,会只用默认的逗号.
+        var str = arr.join('===')
+        console.log(str);
+        console.log(arr)
+
+    </script>
+</body>
+</html>

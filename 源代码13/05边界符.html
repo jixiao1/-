@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            边界符
+                ==> ^ :表示开头
+                ==> $ :表示结束
+                ==> ^$:同时出现,表示只能是他们中间的内容,严格匹配
+            边界符就是限制字符串的开始和结束的
+        */
+
+    //第一题
+    // var reg = /^\d{3,5}/
+    // var str = 'abc'
+    // var str2 = 'abc123'
+    // var str3 = '1'
+    // var str4 = '1234567'
+    // var str5 = '123'
+    // var str6 = '12345'
+    // console.log(reg.test(str))//false
+    // console.log(reg.test(str2))//false
+    // console.log(reg.test(str3))//false
+    // console.log(reg.test(str4))//true
+    // console.log(reg.test(str5))//true
+    // console.log(reg.test(str6))//true 
+
+    //第二题
+    // var reg = /\d{3,5}$/
+    // var str = 'abc'
+    // var str2 = 'abc123'
+    // var str3 = '1'
+    // var str4 = '1234567'
+    // var str5 = '123'
+    // var str6 = '12345'
+    // console.log(reg.test(str)) ;//false
+    // console.log(reg.test(str2)) ;//true
+    // console.log(reg.test(str3)) ;//false
+    // console.log(reg.test(str4)) ;//true
+    // console.log(reg.test(str5)) ;//true
+    // console.log(reg.test(str6)) ;//true
+
+    //第三题
+    var reg = /^\d{3,5}$/
+    var str = 'abc'
+    var str2 = 'abc123'
+    var str3 = '1'
+    var str4 = '1234567'
+    var str5 = '123'
+    var str6 = '12345'
+    console.log(reg.test(str)) ;//false
+    console.log(reg.test(str2)) ;//false
+    console.log(reg.test(str3)) ;//false
+    console.log(reg.test(str4)) ;//false,$和^同时出现,表示只能是3到5个数字,不能有其他的
+    console.log(reg.test(str5)) ;//true
+    console.log(reg.test(str6)) ;//true
+    </script>
+</body>
+</html>

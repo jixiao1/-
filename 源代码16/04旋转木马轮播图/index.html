@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+    <style>
+        /* li:nth-child(1){
+            width: 400px;
+            top:20px;
+            left:50px;
+            opacity: 0.2;
+            z-index: 2;
+        }
+        li:nth-child(2){
+            width: 600px;
+            top:70px;
+            left:0px;
+            opacity: 0.8;
+            z-index: 3;
+        }
+        li:nth-child(3){
+            width: 800px;
+            top:100px;
+            left:200px;
+            opacity: 1;
+            z-index: 4;
+        }
+        li:nth-child(4){
+            width: 600px;
+            top:70px;
+            left:600px;
+            opacity: 0.8;
+            z-index: 3;
+        }
+        li:nth-child(5){
+            width: 400px;
+            top:20px;
+            left:750px;
+            opacity: 0.2;
+            z-index:2;
+        } */
+    </style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+   <div class="slide" id="slide">
+       <ul>
+           <li><a href="#"><img src="images/1.webp" alt=""/></a></li>
+           <li><a href="#"><img src="images/2.webp" alt=""/></a></li>
+           <li><a href="#"><img src="images/3.jpg" alt=""/></a></li>
+           <li><a href="#"><img src="images/4.webp" alt=""/></a></li>
+           <li><a href="#"><img src="images/5.jpg" alt=""/></a></li>
+       </ul>
+       <div class="arrow" id="arrow">
+           <a href="javascript:;" class="prev" id="prev"></a>
+           <a href="javascript:void(0);" class="next" id="next"></a>
+       </div>
+   </div>
+</div>
+<script src="../public.js"></script>
+<script>
+//json数组记录了五个位置的样式
+var json = [
+        {   
+            "width":400,
+            "top":20,
+            "left":50,
+            "opacity":20,
+            "zIndex":2
+        },
+        {  
+            "width":600,
+            "top":70,
+            "left":0,
+            "opacity":80,
+            "zIndex":3
+        },
+        {   
+            "width":800,
+            "top":100,
+            "left":200,
+            "opacity":100,
+            "zIndex":4
+        },
+        {  
+            "width":600,
+            "top":70,
+            "left":600,
+            "opacity":80,
+            "zIndex":3
+        },
+        {   
+            "width":400,
+            "top":20,
+            "left":750,
+            "opacity":20,
+            "zIndex":2
+        }
+]
+
+
+    /* 
+        需求分析:
+            1 把五个li展开分布(分布过程是缓动)
+            2 鼠标移入slide里面,箭头arrow显示
+            3 点击prev箭头,要看上一张
+            4 点击next箭头,要看下一张
+            5 数据节流:当动画没有完成,不能继续点击箭头
+    */
+    //获取相关元素
+    var slide = document.getElementById('slide');//旋转木马容器
+    var liS = slide.children[0].children ;//所有的li
+    var arrow = slide.children[1];//箭头所在的容器
+    var prev = arrow.children[0];//上一张箭头
+    var next = arrow.children[1];//下一张箭头
+    var flag = true;//默认按钮可以点击,flag为true表示按钮可以点击,为false表示不能点击
+
+    //1 把五个li展开分布(分布过程是缓动)
+    showData();    
+    
+    //2 鼠标移入slide里面,箭头arrow显示
+    slide.onmouseenter = function(){
+        arrow.style.opacity = 1;
+        arrow.style.filter = "alpha(opacity=100)";
+    }
+    slide.onmouseleave = function(){
+        arrow.style.opacity = 0;
+        arrow.style.filter = "alpha(opacity=0)";
+    }
+    // 3 点击prev箭头,要看上一张
+    prev.onclick = function(){
+        if(flag==true){
+            //如果flag是true,表示上一次动画已经完成了,然后通过回调函数把flag变成了true
+            flag = false;
+            var obj = json.shift();
+            json.push(obj);
+            showData();  
+        }
+        
+    }
+    // 4 点击next箭头,要看下一张
+    next.onclick = function(){
+        if(flag){
+            //如果flag是true,表示上一次动画已经完成了,然后通过回调函数把flag变成了true
+            flag = false;
+            var obj = json.pop();
+            json.unshift(obj);
+            showData();  
+        }
+    }
+
+    //把li按照json展示出来
+    function showData(){
+        for(var i=0;i<liS.length;i++){
+            animation(liS[i],json[i],function(){
+                flag=true;
+            })
+        }
+    }
+</script>
+</body>
+</html>

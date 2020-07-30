@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>02二维数组</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//通过循环按行顺序为一个5×5的二维数组赋1到25的自然数，然后输出该数组的左下半三角。试编程。
+	//第一步:简单数组	
+	/*
+	var arr = [[1,2,3],[4,5,6]];
+	document.write("<table>")
+	for(var i=0;i<arr.length;i++){
+		//外层循环是行
+		document.write('<tr>')
+		for(var j=0;j<arr[i].length;j++){
+			document.write('<td>'+arr[i][j]+'</td>')
+		}
+		document.write('</tr>')
+		
+	}
+	document.write("</table>")
+	*/
+
+	// var p = document.getElementsByTagName('p')[0];
+	// p.innerHTML = "<h1>hello<span>我是span标签</span></h1>"
+
+	//第二步:通过循环按行顺序为一个5×5的二维数组赋1到25的自然数	,使用innerHTML
+	var arr = [[],[],[],[],[]];
+	var num = 1;
+	var str = "<table>";
+
+	for(var i=0;i<arr.length;i++){
+		//外层循环表示行
+		str+="<tr>";
+		//先给数组arr[i],里面给5个元素
+		for(var j=0;j<5;j++){			
+			arr[i][j] = num++;			
+		}	
+		for(var h=0;h<=i;h++){
+			//每一个arr[i][j]就是行里面的一列
+			str+="<td>"+arr[i][h]+"</td>";
+		}		
+		
+		str+="</tr>";		
+	}
+	str+="</table>";
+	console.log(str);
+	console.log(arr);
+	document.body.innerHTML = str;
+
+</script>
+</html>

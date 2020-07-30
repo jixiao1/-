@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <script>
+        /* 
+        event:事件
+            + 之前学过的事件:
+                ==>onload:页面加载完成
+                ==>onchange:表单内容改变
+                ==>onclick:单击
+                ==>ondblclick:双击
+                ==>onscroll:滚动
+            + 什么事件
+                ==>一个事件由三个东西组成
+                    ==>触发谁的事件:事件源
+                    ==>触发什么事件:事件类型
+                    ==>触发以后做什么:事件处理函数
+                
+        */
+       var div = document.querySelector('div');
+       div.onclick = function(){
+           //触发谁的事件==>这个事件是由div触发的
+           //触发什么事件==>onclick ==>触发了点击事件
+           //触发以后做什么==>打印,就是function函数里面写的内容就是要做的事情
+           //当我们点击div的时候,就会执行事件处理函数内的代码
+           //每点击一次,就会执行一次事件处理函数
+           console.log('div被点击了')
+       }
+    </script>
+</body>
+</html>

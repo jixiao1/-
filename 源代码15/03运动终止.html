@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top:50px;
+            left:800px;
+            background:pink;
+        }
+    </style>
+</head>
+<body>
+    <button id='btn'>点击运动开始400</button>
+    <div id="box">
+
+    </div>
+    <script>
+       
+        var box = document.getElementById('box');
+        var timer = null;
+        timer = setInterval(function(){
+            //1 起始点:获取元素的当前位置
+            var start = box.offsetLeft;//获取元素距离最近的有定位的父元素的距离
+            // console.log("元素的起始位置:"+start)
+            //2 计算速度:为了能到到达,速度要取整
+            // var speed = Math.ceil((400-start)/10);//速度为正
+            // var speed = Math.floor((400-start)/10);//速度为负
+            var speed = (400-start)/10;
+            speed = speed>0?Math.ceil(speed):Math.floor(speed);
+            //3 下一个位置
+            var next = start + speed;
+            // console.log('元素的定位位置:'+next)
+            //4 定位元素
+            box.style.left = next+"px";
+            //停止条件
+            if(next==400){
+                clearInterval(timer)
+            };
+        },1000/60)
+        
+
+        /* 
+            分析:从0运动到400
+                计算的下一个位置:396.4
+                下一次运动的时候
+                var start = box.offsetLeft;//396
+                var speed = (400-396)/10 =0.4
+                var next = 396+0.4=396.4
+
+            分析:从800运动到400
+                计算的下一个位置:404.5
+                下一次运动的时候
+                var start = box.offsetLeft;//405
+                var speed = (400-405 )/10 = -0.5
+                var next = 405 + (-0.5) = 404.5
+        */
+
+    </script>
+</body>
+</html>

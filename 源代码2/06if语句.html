@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            if条件分支结构
+                +if语句
+                    ==>通过一个if语句来判断代码执行与否
+                    ==>语法:if(条件){要执行的代码}
+                    ==>通过if里面的条件是否成立来决定{}里面的代码是否执行
+                    ==>if里面的条件,为true就表示成立,就会执行{}里面的代码
+                    ==>if里面的条件,为false就表示不成立,就不会执行{}里面的代码
+                    ==>条件不一定是布尔值,不管条件是什么数据类型,只要他在if()里面,强转boolean
+         */
+         //if里面的条件,为true就表示成立,就会执行{}里面的代码
+         if(true){
+            console.log("条件是true,代码执行了")
+         }
+         //if里面的条件,为false就表示不成立,就不会执行{}里面的代码
+         if(false){
+            console.log("条件是false,我的代码执行了吗")
+         }
+
+         //if里面的条件,为false就表示不成立,就不会执行{}里面的代码
+         if(1>2){
+             console.log('条件是1>2,代码执行了')
+         }
+
+         //if里面的条件,为true就表示成立,就会执行{}里面的代码
+         if(3){
+             console.log('条件是3,代码执行了')
+         }
+         //很多同学犯这个错误,他们本来是想写a==3这个条件,结果少了个=号
+         var a = 4;
+         if(a = 3){
+             console.log('条件是a=3,代码执行了');//会输出
+         }
+
+         //判断一个人是否是成人人
+         var age = 21;
+         if(age>=18){
+            console.log('是个成年人');
+         }
+    </script>
+</body>
+</html>

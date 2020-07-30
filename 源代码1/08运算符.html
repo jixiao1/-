@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            运算符:
+                1 数学运算符
+                    ==>+:如果左右都是数字,做加法运算,如果有一个是字符串,做拼接
+                    ==>-:减法
+                    ==>/:除法
+                    ==>*:乘法
+                    ==>%
+                    ==>js不擅长小数运算
+                2 赋值运算符
+                    ==>=
+                        ==>就是把等号右边的值赋给等号左边的变量名
+                        ==>var num = 1100
+                        ==>就是把1100赋值给num变量
+                        ==>那num的值就是1100
+                    ==>+=
+                        c+=2等价于c = c+2;
+                    ==>-=
+                        c-=2等价于c = c-2
+                    ==>*=
+                        c*=2等价于c = c*2
+                    ==>/=
+                        c/=2等价于c = c/2
+                    ==>%=
+                        c%=3等价于c = c%3
+                    ==>符号是一体的,中间不能加空格
+                3 比较运算符:结果是布尔值
+                    ==> == 
+                        ==>比较符号两边的值是否相等,不管数据类型
+                        ==>1=="1" 
+                        ==>两个值是一样的,返回true
+                    ==> ===
+                        ==>比较符号两边的值和数据类型是否相等
+                        ==>1==="1" 
+                        ==>两个的值相等,但是数据类型不一样,返回false
+                    ==>!=
+                        ==>比较符号两边的值是否不等,不管数据类型
+                        ==>1!="1"
+                        ==>两个值是相等的,返回false
+                    ==>!==
+                        ==>比较符号两边的值和数据类型是否不等
+                        ==>1!=='1'
+                        ==>两个值是相等的,类型不等,返回true
+                    ==> >
+                        ==>比较左边的值是否大于右边的值
+                        ==>1>2
+                        ==>返会false
+                    ==> >=
+                        ==>比较左边的值是否大于等于右边的值
+                        ==>1>=2
+                        ==>返会false
+                    ==> <
+                        ==>比较左边的值是否小于右边的值
+                        ==>1<2
+                        ==>返会true
+                    ==> <=
+                        ==>比较左边的值是否小于等于右边的值
+                        ==>1<=2
+                        ==>返会true
+        */
+        // 1 数学运算符
+        var a = 34.3;
+        var b = 3;
+        console.log(a+b)
+        console.log(a-b)
+        console.log(a/b)
+        console.log(a*b)
+        console.log(a%b)
+        //作业:测试0.1到0.9,哪些两两会出现问题
+        
+        //2 赋值运算符
+        var c = 12;
+        c +=12;//c = c+12
+        console.log(c)
+        c *=3;//c = c*3
+        console.log(c)//72
+
+
+        //3 比较运算符:返回值是布尔值
+        console.log(2=="2");//true
+        console.log(2==="2");//false
+        console.log(null==undefined);//true
+        console.log(null===undefined);//false
+        console.log(null>undefined);//false
+        console.log(null<undefined);//false
+        console.log(1>2);//false
+        console.log(12>2);//true
+        console.log("12">"2");//false
+        console.log("12"<"2");//true
+        
+    </script>
+</body>
+</html>

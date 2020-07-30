@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            prototype:构造函数的原型,不是给函数用的,给实例对象使用的
+            __proto__:实例对象__proto__指向其构造函数的原型
+            constructor:实例对象的__proto__上面,有一个天生自带的成员:constructor,指向的是实例对象的构造函数
+
+            总结:
+                到这里,我们就发现面向对象的思想模式了
+                    ==>当我要完成一个功能的时候
+                    ==>先看看内置构造函数有没有能我提供一个完成功能的对象的能力
+                    ==>如果没有,我们就自己写一个构造函数,能创造成一个完成功能的对象
+                    ==>然后在用我们写的构造函数new一个对象出来,帮助我们完成功能就可以了
+                比如:tab选项卡
+                    ==>我们要一个对象
+                    ==>对象包含一个属性:是每一个点击的按钮
+                    ==>对象包含一个属性:是每一个切换的盒子
+                    ==>对象包含一个方法:是点击按钮,切换盒子的能力
+                    ==>那么我们就要自己写一个构造函数,要求new出来的对象由这些内容就可以了
+                    ==>然后在用构造函数new一个对象就可以了
+        */
+
+        function Human(){
+            this.name = "战三"
+        }
+        var h1 = new Human();
+        console.log(h1.constructor == Human)
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background:green;
+        }
+    </style>
+</head>
+<body>
+    <ul class="aa">
+        <li class="item" aa="1">1</li>
+        <li class="item" bb="45">2</li>
+        <li class="item" dd="hello">
+            <a href="http://www.baidu.com" cc="haha">baidu</a>
+        </li>
+    </ul>
+    <script>
+        /* 
+            操作属性
+                ==>innerHTML : 获取元素内部的html结构,同时可以设置元素内部的html结构,认知html标签
+                ==>innerText : 获取元素内部的文本,同时可以设置元素文本,认知html标签
+                ==>className : 专门用来操作元素的类名的,可以获取也可以赋值
+                ==>style     : 专门用来给元素添加css样式的,添加的是行内样式
+                ==>getAttribute: 获取元素的某个属性(包含自定义属性)
+                    ==>语法:    
+                        ==>DOM对象.getAttribut(属性名)
+                        ==>如果要获取的属性名是系统属性:比如a标签的href,img的src,可以直接写成: DOM对象.属性名
+                ==>setAttribute: 设置元素的某个属性(包含自定义属性)
+                    ==>语法:
+                        ==>DOM对象.setAttribut(属性名,属性值)
+                        ==>如果要设置的属性名是系统属性:比如a标签的href,img的src,可以直接写成: DOM对象.属性名 = 属性值
+                ==>removeAttribute: 移除元素的属性
+                    ==>语法:    
+                        ==>DOM对象.removeAttribute(属性名)
+        
+        */
+
+        var ul = document.querySelector('ul');//返回的是一个DOM对象
+        console.log(ul.innerHTML)
+        console.log(ul.innerText)
+
+        console.log(ul.className);
+        ul.className = "box"
+
+        ul.style.width = "500px";//行内式
+
+        //getAttribute: 获取元素的某个属性(包含自定义属性)
+        var a = document.querySelector('a');
+        console.log(a.getAttribute('cc'))
+        console.log(a.getAttribute('href'))
+        console.log(a.href)
+
+
+        //setAttribute: 设置元素的某个属性(包含自定义属性)
+        a.setAttribute('fjdlskjf',"world");
+        a.setAttribute('href',"https://www.taobao.com");
+        a.href = "https://www.jd.com"
+
+
+        //removeAttribute:移除元素的某个属性
+        a.removeAttribute('fjdlskjf');
+        a.removeAttribute('href')
+    </script>
+</body>
+</html>

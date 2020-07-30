@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="UTF-8">
+          <title>10敏感词</title>
+     </head>
+     <style type="text/css">
+          *{
+              padding: 0; margin: 0;
+          }
+          #edit {
+              margin: 0 auto;
+              width: 1000px;
+              text-align: center;
+              overflow: hidden;
+          }
+          #commentlist {
+              margin: 0 auto;
+              width: 1000px;
+          }
+          #commentlist .comment{
+              width: 800px;
+              min-height: 80px;
+              margin: 20px auto;
+              background: darkkhaki;
+              border-radius: 3px;
+              position: relative;
+              overflow: hidden;
+          }
+          #commentlist .comment p{
+              margin: 10px 10px;
+          }
+          #sendBtn {
+              display: block;
+              margin: 10px auto;
+              width: 100px;
+              height : 30px;
+              line-height: 30px;
+              background: linear-gradient(to bottom, #faa, #f40);
+              box-shadow: 0 0 2px #000;
+              border-radius: 4px;
+          }
+
+          #sendBtn:hover{
+              cursor: pointer;
+              background: linear-gradient(to bottom, #fee, #f40);
+          }
+     </style>
+     <body>
+          <div id="edit">
+              <p>请输入你的发言:</p>
+              <p>
+                   <textarea id="contentInput" name="" rows="5" cols="60"></textarea>
+              </p>
+              <p><a class="send" id="sendBtn">发送</a></p>
+          </div>
+          <div id="commentlist">
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+              <div class="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+              <div class="comment" id="comment">
+                   <p>张三疯:</p>
+                   <p style="word-break: break-all;">
+                   xxxxxxxxxxxxxxxxxxxxxx
+                   </p>
+                   <p style="text-align: right;">2016/9/4 16:06</p>
+              </div>
+          </div>
+     </body>
+</html>
+<script>
+    /* 
+        项目需求:
+            1 获取contentInput里面用户输入的内容
+            2 点击发送的时候
+            3 根据用户输入内容和时间生成一个发言记录
+            4 把发言记录插入到记录表的最前面
+        分析技术点:
+            1 获取contentInput里面用户输入的内容
+                ==>获取textarea里面的内容,采用value
+            2 点击发送的时候
+                ==>给发送按钮绑定click事件
+            3 根据用户输入内容和时间生成一个发言记录
+                ==>过滤用户输入内容中的敏感词:['tmd','md','tnnd']
+                ==>获取当前的时间
+                ==>生成一个发言记录,这个记录的格式和id叫comment的格式一样,所以我决定克隆一个,但是id,事件,内容要更换
+            4 把发言记录插入到记录表的最前面
+                ==>父节点.insertBefore(要插入的记录,最前面的记录)
+        攻克关键技术点
+            1 克隆:cloneNode
+            2 过滤敏感词:str.replace(/tmd/g,'*');str.replace(/md/g,'*');str.replace(/tnnd/g,'*')
+    */
+
+
+    
+    // //问题提出:如果像下面一样直接复制,那么复制以后的节点和原来的是同一个节点
+    // //1 获取要被克隆的节点
+    // var dom = document.querySelector('#comment');
+    // //2 复制一个,其实newDom和dom是同一个节点
+    // var newDom = dom;
+    // //3 插入commentlist的最前面
+    // var commentList = document.querySelector('#commentlist');
+    // commentList.insertBefore(newDom,commentList.children[0]);
+    
+    /* 
+        直接复制节点是不行的
+            ==>js提供了一个复制节点的办法:cloneNode
+            ==>语法:旧节点.cloneNode(是否克隆子元素,默认false)
+            ==>返回值:克隆以后的新节点
+    */
+
+    //1 获取要被克隆的节点
+    var dom = document.querySelector('#comment');
+    //2 克隆一个newDom
+    var newDom = dom.cloneNode(true);
+    //3 修改newDom的id和时间和内容
+    newDom.removeAttribute('id')
+    newDom.children[2].innerHTML = new Date().toLocaleString();
+    newDom.children[1].innerHTML = "hello hello"
+    //4 插入commentlist的最前面
+    var commentList = document.querySelector('#commentlist');
+    commentList.insertBefore(newDom,commentList.children[0]);
+</script>
+
+
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="text"> -->
+    <script>
+        /* 
+        键盘事件:
+            + 在键盘按键事件中,主要要做两件事
+                ==>判断按下的是哪个按键
+                ==>有没有组合按键:shift+a/ctrl+a/alt+a
+                ==>不是所有元素都可以绑定键盘事件
+                ==>表单元素和document绑定键盘事件
+            + 确定按键
+                ==>事件对象记录本次事件的描述信息
+                ==>e = window.event||e
+                ==>e.按键编码
+                ==>e.keyCode 或者 e.which
+                ==>按键编码 = e.keyCode||e.which;
+            + 常见的键盘编码(了解)
+                ==>8 删除键 backspace
+                ==>9 制表符 tab
+                ==>13 回车键 enter
+                ==>16 上档键 shift
+                ==>17 ctrl键
+                ==>18 alt键
+                ==>27 取消键 esc
+                ==>32 空格键 space
+                ==>46 删除键 delete
+
+        */
+
+        // document上的键盘事件
+        document.onkeyup = function(e){
+            //确定按键
+            e = window.event||e;
+            var code = e.keyCode || e.which;//按键编码
+
+            //知道按键编码以后,可以通过String.fromCharCode(编码),把编码转换成具体的字符
+            code = String.fromCharCode(code);//具体的字符
+
+            console.log('document上的键盘事件触发了,现在按下的是'+code)
+        }
+
+        // 表单元素上的键盘事件
+        // var inp = document.querySelector('input');
+        // inp.onkeydown = function(){
+        //     console.log('input上的键盘事件发生了')
+        // }
+    </script>
+</body>
+</html>

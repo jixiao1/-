@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width:200px;
+            height: 200px;
+            position: absolute;
+            left:0;
+            top:0;
+            background:red;
+
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script src="./public.js"></script>
+    <script>
+
+        var box = document.getElementsByTagName('div')[0];
+        animation(box,{
+            left:800,
+            top:600,
+            opacity:0,
+            zIndex:100
+        },function(){
+            animation(box,{
+                left:0,
+                top:0,
+                opacity:50,
+                zIndex:9999999
+            })
+        })
+        
+        /*
+            animation:实现多属性同时缓动
+            参数:
+                dom:要运动的节点
+                json:是运动的目标的集合,格式是json对象
+                callback:是运动完成以后执行的函数(回调函数:callback)
+        */
+        // function animation(dom,json,callback){
+        //     //要用定时器,先清定时器
+        //     clearInterval(dom.timer);
+        //     //一段时间运动一段距离
+        //     dom.timer = setInterval(function(){
+        //         var flag = true;                
+        //         //先运动left
+        //         var target = json.left;
+        //         var start = parseInt(getStyle(dom,'left'));
+        //         var speed = (target - start)/10
+        //         speed = speed>0?Math.ceil(speed):Math.floor(speed);
+        //         var next = start+speed;
+        //         dom.style.left = next+"px";
+        //         if(next!=target){
+        //             flag = false;
+        //         }
+
+        //         //再运动top
+        //         var target = json.top;
+        //         var start = parseInt(getStyle(dom,'top'));
+        //         var speed = (target - start)/10
+        //         speed = speed>0?Math.ceil(speed):Math.floor(speed);
+        //         var next = start+speed;
+        //         dom.style.top = next+"px";
+        //         if(next!=target){
+        //             flag = false;
+        //         }
+
+        //         //每次left和top运动完以后,要判断是否要停止定时器
+        //         if(flag==true){
+        //             clearInterval(dom.timer)
+        //             if(callback){
+        //                 callback()
+        //             }
+        //         }
+        //     },1000/60)
+        // }
+        //为了考虑兼容性问题,单独封装一个方法,用于获取元素的某个属性值,并返回        
+        function getStyle(dom,attr){
+            if(window.getComputedStyle){
+                //因为attr是变量,所以要加[]
+                return window.getComputedStyle(dom,null)[attr]
+            }else{
+                return dom.currentStyle[attr];//IE7,8
+            }
+        }
+    </script>
+</body>
+</html>

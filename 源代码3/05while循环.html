@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        while循环
+            ==>while,中文 当...时,其实就是当满足条件时就执行代码,一旦不满足了就不执行
+            ==>语法:
+                while(条件){
+                    满足条件时执行;
+                }
+            ==>因为满足条件就执行,也就是条件为true是执行,如果条件一直为真就会一直执行执行
+            ==>所有我们需要有一个边界,就是退出循环的值
+
+        在页面输出内容的方法:
+            ==>document.write("你要输出的内容")
+            ==>html页面可以换行,使用<br/>
+            ==>控制台要换行,使用\n
+        */
+
+        //1 初始值
+        var num = 0;
+        //2 条件判断
+        while(num<10){
+            //3 要执行的代码
+            console.log('当前的num值是'+num);           
+            //4 自己的改变
+            num += 1;
+        }
+
+        console.log("==============================")
+        //输出换行
+        //我不想在控制台输出,可以在页面输出
+
+        //html页面可以换行,使用<br/>
+        document.write("111111<br/>111111<br/>111111<br/>111111<br/>111111<br/>111111<br/>")
+        //控制台要换行,使用\n
+        console.log("111111\n111111\n111111\n111111\n111111")
+        
+
+        console.log("==============================")
+        //2 案例:计算1到10的累加和
+        //分析:需要一个变量记录加数:1-10,还需要一个变量记录和:sum = 0+1+2+3+4...+10
+        //n是初始值,值为1
+        var n = 1;
+        var sum = 0;
+        //条件判断
+        while(n<11){
+            //要执行的代码
+            sum += n;
+            //自身的改变
+            n++;
+        }
+        console.log(sum)
+    </script>
+</body>
+</html>

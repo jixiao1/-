@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin:50px;
+            padding:20px;
+        }
+        ul li{
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+            list-style:none;
+            background-color: pink;
+        }
+        li:hover{
+            background:red;
+            color:white;
+            font-weight: 900;
+        }
+        ul{
+            display: none;
+            position: absolute;
+            top:0px;
+            left:0px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        右键单击本div弹出自定义快捷菜单
+    </div>
+    <!-- ul就是等会要弹出的右键自定义快捷菜单 -->
+    <ul id='menu'>
+        <li>保存</li>
+        <li>新建</li>
+        <li>分享</li>
+        <li>复制</li>
+    </ul>
+    <script>
+        /* 
+            项目需求:
+                1 在div上点击右键,不会弹出默认的快捷菜单
+                2 会弹出自定义的快捷菜单
+                3 快捷菜单的左上角就是光标所在位置
+                4 在div外面点击右键,不会弹出自定义的快捷菜单
+                5 点击自定义快捷菜单里面的选项,会在控制台输出菜单内容
+                6 点击菜单栏外面,菜单栏消失
+                7 兼容ie78
+            分析技术点:
+                1 在div上点击右键,不会弹出默认的快捷菜单===>阻止默认事件,右键:oncontextmenu
+                2 会弹出自定义的快捷菜单===>display:block
+                3 快捷菜单的左上角就是光标所在位置
+                    ===>光标在页面上的坐标:e.pageX和e.pageY
+                    ===>为了简便实用了e.clientX和e.clientY
+                    ===>但是项目中要使用pageX和pageY
+                4 在div外面点击右键,不会弹出自定义的快捷菜单==>就是一个说明
+                5 点击自定义快捷菜单里面的选项,会在控制台输出菜单内容===>innerHTML
+                6 点击菜单栏外面,菜单栏消失===>document
+                7 兼容ie78:获取元素使用===>docuemnt.getElementById()
+        */
+
+        //获取相关元素
+        var div = document.getElementById('box');//是事件源,点击右键会出现自定义快捷菜单
+        var menu = document.getElementById('menu');//自定义的快捷菜单
+
+
+        //1 在div上点击右键
+        div.oncontextmenu = function(e){
+            e = window.event || e;
+            //不会弹出默认的快捷菜单,就是要阻止浏览器的默认行为
+            e.preventDefault?e.preventDefault():e.returnValue= false;
+            //2 会弹出自定义的快捷菜单
+            menu.style.display = "block";
+            //3 快捷菜单的左上角就是光标所在位置
+            //光标距离页面左边多少,那menu的left就是多少
+            //光标距离页面上面多少,那menu的top就是多少
+
+            var left = e.clientX;
+            var top = e.clientY;
+            
+            menu.style.left = left+"px";
+            menu.style.top = top+"px";
+        }
+        //5 点击自定义快捷菜单里面的选项,会在控制台输出菜单内容
+        menu.onclick = function(e){
+            e = window.event||e;
+            //在事件函数中,this指的是事件源,就是ul,就是menu
+            //获取到本次事件的目标,鼠标点击的元素
+            var target = e.target||e.srcElement;
+            //只有被点击的目标是li元素的时候,才输出里面的内容
+            if(target.nodeName=="LI"){
+                console.log(target.innerHTML)
+            }
+            //因为ul也是document的内层元素,所以ul上的点击事件也会冒泡到document上
+            //希望ul上的点击事件不要冒泡到document上
+            //就需要在ul上阻止冒泡
+            e.stopPropagation?e.stopPropagation():(e.cancelBubble=true);
+        }
+        //6 点击菜单栏外面,菜单栏消失
+        //  菜单栏外面有很多元素,不能一一绑定点击事件,但是这些点击事件都会冒泡到document上
+        //  所以把点击事件委托为document
+        document.documentElement.onclick = function(){
+            //因为ul也是document的内层元素,所以ul上的点击事件也会冒泡到document上,希望ul上的点击事件不要冒泡到document上
+            menu.style.display = "none";
+        }
+    </script>
+</body>
+</html>

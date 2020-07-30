@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        js代码的书写位置:
+            +和css一样,我们的js也可以有多张书写方式
+                ==>行内式,内嵌式,外链式
+            +行内式(不推荐)
+                ==>弹框输出:alert(你要先出的内容)
+                ==>控制台输出:console.log(你要输出的内容)
+                ==>如果是a标签,js代码写在href属性里面,格式是:href="javscript:js代码;" 
+                    ==>如果想阻止a的默认跳转功能,可以写:href="javascript:;"(练习:百度看还有没有其他方法)
+                ==>如果是除a标签以外的其他标签
+            +内嵌式
+                ==>在页面的任意位置,添加<script> js代码 </script>
+                ==>弹框并要求用户输入指定信息:prompt(标题,提示信息)
+            +外链式
+                ==>新建一个.js后缀的文件,在里面书写js代码
+                ==>那个html文件要使用这个js文件,就使用
+                ==><script src="js文件的路径"></script>
+                ==>来引入,可以在html的任意标签后面
+            +建议:
+                ==>外链式:引入在</body>前面
+                ==>内嵌式:写在在</body>前面
+                ==>行内式:不推荐
+     -->
+
+
+     <!-- 如果是a标签,js代码写在href属性里面,格式是:href="javscript:js代码;" -->
+     <!-- 写成javascript:;可以让a标签不跳转 -->
+     <a href="javascript:;">dian wo</a>
+     <!-- alert(你要先出的内容) -->
+     <a href="javascript:alert(1111);">弹框输出</a>
+     <!-- console.log('你要输出的内容') -->
+     <a href="javascript:console.log(222222);">控制台输出</a>
+
+
+     <!-- 如果是div标签 -->
+     <div onclick="alert(333333)">点击div出现弹框</div>
+     <div onclick="console.log(4444444)">点击div出现控制台信息</div>
+
+    <!-- 内嵌式 -->
+     <script type="text/javascript">
+         //弹框
+         alert(555555)
+         //控制台
+         console.log(6666)
+         //在弹出的时候,获取用户数据
+         prompt("你真的喜欢写代码吗?","学习使我快乐")
+         
+     </script>
+
+     <!-- 外链式 -->
+     <script src="./02.js"></script>
+</body>
+</html>

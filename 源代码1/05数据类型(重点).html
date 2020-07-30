@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        数据类型:是指我们存储在内存中的数据的类型
+            ==>分为两类:基本数据类型(简单数据类型)和复杂数据类型(引用类型,今天不讲,下周讲)
+        基本数据类型:
+            1 数值类型(Number)
+                ==>一切数字都是数值类型(包括:十进制,二进制,十六进制,八进制等)
+                ==>NaN(not a number),一个非数字
+            2 字符串类型(String)
+                ==>被引号裹的所有内容(可以是单引号,可以是双引号)
+            3 布尔类型(Boolean)
+                ==>只有两个true和false
+            4 null类型(null)
+                ==>只有一个值,就是null,表示空的意思
+            5 undefined类型(undefined) 
+                ==>只有一个,就是undefined,表示没有值的意思
+        */
+
+
+
+        //定义一个变量,数据类型是Number
+        var a = 12;
+        console.log(a);//输出是蓝色的
+
+        //定义一个变量,数据类型是字符串类型(String)
+        var b = "hello world";
+        var c = "34";
+        var d = '1hello2';
+        console.log(c);//输出是黑色
+
+        //定义一个变量,数据类型是布尔类型(Boolean)
+        var e = true;
+        var f = false;
+        console.log(e);//输出是蓝色
+
+        //定义一个变量,数据类型是null类型(null)
+        var g = null;
+        console.log(null);//输出是灰色
+
+        //定义一个变量,数据类型是undefined
+        var i = undefined;
+        console.log(i);//输出是灰色
+
+        //定义了一个变量名叫k,但是还没有赋值,那么如果在控制台输出k,他的数据就是undefined
+        var k;
+        console.log(k)
+
+    </script>
+</body>
+</html>

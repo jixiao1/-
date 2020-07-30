@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            if...else if语句
+                +可以通过if和else if来设置多个条件进行判断
+                +语法:if(条件1){条件1为true执行的代码} else if(条件2){条件2为true执行的代码}  
+                +多个{},只会有一个{}被执行,一旦有一个条件为true,后面的就不再判断了
+         */
+        //  1 第一个条件为true,第一个条件里面的{}执行了,因为已经有一个条件为true,后面就不再判断了,后面的也就不执行了
+        //  if(true){
+        //      console.log("代码段1")
+        //  }else if(true){
+        //      console.log('代码段2')
+        //  }
+
+
+        //  2 第一个条件为true,第一个条件里面的{}执行了,因为已经有一个条件为true,后面就不再判断了,后面的也就不执行了
+        //  if(true){
+        //      console.log("代码段1")
+        //  }else if(false){
+        //      console.log('代码段2')
+        //  }
+
+
+         //3 第一个条件为false,第一个条件里面的{}不执行,继续判断下一个条件,条件为true,下一个条件后面的代码就执行
+        //  if(false){
+        //      console.log("代码段1")
+        //  }else if(true){
+        //      console.log('代码段2')
+        //  }
+
+
+        //4 第一个条件为false,第一个条件里面的{}不执行,继续判断下一个条件,条件为false,不执行
+         if(false){
+             console.log("代码段1")
+         }else if(false){
+             console.log('代码段2')
+         }
+    </script>
+</body>
+</html>

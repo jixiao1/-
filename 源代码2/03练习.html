@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            1. 为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+            分析:1天24小时,不足一天的算成小时,比如25小时就是1天零1小时        
+        */
+
+        var day = 89/24;//得到的小数3.7,就是3天
+        //取整得到天数
+        day = parseInt(day);//3
+        //不足一天(24小时)的算成小时
+        var hour = 89%24;
+        console.log("战士连续作战"+day+"天零"+hour+"小时");
+        
+        /* 
+            2. 小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+            它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+            提示：摄氏度与芈氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)，保留3位小数
+        */
+        var huashi = 80;//华氏温度
+        var sheshi = 5/9*(huashi-32);//摄氏度,小数要保留三位
+        
+        sheshi = parseInt(sheshi*1000)/1000;
+        console.log("华氏温度是"+huashi+"转换成摄氏度是"+sheshi+"℃");
+
+        //有一个方法,可以直接保留n为小数
+        var num = 12.4567788;
+        console.log(num.toFixed(2));//toFixed(要保留的小数位数)
+    </script>
+</body>
+</html>

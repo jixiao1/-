@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .one{
+            position: absolute;
+            top:100px;
+            left:200px;
+            width: 300px;
+            height: 400px;
+            background-color: red;
+            padding:10px;
+            border:1px solid green;
+        }
+        .two{
+            margin-top:200px;
+            margin-left:500px;
+            width: 300px;
+            height: 400px;
+            background:red;            
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="one">   
+
+    </div> -->
+    <div class="two">   
+
+    </div>
+    <script>
+        /* 
+        获取元素的偏移量
+            ==>就是元素在页面上的位置
+            ==>offsetLeft和offsetTop和ofsetWidth和offsetHeight
+            ==>offsetLeft和offsetTop
+                ==>获取的是元素左边的偏移量和上面的偏移量
+                ==>没有定位的情况下
+                    ==>获取元素边框外侧距离页面内侧的距离
+                ==>有定位的情况下
+                    ==>获取元素边框外侧距离最近的有定位的父元素的边框内侧的距离
+            ==>offsetWidth和offsetHeight
+                ==>获取的元素的宽高 = 内容的+padding的+border的
+                ==>不带单位,是number类型,方便参加运算
+        */
+        //获取div这个节点
+        var div = document.querySelector('div');
+        //offsetWidth和offsetHeight
+        console.log("div的宽度是:")
+        console.log(div.offsetWidth);//322
+        console.log("div的高度是:")
+        console.log(div.offsetHeight);//422
+        //offsetLeft和offsetTop:
+        console.log('div的上面的偏移是:')
+        console.log(div.offsetTop);//100
+        console.log('div的左面的偏移是:')
+        console.log(div.offsetLeft);//200
+
+
+
+    </script>
+</body>
+</html>

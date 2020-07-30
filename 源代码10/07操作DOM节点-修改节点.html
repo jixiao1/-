@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>我是一个p标签</p>
+    </div>
+    <script>
+        /* 
+        修改节点
+            ==>replaceChild:将页面中的某个节点替换掉
+            ==>语法:父节点.replaceChild(新节点,旧节点)
+        */
+        //需求:用一个span标签来替换p标签,span标签里面有文字,写的是我是一个span标签
+
+        //父节点
+        var div = document.querySelector('div');
+        //旧节点
+        var p = div.querySelector('p');
+        //新节点:需要我们自己创建
+        var span = document.createElement('span');
+        //如何操作元素节点里面的内容
+        span.innerHTML = "我是一个span标签";
+        //替换
+        div.replaceChild(span,p)
+
+
+
+    </script>
+</body>
+</html>

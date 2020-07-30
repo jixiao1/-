@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            代码调试(断点调试)步骤
+                1 在页面上按下ctrl+shitf+i或右键检查
+                2 在弹出的面板选择sources
+                3 双击你要调试的页面
+                4 在展开的代码中,你希望一步一步执行的开始和结束行单击,会打上两个点,这个叫做断点
+                5 刷新页面
+                6 页面会停在第一个断点位置,等你一步一步手动执行(快捷键是F10)或者立刻完成(快捷键是F8)
+                7 最右侧有一个watch面板,展开他
+                8 watch面板里面有个+号,点击+,可以添加你要观察的变量
+                9 一步一步F10调试差不多,按F8结束
+                10 调试完成以后点击开始设置断点的位置,就可以取消断点
+
+        */
+        for(var i=0;i<2;i++){
+            var j = i*2-1;
+            console.log(j);
+        }
+    </script>
+</body>
+</html>

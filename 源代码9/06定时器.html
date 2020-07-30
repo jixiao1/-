@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            定时器
+                ==>在js里面有两种定时器:倒计时计时器和间隔定时器
+            倒计时定时器
+                ==>倒计时多少时间以后执行函数
+                ==>语法:
+                    setTimeout(要执行的函数,多长时间以后执行)
+                ==>会在你设定的时间以后,执行函数
+                ==>时间是按照毫秒进行计算的,1000毫秒就是1秒
+                ==>只执行一次,就不再执行了
+                ==>返回值,当前这个定时器是页面中的第几个定时器
+            间隔定时器
+                ==>每间隔多少时间就执行一次函数
+                ==>语法:
+                    setInterval(要执行的函数,间隔多少时间)   
+                ==>时间和刚才一样,毫秒单位
+                ==>只要不关闭,会一直执行
+                ==>返回值,当前这个定时器是页面中的第几个定时器    
+        */
+
+        //倒计时定时器
+        var timeId1 = setTimeout(function(){
+            console.log('倒计时定时器,我执行好了')
+        },2000);
+        //2秒以后执行函数
+        console.log(timeId1);
+
+        //间隔定时器
+        var timeId2 = setInterval(function(){
+            console.log('间隔定时器,我执行了一次')
+        },1000)
+        //每隔1秒执行一次
+        console.log(timeId2);
+        
+    </script>
+</body>
+</html>

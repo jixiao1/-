@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        1. 定义一个含有30个整型元素的数组，
+        按顺序分别赋予从2开始的偶数；然后按顺序每五个数求出一个平均值，
+        放在另一个数组中并输出。试编程。
+        */
+        var arr = [];//这个数组里面放30个从2开始的偶数
+        var temp = [];//每次有一个数组,里面放五个元素,当放满五个,就求均值,求完以后,数组置空
+        var newArr = [];//放每五个计算出的均值
+
+        // arr数组里面放30个从2开始的偶数
+        for(var i=1;i<=30;i++){
+            arr.push(i*2);
+            temp.push(i*2);
+            if(i%5==0){
+                //求temp里面的元素的均值,求完以后,数组置空
+                var average = ave(temp);
+                newArr.push(average);
+                temp = [];
+
+            }
+
+        }
+        console.log(newArr)
+
+        //写一个函数,这个函数接收一个数组,返回值是数组的均值
+        function ave(arr){
+            var sum = 0;
+            for(var i=0;i<arr.length;i++){
+                sum+=arr[i]
+            }
+            return sum/arr.length;
+        }
+        
+        
+    </script>
+</body>
+</html>

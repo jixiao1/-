@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>选项卡</title>
+		<style type="text/css">
+			*{margin: 0; padding: 0; font-family: "微软雅黑";font-size: 14px;}
+			#container{
+				width: 398px; 
+				margin: 100px auto;}
+			#container a{
+				display:block ;
+				width: 98px; 
+				height: 42px; 
+				line-height: 42px; 
+				text-align: center; 
+				float: left;
+				border-top: solid 1px #FF4400;
+				border-bottom: solid 1px #FF4400;
+				border-left: solid 1px #FF4400;
+				color: #333333;
+				text-decoration: none;
+			}
+			#container a:hover{
+				color: #FF4400;
+			}
+			.content{
+				width: 355px;
+				height: 140px;
+				text-align: center;
+				border-right: solid 1px #FF4400;
+				border-bottom: solid 1px #FF4400;
+				border-left: solid 1px #FF4400;
+				padding: 30px 0 0 40px;
+				display: none;
+			}
+			.clear{clear: left;}
+			#container a.on{ background: #FF4400; color: #fff;}
+		</style>
+	
+	</head>
+	<body>
+		<div id="container">
+			<!-- 这里a标签上的自定义属性index就是记录当前a是第几个a -->
+			<a href="#" index="0" class="on">充话费</a>
+			<a href="#" index="1">充流量</a>
+			<a href="#" index="2">充固话</a>
+			<a href="#" index="3" style="border-right: solid 1px #FF4400;">充宽带</a>
+
+			<div class="clear"></div>
+			
+			<div class="content" style="display:block;">
+				<img src="images/1.png" />
+			</div>
+			<div class="content">
+				<img src="images/2.png" />
+			</div>
+			<div class="content">
+				<img src="images/3.png" />
+			</div>
+
+			<div class="content">
+				<img src="images/4.png" />
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	/* 
+		项目需求:
+			1 点击a标签,被点击的a标签高亮
+			2 类名叫content的就是要显示的tab栏,点击第几个a,就显示第几个content的div
+	*/
+
+	//获取相关元素
+	var aS = document.querySelectorAll('a');//tab的所有菜单a标签集合
+	var contentS = document.querySelectorAll('.content');//所有content的div的集合
+
+	//1 点击a标签,被点击的a标签高亮
+	for(var j=0;j<aS.length;j++){
+		aS[j].onclick = function(){
+			//以后只要碰到只有我怎么样,都使用这种办法:干掉所有人,留下我一个
+
+			//a标签高亮
+			for(var i=0;i<aS.length;i++){
+				//所有a标签的类名都置空
+				aS[i].className = ""
+				//所以的content的display都设置成none
+				contentS[i].style.display = "none"
+			}
+			//只有被点击的a类名加上'on'
+			this.className = "on"
+			//只有和当前a对应的content的display设置成block
+			// contentS[j].style.display = "block";//Cannot read property 'style' of undefined
+
+			//获取当前被点击的是第几个a
+			var index = this.getAttribute('index');
+			contentS[index].style.display = "block";
+		}
+	}
+
+
+	//说明:j是函数外面定义的全局变量,代码执行顺序是:先通过for循环给a标签都绑定事件,但是click的事件处理函数不执行
+	//等到所有事件绑定完成,j已经是4了,此时用户点击,那么事件处理函数里面的j全部是4
+
+	//难点:如何在事件函数里面获取当前被点击的是第几个a,但是我知道是哪个a,通过this知道
+
+
+
+
+
+
+	// 思考过程
+	// aS[0].onclick = function(){
+	// 	//以后只要碰到只有我怎么样,都使用这种办法:干掉所有人,留下我一个
+	// 	for(var i=0;i<aS.length;i++){
+	// 		aS[i].className = ""
+	// 	}
+	// 	this.className = "on"
+	// }
+	// aS[1].onclick = function(){
+	// 	//以后只要碰到只有我怎么样,都使用这种办法:干掉所有人,留下我一个
+	// 	for(var i=0;i<aS.length;i++){
+	// 		aS[i].className = ""
+	// 	}
+	// 	this.className = "on"
+	// }
+	// aS[2].onclick = function(){
+	// 	//以后只要碰到只有我怎么样,都使用这种办法:干掉所有人,留下我一个
+	// 	for(var i=0;i<aS.length;i++){
+	// 		aS[i].className = ""
+	// 	}
+	// 	this.className = "on"
+	// }
+
+
+
+	// 思考过程:
+	// aS[1].onclick = function(){
+	// 	aS[0].className =""
+	// 	aS[1].className =""
+	// 	aS[2].className =""
+	// 	aS[3].className =""
+	// 	this.className = "on"
+	// }
+
+</script>

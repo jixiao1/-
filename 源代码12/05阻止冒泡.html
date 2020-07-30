@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.big{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            position: relative;
+        }
+        div.small{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            top:100px;
+            left:100px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+        <div class="small"></div>
+    </div>
+    <script>
+        /* 
+            冒泡:
+                ==>就是事件从目标开始,依次向外,直到window的事件处理函数触发
+                ==>目标是small-->big-->body-->html-->document-->window
+            阻止冒泡:
+                ==>如果在事件传播过程中,中断传播,就不会继续传播到window了,这个叫做阻止冒泡
+                ==>如果在big中断,那么,点击small
+                ==>small的点击事件会发生,big的点击事件也会发生,但是在big中断传播,那么从big后面的上级元素事件就不会触发了
+                ==>事件对象上有一个方法,可以阻止事件的传播,这个方法使e.stopPropagation
+                ==>这个方法有兼容性问题,e.cancelBubbble = true;
+        */
+        var small = document.querySelector('.small')
+        var big = document.querySelector('.big')
+
+        small.onclick = function(e){
+            console.log('small click');
+        }
+        big.onclick = function(e){
+            e = window.event||e;
+            //如果在big中断,那么,点击small
+            //small的点击事件会发生,big的点击事件也会发生,但是在big中断传播,那么从big后面的上级元素事件就不会触发了
+            //阻止冒泡的兼容写法:
+            e.stopPropagation?e.stopPropagation():e.cancelBubble=true;
+            console.log('big click')
+        }
+        document.body.onclick = function(){
+            console.log('body click')
+        }
+        document.documentElement.onclick = function(){
+            console.log('html click')
+        }
+        document.onclick = function(){
+            console.log('document click')
+        }
+        window.onclick = function(){
+            console.log('window click')
+        }
+    </script>
+</body>
+</html>

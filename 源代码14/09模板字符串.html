@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        
+    </ul>
+    <script>
+        /*
+            模板字符串
+                ==>es5中我们表示字符串的时候使用''或者""
+                ==>在es6中,我们还有一个东西可以表示字符串,就是`反引号`;
+                ==>和'',""有区别
+                    ==>反引号可以换行书写
+                    ==>反引号可以直接在字符串里面拼接变量,在``里面的${变量},就是用来书写变量的位置
+
+        */
+        //基本用法和''和""类似
+        var str = `hello`;
+        console.log(typeof str)
+
+        //反引号可以换行书写
+        // var html = `<li>名字:</li>
+        // <li>年龄:</li>
+        // <li>工资:</li>`;
+        // var ul = document.querySelector('ul');
+        // ul.innerHTML = html;
+
+        // 反引号可以直接在字符串里面拼接变量
+        var obj = {
+            name:'张三',
+            age:13,
+            salary:2500
+        }
+        // var html = "<li>名字:"+obj.name+"</li><li>年龄:"+obj.age+"</li><li>工资:"+obj.salary+"</li>";
+        var html = `<li>名字:${obj.name}</li>
+        <li>年龄:${obj.age}</li>
+        <li>工资:${obj.salary}</li>`;
+        var ul = document.querySelector('ul');
+        ul.innerHTML = html;
+    </script>
+</body>
+</html>

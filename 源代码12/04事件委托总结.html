@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            ==>为什么要用事件委托:
+                ==>我页面上没有li
+                ==>我通过代码添加一些li
+                ==>添加进去的li没有点击事件
+                ==>我们次动态操作完li以后,都要从新绑定一次点击事件
+                ==>比较麻烦
+                ==>这个时候只要委托给ul就可以了
+                ==>因为新加进来li也是ul的子元素,点击的时候也可以触发ul的点击事件
+            ==>事件委托的书写:
+                ==>元素的事件只能委托给父元素或者父元素的父元素的同样的事件上
+                ==>li的点击事件,就不能委托给ul的鼠标移动事件
+                ==>li元素的点击事件,只能委托给ul或再高父元素的点击事件
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            数字的进制转换
+                ==>不同进制的表示方法(了解)
+                    ==>八进制,十六进制(颜色:#4578AD),十进制
+                    ==>定义十进制:var num = 数字
+                    ==>定义八进制:var num = 0数字
+                    ==>定义十六进制:var num = 0x数字
+                ==>toString():把数字转字符串
+                    ==>语法:num.toString(参数是可选的,可以填写进制数)
+                ==>parseInt():字符串转数字,可以在参数里面说明,你的字符串表示的进制
+                    ==>语法:parseInt(str,"str里面的数字的进制")
+        */
+        // 不同进制的表示方法(了解)
+        //十进制
+        var num1 = 17;
+        //八进制
+        var num2 = 017;
+        //十六进制
+        var num3 = 0x17;
+        console.log('十进制的17转换成十进制是:'+num1);
+        console.log('八进制的17转换成十进制是:'+num2);//15
+        console.log('十六进制的17转换成十进制是:'+num3);//23
+        //如果设置0打头是八进制,但书写的数字超过8,直接认为你定义的就是十进制
+        var num = 088;
+        console.log(num);
+
+        //toString():把数字转字符串
+        //语法:num.toString(参数是可选的,可以填写进制数)
+        var num = 15;
+        console.log("num转八进制是:"+num.toString(8))
+        //0 1 2 3 4 5 6 7 8 9 A B C D E F
+        console.log("num转十六进制是:"+num.toString(16));
+
+
+        
+        // parseInt(str,"str里面的数字的进制")
+        var str = 15;
+        console.log('str原来是八进制,转10是:'+parseInt(str,8))
+
+
+    </script>
+</body>
+</html>

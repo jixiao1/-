@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            构造函数详解
+                ==>我们的构造函数就是能创建对象的.
+                ==>构造函数的基本使用
+                    1 和普通函数一样,只不过调用的时候要和new连用,不然就是一个普通的函数调用
+                    2 首字母大写,驼峰命名
+                    3 当调用的时候如果不需要传递参数,可以不写(),建议都写上,如果传参,一定要写
+                    4 构造函数内部的this,由于和new连用的关系,是指向当前实例对象的
+                    5 因为构造函数会自定返回一个对象,所以构造函数内部不要写return
+                        ==>你如果return一个基本数据类型,写了没用
+                        ==>你如果return一个引用数据类型,那么构造函数本身的意义就没有了
+        */
+        // 首字母大写,驼峰命名
+        function Human(name){
+            // 在构造函数中,this就是自动创建好的对象
+            // 手动添加成员
+            this.name = name;
+            this.age = 12;
+            this.love = "lucy";
+            // 自动把this最为返回值
+        }
+        // 1 和普通函数一样,只不过调用的时候要和new连用,不然就是一个普通的函数调用
+        // Human是构造函数,因为他和new连用
+        var h1 = new Human("zhangsan");
+        console.log(h1)
+        // 不和new连用
+        var result = Human("lisi");//Human就是普通函数,普通函数中的this是window
+        console.log(result);//result是undefined
+        console.log(window)
+
+
+        //3 当调用的时候如果不需要传递参数,可以不写(),建议都写上
+        var h2 = new Human("王五");
+        console.log(h2);
+
+        //4 构造函数内部的this,由于和new连用的关系,是指向当前实例对象的
+
+        //5 因为构造函数会自定返回一个对象,所以构造函数内部不要写return
+
+        function Student(name){
+            this.name = name; 
+            // 你如果return一个基本数据类型,写了没用
+            // return 1;
+            // 你如果return一个引用数据类型,那么构造函数本身的意义就没有了
+            // return [2,3,4,5,45,5,5];
+        }
+        var s1 = new Student('韩么么');
+        console.log(s1)
+
+        
+    </script>
+</body>
+</html>

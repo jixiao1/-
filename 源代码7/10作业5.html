@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+         5 编写函数norepeat(arr) 将数组的重复元素去掉，并返回新的数组
+        */
+        function norepeat(arr){
+            var result = [];//里面放没有重复的元素
+            for(var i=0;i<arr.length;i++){
+                //判断变量到的元素在result是否有相同的,如果没有,放到result里面去
+                if(!has(result,arr[i])){
+                    result.push(arr[i])
+                }
+            }
+
+            return result;
+        }
+
+        console.log(norepeat([23,23,42,3,2,43,23,234,3,4]))
+        //判断item在arr中是否存在,存在返回true,不存在返回false
+        function has(arr,item){
+            for(var i=0;i<arr.length;i++){
+                if(item==arr[i]){
+                    return true;
+                }
+            }
+            //如果有机会执行到这里,说明没有return
+            return false;
+        }
+    </script>
+</body>
+</html>

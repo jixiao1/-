@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 问题:
+        //我们的代码是从上到下执行,当执行第8行的时候,你去获取btn,此时html还没有那个按钮,当然就获取不到了,就是null
+        // var btn = document.getElementById('btn');//获取事件源
+        // btn.onclick = function(){//报错: Cannot set property 'onclick' of null,说明btn这个按钮没有获取到
+        //     //弹框
+        //     alert('点击事件发生了')
+        // }
+
+
+        //解决:我希望js代码在html标签加载完成以后再执行,window.onload这个事件就是页面加载完成事件
+        window.onload = function(){
+            //在这里执行代码就是,在发生页面加载完成事件后执行,把刚刚代码写在这里就可以了
+            var btn = document.getElementById('btn');//获取事件源
+            btn.onclick = function(){//报错: Cannot set property 'onclick' of null,说明btn这个按钮没有获取到
+                //弹框
+                alert('点击事件发生了')
+            }
+        }
+
+        
+    </script>
+</head>
+<body>
+    <button id="btn">点击出现弹框</button>
+</body>
+</html>

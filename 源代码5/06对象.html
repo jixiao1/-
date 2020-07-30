@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        数据类型:
+            ==>简单数据类型:number,string,boolean,null,undefined
+            ==>复杂数据类型:函数,对象
+        简单了解对象:
+            ==>就是一个复杂数据类型
+            ==>其实说是复杂,但是没有很复杂,只不是存储了一些基本数据类型的集合
+            ==>var obj = {
+                name:"张三",
+                age:12,
+                vip:false
+            }
+            ==>这里的{}和函数中的{}不一样
+            ==>函数的{}里面写的是代码,而对象里面写一些数据的
+            ==>对象就是一个无序的键值对的集合
+            ==>{}里面的每一个键都是一个成员
+            ==>也就是说,我们可以把一些数据放在一个对象里面,那么他们就互补干扰了
+            ==>其实就是我们准备一个房子,把我们想要的数据都放进去,
+            ==>然后房子的地址给到变量区,当我们要某一个数据的时候
+            ==>就可以根据变量名找到房子的地址,通过地址找到应用的房子,然后去房子里找出对应的数据
+        */
+
+        //创建一个对象
+        //方法一:字面量的方式创建一个对象
+        var obj = {};//这就是定义了一个空对象,里面没有任何数据
+        //向对象中添加成员
+        obj.name = "李磊";
+        obj.age = 12;
+        obj.vip = true;
+        //打印
+        console.log(obj)
+
+
+        //方法二:通过内置构造函数的方式创建对象
+        var obj1 = new Object();//这就是定义了一个空对象,里面没有任何数据
+        //向对象中添加成员
+        obj1.name = "韩梅梅";
+        obj1.sex = "女"
+        obj1.banji = "305"
+        //打印
+        console.log(obj1)
+
+        //Object是js内置给我们的构造函数,用于创建一个对象使用
+
+
+        //题目:创建一个学生对象,名字叫路西,年龄是68,性别是男
+        var student = {
+            name:"路西"
+        };
+        student.age = 68;
+        student.sex = "男"
+
+        //获取对象里面的某个值
+        console.log(student.name)
+
+    </script>
+</body>
+</html>

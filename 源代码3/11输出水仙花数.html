@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            求100-999之间的水仙花数
+                ==>什么是水仙花数 abc = a ³ + b³ + c ³
+                ==>难点分析:
+                    ==>比如数字是:123 = 1³+2³+3³
+                    ==>求百位,数字/100 = 1.23,整数部分就是百位
+                    ==>求十位,23/10 = 2.3,整数部分就是十位,23就是通过数字对100取余数可以获得
+                    ==>求个位:123%10
+        */
+
+         //100到999每个数都要判断
+         for(var i=100;i<1000;i++){
+             //百位
+             var bai = parseInt(i/100);
+             //十位
+             var shi = parseInt(i%100/10)
+             //个位
+             var ge = i%10;
+             if(i==bai*bai*bai+shi*shi*shi+ge*ge*ge){
+                //判断循环到的是否是水仙花数
+                console.log(i+"是一个水仙花数")
+             }
+         }
+    </script>
+</body>
+</html>

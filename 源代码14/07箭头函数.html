@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            箭头函数
+                ==>在es6里面,提供了一种函数的简写形式
+                ==>箭头函数只能简写函数表达式,不能的简写声明式函数
+                ==>语法:(函数的形参)=>{函数体内要执行的代码}
+                ==>箭头函数的特殊性:
+                    ==>箭头函数内部没有this,箭头函数的this是上下的this,也就是说箭头函数不会改变this的指向
+                    ==>箭头函数内部没有arguments这个参数集合
+                ==>箭头函数的格式简写
+                    ==>箭头函数的形参只有一个的时候,可以不写(),其他情况必须写
+                    ==>函数体只有一行代码的时候,可以不写{},并且会自动return
+            函数的默认值
+                ==>我们定义函数的时候,有时候要一个默认值
+                ==>当我不传递实参的时候,就使用默认值
+                ==>在es6中,我们可以直接把默认值写在函数的形参位置
+                ==>语法:
+                    function 函数名(形参1=默认值1,形参2=默认值2)
+                    (形参1=默认值1,形参2=默认值2)=>{}
+                ==>如果箭头函数只有一个形参,但是要设置默认值,那么()不能省略
+        */
+
+        //1 函数简写:只能简写函数表达式,不能的简写声明式函数
+        // function fn(){
+        //     console.log(1);//声明式函数,不能用箭头函数简写
+        // }
+        // var fn1 = function(){
+        //     //这个是函数表达式,可以箭头函数简写
+        // }
+        // var obj = {
+        //     fn:function(){}  //可以简写
+        // }
+
+        //2 语法:(函数的形参)=>{函数体内要执行的代码}
+        // const fn = function(a,b){
+        //     console.log(a)
+        //     console.log(b)
+        // }
+        // //可以使用箭头函数简写:
+        // const fn = (a,b)=>{
+        //     console.log(a)
+        //     console.log(b)
+        // }
+
+        // var obj = {
+        //     fn:function(a,b){
+        //         console.log(a)
+        //         console.log(b)
+        //     }
+        // }
+        // //可以使用箭头函数简写:
+        // var obj = {
+        //     fn:(a,b)=>{
+        //         console.log(a)
+        //         console.log(b)
+        //     }
+        // }
+
+        //3 箭头函数内部没有this,箭头函数的this是上下的this
+
+        //在箭头函数定义的位置往上数,这一样是可以打印this的
+        //因为这里的this是window
+        //所以箭头函数内部的this也是window
+        // var obj = {
+        //     fn:function(){
+        //         console.log(this)
+        //     },    
+        //     //这个位置是箭头函数的上一行,但是不能打印this        
+        //     fun:()=>{
+        //         //箭头函数内部的this,是书写函数的上一行一个可以打印出this的位置
+        //         console.log(this)
+        //     }
+        // }
+
+        // obj.fn();//this就是obj
+        // obj.fun();//this就是window
+
+
+        //4 箭头函数内部没有arguments这个参数集合
+        // var fn = function(){
+        //     console.log(arguments);//函数内部的arguments就是实参的集合
+        //     console.log(arguments.callee);//这个就是当前的函数本身
+        // }
+        // fn(23,3,2,4,23,2,4)
+
+        //可以简写成箭头函数
+        // var fn = ()=>{
+        //     console.log(arguments);//报错:Uncaught ReferenceError: arguments is not defined
+        // }
+        // fn(21,32,32,4,34,3)
+
+
+        //5 箭头函数的格式简写
+        // var obj = {
+        //     fn:()=>{
+        //         console.log('没有参数,必须写小括号')
+        //     },
+        //     fn1:a=>{
+        //         console.log('一个参数,可以不写小括号')
+        //     },
+        //     fn2:(a,b)=>{
+        //         console.log('两个参数,必须写小括号')
+        //     },
+            
+        //     ff:a=>{
+        //         return a*10
+        //     },
+        //     ff1:a=>a*10//ff1函数和ff函数是一个意思
+        // }
+        // console.log(obj.ff(10))
+        // console.log(obj.ff1(10))
+
+
+        //6 函数的默认值
+        // function fn(a){
+        //     a = a||10;
+        //     console.log(a)
+        // }
+        //可以改成
+        // function fn(a=10){
+        //     console.log(a)
+        // }
+        //可以改成
+        var fn = (a=10)=>console.log(a);
+        fn();//不传参使用默认值
+        fn(50);//传了使用传入的实参
+    </script>
+</body>
+</html>

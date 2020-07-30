@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        3. 随机生成一个五位(99999)以内的数，然后输出该数共有多少位，每位分别是什么
+        */
+        //生成一个0到1之间的随机数,不包括1
+        var num = Math.random();
+        //生成一个五位(99999)以内的数
+        num = num*100000;//num现在的范围是0-100000,但是取不到10000
+        //取整:一个五位(99999)以内的整数
+        num = parseInt(num);
+        //把num转字符串
+        var str = num.toString();
+        console.log(str+"共有"+str.length+"位");
+        for(var i=0;i<str.length;i++){
+            var current = str.charAt(i);
+            console.log("第"+(i+1)+"位是"+current);
+        }
+    </script>
+</body>
+</html>

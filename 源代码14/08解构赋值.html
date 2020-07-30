@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            解构赋值
+                ==>就是快速的从对象或者数组中取出成员的一个方式
+                ==>快速的从对象取出成员的值
+                    var {a,b} = 解构的对象
+                    a,b必须是解构对象中的成员名,
+                    a,b的值就是解构对象中对应的那个成员的值
+                ==>快速的从数组取出成员的值
+                    var [a,b] = 解构的数组
+                注意:{}是专门解构对象的
+                     []是专门解构数组的
+                     不能混用
+        */
+
+        //1 快速的从对象取出成员的值
+        // var obj = {
+        //     a:10,
+        //     b:20
+        // }
+        // //这个写法
+        // // var a = obj.a;
+        // // var b = obj.b;
+        // //等价于
+        // var {a,b} = obj;//obj必须是一个对象
+
+        // console.log(a,b)
+
+        //2 快速的从数组取出成员的值
+        // var arr = ['hello',['world1','world2'],'你好'];
+        // //这个写法
+        // // var a = arr[0];
+        // // var b = arr[1];
+        // // var c = arr[2];
+        // //等价于
+        // var [a,b,c] = arr;
+        // console.log(a)
+        // console.log(b)
+        // console.log(c)
+
+
+        //3 对象的简写
+        var name = "张三";
+        var age = 12
+        // var obj = {
+        //     "name":name,
+        //     "age":age
+        // }
+        //如果对象的成员值对应的是一个变量,而成员名刚好和成员值的变量名相同,可以简写成{变量名,变量名}
+        //上面的obj可以简写成
+        var obj = {
+            name,
+            age
+        }
+        console.log(obj)
+    </script>
+</body>
+</html>

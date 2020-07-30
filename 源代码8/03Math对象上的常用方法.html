@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            Math
+                ==>他是一个系统的内置对象,不是构造函数
+                ==>没有什么多于的东西,就是一些方法来操作数字
+                ==>random
+                    ==>Math.random()
+                    ==>生成一个0到1之间的随机数,包括0,不包括1
+                    ==>每次执行生成的数字都不一样
+                ==>round
+                    ==>Math.round()
+                    ==>四舍五入取整
+                ==>abs
+                    ==>Math.abs()
+                    ==>取绝对值
+                ==>ceil
+                    ==>Math.ceil()
+                    ==>向上取整
+                    ==>正数,数字越多,越大
+                    ==>负数,负的越多,越小
+                ==>floor
+                    ==>Math.floor()
+                    ==>向下取整
+                    ==>正数,数字越多,越大
+                    ==>负数,负的越多,越小
+                ==>max
+                    ==>Math.max(arg1,arg2,......)
+                    ==>返回所有数字的最大值
+                ==>min
+                    ==>Math.min(arg1,arg2,......)
+                    ==>返回所有数字的最小值
+                ==>PI
+                    ==>Math.PI
+                    ==>圆周率:3.1415926
+       */
+
+
+        var num1 = 4.4;
+        var num2 = 4.6;
+        var num3 = -4.4;
+        var num4 = -4.6;
+        console.log("==================Math.round()=====================")
+        console.log('num1:'+Math.round(num1));//4
+        console.log('num2:'+Math.round(num2));//5
+        console.log('num3:'+Math.round(num3));//-4
+        console.log('num4:'+Math.round(num4));//-5
+
+        console.log("==================Math.abs()=====================")
+        console.log('num3:'+Math.abs(num3));//4.4
+        console.log('num4:'+Math.abs(num4));//4.6
+
+        console.log("==================Math.ceil()=====================")
+        console.log('num1:'+Math.ceil(num1));//5
+        console.log('num2:'+Math.ceil(num2));//5
+        console.log('num3:'+Math.ceil(num3));//-4
+        console.log('num4:'+Math.ceil(num4));//-4
+
+        console.log("==================Math.floor()=====================")
+        console.log('num1:'+Math.floor(num1));//4
+        console.log('num2:'+Math.floor(num2));//4
+        console.log('num3:'+Math.floor(num3));//-5
+        console.log('num4:'+Math.floor(num4));//-5
+
+        console.log("==================Math.max()=====================")
+        console.log("max:"+Math.max(12,3,34,4545,4,23,3,3,4,4))
+
+        console.log("==================Math.min()=====================")
+        console.log("min:"+Math.min(12,3,34,4545,4,23,3,3,4,4))
+
+        console.log("==================Math.PI=====================")
+        console.log('圆周率是:'+Math.PI);
+
+        //写一个函数,传入半径,返回值是圆的面积
+        function area(r){
+            //补充:Math.pow(x,y)==>返回值是x的y次方
+            return Math.PI*Math.pow(r,2);
+        }
+        console.log(area(10))
+    </script>
+</body>
+</html>

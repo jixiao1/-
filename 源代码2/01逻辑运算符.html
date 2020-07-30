@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        例子(或者/或):
+            入户深圳的条件是,以下3个条件满足一个即可:
+            1 本科学历
+            2 买房了
+            3 社保满5年
+
+        例子(并且/与):
+            入户深圳的条件是,以下3个条件都满足:
+            1 本科学历
+            2 买房了
+            3 社保满5年
+
+        例子(非):
+            入户深圳的条件是,不能有以下情况:
+            近一年有犯罪记录
+
+
+        + &&
+            ==>进行且的运算
+            ==>符号左边必须为true,并且右边也是true,才会返回true
+            ==>只要有一边不是true,那么就返回false
+            ==>一false 全false
+        
+        + ||
+            ==>进行或的运算
+            ==>符号左边和右边只要一个是true,就会返回true
+            ==>一true 全true
+
+        + !
+            ==>进行非运算,就是取反元素
+            ==>符号后面为true,结果就是false,符号后面为false,结果就为true
+            ==>如果符号后面不是布尔值,强制转布尔,转完再取反
+            ==>结果一定是布尔值
+            ==>!!还有一个作用就是转布尔值
+        */
+
+
+
+        // &&
+        console.log(true&&false);//false
+        console.log(false&&false);//false
+        console.log(true&&true);//true
+        console.log(1==2&&2===2);//false
+        console.log(1<=2&&2===2);//true
+        console.log("====================================")
+
+        // ||
+        console.log(true||false);//true
+        console.log(false||false);//false
+        console.log(true||true);//true
+        console.log(1==2||2===2);//true
+        console.log(1<=2||2===2);//true
+
+        console.log("====================================")
+        //!
+        console.log(!true)//false
+        console.log(!false)//true
+        console.log(!!true)//true
+
+        console.log(!22);//false
+        console.log(!0);//true
+        console.log(!null);//true
+        console.log(!NaN);//true
+        console.log(!"0");//false
+
+
+
+        //综合运用(作业)
+        console.log(true&&false&&!true);
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>hello</li>
+    </ul>
+    <script>
+        /* 
+            + 操作DOM节点
+                ==>操作:增删改查
+                ==>创建一个节点(因为向页面中插入DOM节点之前,我们要先创建一个节点)
+                ==>向页面中增加一个节点
+                ==>删除页面中的某一个节点
+                ==>修改页面中的某个一个节点
+                ==>获取页面中的某一个节点
+            + 创建一个节点
+                ==>语法:document.createElement("标签名称"):用于创建一个元素节点
+                ==>语法:document.createTextNode("文本节点的内容"):用于创建一个文本节点
+            + 向页面增加一个节点
+                ==>语法:父节点.appendChild(要增加的子节点):用于向一个元素的末尾增加一个子节点
+                ==>语法:父节点.insertBefore(要增加的子节点,要在哪个节点的前面):用于向一个节点的前面插入一个节点
+            
+
+        */
+        var ul = document.querySelector('ul');
+        // 1 创建一个元素节点放到ul里面的最末尾
+        var li = document.createElement('li');// 创建出来的是一个可以使用的li元素
+        ul.appendChild(li);// 把创建好的li节点插入到ul节点里面的末尾
+
+
+        //2 创建一个文本节点放到ul里面的最前面
+        var text = document.createTextNode('我是最前面的文字节点');
+        // 获取参照节点:就是我要在这个节点的前面
+        var first = ul.children[0];
+        // 插入text节点
+        ul.insertBefore(text,first)
+        
+    </script>
+</body>
+</html>

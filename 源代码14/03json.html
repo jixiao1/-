@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            JSON(JavaScript Object Notation)
+                ==>是一种轻量级的数据交换格式
+                ==>不是一种编程语言
+                ==>是一种文本格式,可以存储和表示数据
+                ==>json文件的后缀名是.json
+                ==>json这种文本格式,基本所有编程语言都支持,所以主要用于网络数据交换
+                    ==>每条数据都是键值对的形式
+                    ==>键是使用双引号的
+                    ==>值可以是字符串,数值,布尔值,数组,对象
+                    ==>结束没有分号
+                    ==>里面没有变量定义
+                ==>书写起来类似js的对象和数组,但是他没有变量
+            JSON对象:
+                ==>我经常把js里面的某个存储数据的对象,叫做json对象
+                ==>其实这个叫法不准确
+                ==>我只是为了表达这个对象,适用于记录数据
+            JSON字符串:
+                ==>是一种特殊的字符串格式,本质是一个字符串
+                ==>像一个json,并且是存储数据的
+            JSON的两个方法:
+                ==>JSON.parse:就是将json字符串转成json对象
+                ==>JSON.stringify:就是将json对象转成json字符串
+
+        */
+        //json对象
+        var obj = {
+            name:"张三",
+            age:12
+        }
+        console.log(obj)
+        //json字符串
+        var str =  '{"name":"张三","age":12}';
+        console.log(str)
+
+
+        //JSON.parse:就是将json字符串转成json对象
+        console.log("======JSON.parse=======")
+        console.log(JSON.parse(str))
+
+        //JSON.stringify:就是将json对象转成json字符串
+        console.log("======JSON.stringify=======")
+        console.log(JSON.stringify(obj))
+
+
+
+        //json对象
+        var jsonArr = [
+            {
+                name:"张三"
+            },
+            {
+                name:"李四"
+            }
+        ]
+        //json字符串
+        var jsonStr = '[{"name":"张三"},{"name":"李四"}]'
+
+        //JSON.stringify:就是将json对象转成json字符串
+        console.log("======JSON.stringify=======")
+        console.log(JSON.stringify(jsonArr))
+        //JSON.parse:就是将json字符串转成json对象
+        console.log("======JSON.parse=======")
+        console.log(JSON.parse(jsonStr))
+    </script>
+</body>
+</html>

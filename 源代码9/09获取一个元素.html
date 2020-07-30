@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+    </ul>
+    <script>
+        /* 
+            获取一个元素
+                ==>通过js代码来获取页面中的标签
+                ==>获取到以后我们就可以操作这些标签了
+            
+            +   getElementById
+                    ==>通过元素id来获取标签的
+                    ==>在一个页面中,id是唯一的,所以获取到的是一个元素(一个DOM对象)
+            +   getElementsByClassName
+                    ==>通过元素的类名来获取标签的
+                    ==>在一个页面中,类名不是唯一的,所有不管你真正叫这个类名的元素有多少个,获取到的都是一个元素的集合
+                    ==>哪怕你获取的class只有一个,也是获取的一组元素,只不过这一组里面只有一个DOM元素而已
+                    ==>这个集合结构像数组,我们成这样的数据结构叫伪数组
+                    ==>如果要获取到其中的某一个DOM元素,需要通过索引来获取
+            +   getElementsByTagName
+                    ==>通过元素的标签名来获取标签的
+                    ==>在一个页面中,标签名不是唯一的,所有不管你真正这个标签名的元素有多少个,获取到的都是一个元素的集合
+                    ==>哪怕你获取的标签名只有一个元素,也是获取的一组元素,只不过这一组里面只有一个DOM元素而已
+                    ==>这个集合结构像数组,我们成这样的数据结构叫伪数组
+                    ==>如果要获取到其中的某一个DOM元素,需要通过索引来获取
+            +   querySelector
+                    ==>按照选择器的方式来获取元素
+                    ==>也就是说,css里面的选择器怎么写,你这里的选择器就怎么写
+                    ==>这个方法只获取一个元素,并且是页面中第一个满足条件的元素
+            +   querySelectorAll
+                    ==>按照选择器的方式来获取元素
+                    ==>也就是说,css里面的选择器怎么写,你这里的选择器就怎么写
+                    ==>这个方法获取所有满足条件的元素,是一个集合,即使只有一个也返回一个集合,只不过集合里面只有一个元素     
+        */
+
+            //getElementsByClassName
+            var liS = document.getElementsByClassName('item');
+            //获取集合中的索引是1的那个li
+            console.log(liS[1])
+            console.log(liS)
+            
+            
+            //getElementsByTagName
+            var liArr = document.getElementsByTagName('li');
+            console.log(liArr)
+            //获取集合中的索引是1的那个li
+            console.log(liArr[1])
+
+
+            // querySelector
+            console.log(document.querySelector("ul>li"))
+            console.log(document.querySelector("ul>li.item"))
+            console.log(document.querySelector(".item"))
+
+
+            // querySelectorAll
+            console.log(document.querySelectorAll("ul>li"))
+            console.log(document.querySelectorAll("ul>li.item"))
+            console.log(document.querySelectorAll(".item"))
+    </script>
+
+
+</body>
+</html>

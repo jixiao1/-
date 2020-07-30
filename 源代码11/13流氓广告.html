@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.box{
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            bottom:10px;
+            right:10px;
+            border:1px solid #ccc;
+        }
+        span{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>x</span>
+        <h1>我是流氓广告</h1>
+    </div>
+    <script>
+        /* 
+            项目需求:
+                1 点击关闭的时候可以关闭
+                2 每隔一定时间弹出box
+        */
+        var btn = document.querySelector('span');
+        var box = document.querySelector('.box');
+        //1 点击关闭的时候可以关闭
+        btn.onclick = function(){
+            box.style.display = "none"
+        }
+        //2 每隔一定时间弹出box
+        setInterval(function(){
+            box.style.display = "block"
+        },5000)
+    </script>
+</body>
+</html>

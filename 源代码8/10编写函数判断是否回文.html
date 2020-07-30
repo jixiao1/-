@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        
+        编写函数，判断一个字符串是否是 “可回文字符串”
+            - 可回文字符串： 正着和反着一样
+            - 例如： `abcba` / `你好世界世好你` 
+            - 返回值是布尔值
+        */
+
+        function isHuiWen(str){
+            var old = str;//aabbcc
+            var newStr = str.split("").reverse().join("");
+            if(old==newStr){
+                return true
+            }else{
+                return false;
+            }
+        }
+        console.log(isHuiWen('abcba'))
+    </script>
+</body>
+</html>

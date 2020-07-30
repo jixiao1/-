@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            字符串的方法:
+                + search
+                    ==>查找字符串中是否有满足正则条件的内容
+                    ==>语法:字符串.search(正则)
+                    ==>search里面的参数,可以是字符串子串,也可以是正则
+                    ==>返回值:有的话返回开始索引,没有返回-1
+                    ==>只匹配第一项,g不起作用
+                + match
+                    ==>找到字符串中符合正则条件的内容返回
+                    ==>语法:字符串.match(正则)
+                    ==>match里面的参数,可以是要检索的字符串子串,也可以是正则
+                    ==>返回值:
+                        ==>没有标识符g的时候,是和exec方法一样
+                        ==>有标识符g的时候,是返回一个数组,里面有匹配到的每一项   
+                + replace
+                    ==>是将字符串中满足正则条件的字符串替换掉
+                    ==>语法 : 字符串.replace(正则或者是要被替换的字符串,要替换的字符串);
+                    ==>返回值:替换后的字符串    
+                        ==>没有标识符g的时候,只替换第一个匹配到的
+                        ==>有标识符g的时候,会全部替换匹配到的
+        */
+
+        //search
+        // var reg = /\d{3}/
+        // var str = "hello123"
+        // var str2 = "hello"
+        // console.log(str.search(reg));
+        // console.log(str2.search(reg));
+        // console.log(str2.search("e"));//search里面的参数,可以是字符串子串,也可以是正则
+
+
+        //match
+        // var str = "hello123world456你好78910";
+        // //如果正则没有标识符g
+        // console.log(str.match(/\d{3}/))
+        // //如果正则有标识符g
+        // console.log(str.match(/\d{3}/g))
+        // //如果参数是子串
+        // console.log(str.match('l'))
+
+
+        //replace
+        var str = "hello123world123你好123";
+        // 字符串.replace(要被替换的字符串,要替换的字符串);
+        // console.log(str.replace('123','789'));//只替换到第一个匹配的
+        // 字符串.replace(正则,要替换的字符串);
+        console.log(str.replace(/\d{3}/,9));//只替换第一个匹配到的的
+        console.log(str.replace(/\d{3}/g,9));
+    </script>
+</body>
+</html>
